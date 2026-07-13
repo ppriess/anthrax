@@ -9,8 +9,10 @@
   "secondaryCta": "PRE-SAVE",
   "label": "MEGAFORCE / NUCLEAR BLAST",
   "cover": {
+    "type": "video",
     "placeholder": "[ CAPA — CURSUM PERFICIO ]",
     "placeholderMobile": "[ CAPA DO ÁLBUM ]",
-    "sticker": "relíquia futura ★"
+    "sticker": "relíquia futura ★",
+    "videoUrl": "https://www.youtube.com/watch?v=uqbhWhN4F74"
   }
 }

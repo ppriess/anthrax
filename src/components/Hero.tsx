@@ -1,5 +1,7 @@
 import type { Hero as HeroContent } from "@/lib/content";
 import { Countdown } from "./Countdown";
+import { HeroVideoCover } from "./HeroVideoCover";
+import { extractYouTubeId } from "@/lib/youtube";
 
 /** Renders the body text with the single name in bold, wherever it appears. */
 function Body({ text, single }: { text: string; single: string }) {
@@ -24,6 +26,11 @@ export function Hero({
   hero: HeroContent;
   releaseDate: string;
 }) {
+  const videoId =
+    hero.cover.type === "video" && hero.cover.videoUrl
+      ? extractYouTubeId(hero.cover.videoUrl)
+      : null;
+
   return (
     <section aria-label="Destaque">
       {/* Desktop */}
@@ -67,18 +74,24 @@ export function Hero({
         </div>
 
         {/* cover */}
-        <div className="relative">
-          <div className="hatch-dark-45 flex h-[420px] rotate-[1.2deg] items-center justify-center border-4 border-black shadow-[8px_8px_0_#2E7D4F]">
-            <span className="border border-dashed border-border-dark-2 bg-ink px-[10px] py-[5px] font-mono text-xs text-on-dark-3">
-              {hero.cover.placeholder}
-            </span>
+        {videoId ? (
+          <div className="h-[420px] border-4 border-black shadow-[8px_8px_0_#2E7D4F]">
+            <HeroVideoCover videoId={videoId} />
           </div>
-          <div className="absolute left-[-14px] top-[-12px] -rotate-[5deg] border-2 border-black bg-paper px-3 py-[6px] font-marker text-[15px] text-ink">
-            {hero.cover.sticker}
+        ) : (
+          <div className="relative">
+            <div className="hatch-dark-45 flex h-[420px] rotate-[1.2deg] items-center justify-center border-4 border-black shadow-[8px_8px_0_#2E7D4F]">
+              <span className="border border-dashed border-border-dark-2 bg-ink px-[10px] py-[5px] font-mono text-xs text-on-dark-3">
+                {hero.cover.placeholder}
+              </span>
+            </div>
+            <div className="absolute left-[-14px] top-[-12px] -rotate-[5deg] border-2 border-black bg-paper px-3 py-[6px] font-marker text-[15px] text-ink">
+              {hero.cover.sticker}
+            </div>
+            {/* translucent tape */}
+            <div className="absolute bottom-[-10px] right-[10px] h-[26px] w-[90px] -rotate-[38deg] bg-paper/70" />
           </div>
-          {/* translucent tape */}
-          <div className="absolute bottom-[-10px] right-[10px] h-[26px] w-[90px] -rotate-[38deg] bg-paper/70" />
-        </div>
+        )}
       </div>
 
       {/* Mobile */}
@@ -93,11 +106,17 @@ export function Hero({
           <p className="m-0 mb-[14px] text-base leading-[1.35] text-paper-hi">
             <Body text={hero.bodyMobile} single={hero.singleName} />
           </p>
-          <div className="hatch-paper-45 mb-[14px] flex h-[200px] items-center justify-center border-[3px] border-black">
-            <span className="font-mono text-[10px] text-paper-meta">
-              {hero.cover.placeholderMobile}
-            </span>
-          </div>
+          {videoId ? (
+            <div className="mb-[14px] h-[200px] border-[3px] border-black">
+              <HeroVideoCover videoId={videoId} />
+            </div>
+          ) : (
+            <div className="hatch-paper-45 mb-[14px] flex h-[200px] items-center justify-center border-[3px] border-black">
+              <span className="font-mono text-[10px] text-paper-meta">
+                {hero.cover.placeholderMobile}
+              </span>
+            </div>
+          )}
           <button className="block w-full -rotate-[0.6deg] bg-ink py-[13px] text-center text-base font-bold tracking-[0.1em] text-signal">
             {hero.primaryCta}
           </button>

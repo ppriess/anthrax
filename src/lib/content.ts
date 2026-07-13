@@ -40,9 +40,11 @@ export type Hero = {
   secondaryCta: string;
   label: string;
   cover: {
+    type?: "image" | "video"; // padrão "image" se ausente
     placeholder: string;
     placeholderMobile: string;
     sticker: string;
+    videoUrl?: string; // URL do YouTube, usado quando type === "video"
   };
 };
 

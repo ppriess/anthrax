@@ -117,34 +117,59 @@ export default async function HeroPage() {
         </label>
         <label className="flex flex-col gap-1">
           <span className="font-mono text-xs text-on-dark-3">
-            Placeholder da capa (desktop)
+            Tipo de capa
+          </span>
+          <select
+            name="coverType"
+            defaultValue={hero.cover.type ?? "image"}
+            className="admin-input"
+          >
+            <option value="image">Imagem (placeholder de texto)</option>
+            <option value="video">
+              Vídeo do YouTube (fundo com som mutado, toggle e tela cheia)
+            </option>
+          </select>
+        </label>
+        <label className="flex flex-col gap-1">
+          <span className="font-mono text-xs text-on-dark-3">
+            Link do YouTube (usado só quando o tipo acima é &quot;Vídeo&quot;)
+          </span>
+          <input
+            type="url"
+            name="coverVideoUrl"
+            defaultValue={hero.cover.videoUrl}
+            placeholder="https://www.youtube.com/watch?v=..."
+            className="admin-input"
+          />
+        </label>
+        <label className="flex flex-col gap-1">
+          <span className="font-mono text-xs text-on-dark-3">
+            Placeholder da capa (desktop — usado só no tipo &quot;Imagem&quot;)
           </span>
           <input
             name="coverPlaceholder"
             defaultValue={hero.cover.placeholder}
-            required
             className="admin-input"
           />
         </label>
         <label className="flex flex-col gap-1">
           <span className="font-mono text-xs text-on-dark-3">
-            Placeholder da capa (mobile)
+            Placeholder da capa (mobile — usado só no tipo &quot;Imagem&quot;)
           </span>
           <input
             name="coverPlaceholderMobile"
             defaultValue={hero.cover.placeholderMobile}
-            required
             className="admin-input"
           />
         </label>
         <label className="flex flex-col gap-1">
           <span className="font-mono text-xs text-on-dark-3">
-            Adesivo da capa (ex.: relíquia futura ★)
+            Adesivo da capa (ex.: relíquia futura ★ — usado só no tipo
+            &quot;Imagem&quot;)
           </span>
           <input
             name="coverSticker"
             defaultValue={hero.cover.sticker}
-            required
             className="admin-input"
           />
         </label>
