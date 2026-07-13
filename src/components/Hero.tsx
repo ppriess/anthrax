@@ -1,23 +1,6 @@
 import type { Hero as HeroContent } from "@/lib/content";
-import { Countdown } from "./Countdown";
-import { HeroVideoCover } from "./HeroVideoCover";
 import { extractYouTubeId } from "@/lib/youtube";
-
-/** Renders the body text with the single name in bold, wherever it appears. */
-function Body({ text, single }: { text: string; single: string }) {
-  const parts = text.split(single);
-  if (parts.length === 1) return <>{text}</>;
-  return (
-    <>
-      {parts.map((part, i) => (
-        <span key={i}>
-          {i > 0 && <strong>{single}</strong>}
-          {part}
-        </span>
-      ))}
-    </>
-  );
-}
+import { HeroPanel } from "./HeroPanel";
 
 export function Hero({
   hero,
@@ -32,57 +15,12 @@ export function Hero({
     <section aria-label="Destaque">
       {/* Desktop */}
       <div className="hidden grid-cols-[1fr_470px] gap-8 px-10 py-9 md:grid">
-        {/* comic panel — vídeo de fundo (se houver) atrás do texto */}
-        <div
-          className={`relative overflow-hidden border-4 border-black px-[34px] py-[30px] shadow-[8px_8px_0_#E8B71A] ${
-            videoId ? "text-paper" : "bg-paper text-ink"
-          }`}
-        >
-          {videoId && (
-            <>
-              <HeroVideoCover videoId={videoId} />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/25" />
-            </>
-          )}
-          <div className="absolute left-[26px] top-[-14px] z-10 bg-ink px-3 py-[5px] font-mono text-xs tracking-[0.2em] text-paper">
-            {hero.panelLabel}
-          </div>
-          <div className="relative z-10">
-            <div className="mb-[6px] -rotate-1 font-marker text-[19px] text-hot">
-              {hero.annotation}
-            </div>
-            <h2 className="m-0 mb-[14px] font-display text-[72px] uppercase leading-[0.9]">
-              {hero.titleLines.map((line, i) => (
-                <span key={line}>
-                  {i > 0 && <br />}
-                  {line}
-                </span>
-              ))}
-            </h2>
-            <p
-              className={`m-0 mb-[18px] max-w-[520px] text-[21px] leading-[1.4] [text-wrap:pretty] ${videoId ? "text-paper" : "text-paper-hi"}`}
-            >
-              <Body text={hero.body} single={hero.singleName} />
-            </p>
-            <div className="flex gap-3">
-              <button className="inline-block -rotate-1 bg-ink px-[22px] py-[13px] text-[17px] font-bold tracking-[0.1em] text-signal">
-                {hero.primaryCta}
-              </button>
-              <button className="inline-block rotate-[0.6deg] border-[3px] border-ink bg-paper px-[22px] py-[11px] text-[17px] font-bold tracking-[0.1em] text-ink">
-                {hero.secondaryCta}
-              </button>
-            </div>
-            <div className="mt-5 flex gap-[10px] font-mono text-[13px]">
-              <Countdown
-                target={releaseDate}
-                className="border border-[#b6b0a4] px-2 py-[3px]"
-              />
-              <span className="border border-[#b6b0a4] px-2 py-[3px]">
-                {hero.label}
-              </span>
-            </div>
-          </div>
-        </div>
+        <HeroPanel
+          hero={hero}
+          releaseDate={releaseDate}
+          videoId={videoId}
+          variant="desktop"
+        />
 
         {/* cover: capa do álbum, sempre imagem/placeholder */}
         <div className="relative">
@@ -101,41 +39,12 @@ export function Hero({
 
       {/* Mobile */}
       <div className="block px-4 py-5 md:hidden">
-        <div
-          className={`relative overflow-hidden border-[3px] border-black p-5 shadow-[6px_6px_0_#E8B71A] ${
-            videoId ? "text-paper" : "bg-paper text-ink"
-          }`}
-        >
-          {videoId && (
-            <>
-              <HeroVideoCover videoId={videoId} />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/25" />
-            </>
-          )}
-          <div className="relative z-10">
-            <div className="mb-1 -rotate-1 font-marker text-[15px] text-hot">
-              {hero.annotation}
-            </div>
-            <h2 className="m-0 mb-[10px] font-display text-[40px] uppercase leading-[0.92]">
-              {hero.titleLines.join(" ")}
-            </h2>
-            <p
-              className={`m-0 mb-[14px] text-base leading-[1.35] ${videoId ? "text-paper" : "text-paper-hi"}`}
-            >
-              <Body text={hero.bodyMobile} single={hero.singleName} />
-            </p>
-            {!videoId && (
-              <div className="hatch-paper-45 mb-[14px] flex h-[200px] items-center justify-center border-[3px] border-black">
-                <span className="font-mono text-[10px] text-paper-meta">
-                  {hero.cover.placeholderMobile}
-                </span>
-              </div>
-            )}
-            <button className="block w-full -rotate-[0.6deg] bg-ink py-[13px] text-center text-base font-bold tracking-[0.1em] text-signal">
-              {hero.primaryCta}
-            </button>
-          </div>
-        </div>
+        <HeroPanel
+          hero={hero}
+          releaseDate={releaseDate}
+          videoId={videoId}
+          variant="mobile"
+        />
       </div>
     </section>
   );
