@@ -23,6 +23,12 @@
 - Painel de administração em `/admin` (login por senha única, `ADMIN_PASSWORD` /
   `ADMIN_SESSION_TOKEN` via env — Doppler no VPS; na Vercel são env vars do
   projeto, `vercel env add`, com confirmação antes de gravar em produção).
-- Projeto Vercel: `anthrax` (team `mobigrapp-4610s-projects`). Blob store:
-  `anthrax-content` (privado, região `iad1`), já linkado ao projeto —
-  `BLOB_READ_WRITE_TOKEN` é injetado automaticamente em todas as envs.
+- Projeto Vercel: `anthrax` (team **`ppriess-projects`** — conta
+  paulo.priess@gmail.com / GitHub `ppriess`, a conta certa do usuário; NÃO
+  usar `mobigrapp-4610`, que é outra conta). Blob store: `anthrax-content`
+  (privado, região `iad1`), linkado ao projeto — `BLOB_READ_WRITE_TOKEN`
+  injetado automaticamente em todas as envs.
+- Repositório: `github.com/ppriess/anthrax`, branch `main`, já conectado ao
+  projeto Vercel (deploy automático a cada push).
+- `ADMIN_PASSWORD`/`ADMIN_SESSION_TOKEN` cadastradas nas 3 envs da Vercel
+  (production/preview/development) — senha combinada com o usuário.
