@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { readContentFile, type Agenda } from "@/lib/content";
 import { deleteAgendaItem, saveAgendaAlert } from "@/lib/admin-actions";
+import { AccordionItem } from "@/components/admin/AccordionItem";
+import { AgendaForm } from "./AgendaForm";
 
 export const dynamic = "force-dynamic";
 
@@ -21,34 +23,34 @@ export default async function AgendaPage() {
 
       <div className="mb-8 flex flex-col gap-2">
         {agenda.items.map((item) => (
-          <div
+          <AccordionItem
             key={item.id}
-            className="flex items-center gap-4 border-2 border-border-dark bg-card-dark p-4"
-          >
-            <div className="w-16 flex-none font-display text-signal">
-              {item.date}
-            </div>
-            <div className="flex-1">
-              <div className="text-sm font-bold text-paper">{item.title}</div>
-              <div className="font-mono text-[11px] text-on-dark-3">
-                {item.meta}
+            summary={
+              <div className="flex items-center gap-3">
+                <span className="font-display text-signal">{item.date}</span>
+                <div>
+                  <div className="text-sm font-bold text-paper">
+                    {item.title}
+                  </div>
+                  <div className="font-mono text-[11px] text-on-dark-3">
+                    {item.meta}
+                  </div>
+                </div>
               </div>
-            </div>
-            <Link
-              href={`/admin/agenda/${item.id}`}
-              className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 no-underline hover:border-signal hover:text-signal"
-            >
-              EDITAR
-            </Link>
-            <form action={deleteAgendaItem.bind(null, item.id)}>
-              <button
-                type="submit"
-                className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 hover:border-hot hover:text-hot"
-              >
-                EXCLUIR
-              </button>
-            </form>
-          </div>
+            }
+            actions={
+              <form action={deleteAgendaItem.bind(null, item.id)}>
+                <button
+                  type="submit"
+                  className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 hover:border-hot hover:text-hot"
+                >
+                  EXCLUIR
+                </button>
+              </form>
+            }
+          >
+            <AgendaForm item={item} />
+          </AccordionItem>
         ))}
         {agenda.items.length === 0 && (
           <p className="text-sm text-on-dark-3">Nenhuma data ainda.</p>

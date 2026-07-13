@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { readContentFile, type News } from "@/lib/content";
 import { deleteNewsItem } from "@/lib/admin-actions";
+import { AccordionItem } from "@/components/admin/AccordionItem";
+import { NewsForm } from "./NewsForm";
 
 export const dynamic = "force-dynamic";
 
@@ -21,36 +23,34 @@ export default async function NoticiasPage() {
 
       <div className="flex flex-col gap-2">
         {news.items.map((item) => (
-          <div
+          <AccordionItem
             key={item.id}
-            className="flex items-center gap-4 border-2 border-border-dark bg-card-dark p-4"
-          >
-            <div className="flex-1">
-              <div className="mb-1 flex gap-2 font-mono text-[11px] text-on-dark-3">
-                <span>{item.source}</span>
-                {item.hot && <span className="text-hot">QUENTE</span>}
-                {item.variant === "feature" && (
-                  <span className="text-signal">DESTAQUE</span>
-                )}
-                {item.feed && <span>FEED</span>}
+            summary={
+              <div>
+                <div className="mb-1 flex gap-2 font-mono text-[11px] text-on-dark-3">
+                  <span>{item.source}</span>
+                  {item.hot && <span className="text-hot">QUENTE</span>}
+                  {item.variant === "feature" && (
+                    <span className="text-signal">DESTAQUE</span>
+                  )}
+                  {item.feed && <span>FEED</span>}
+                </div>
+                <div className="text-sm font-bold text-paper">{item.title}</div>
               </div>
-              <div className="text-sm font-bold text-paper">{item.title}</div>
-            </div>
-            <Link
-              href={`/admin/noticias/${item.id}`}
-              className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 no-underline hover:border-signal hover:text-signal"
-            >
-              EDITAR
-            </Link>
-            <form action={deleteNewsItem.bind(null, item.id)}>
-              <button
-                type="submit"
-                className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 hover:border-hot hover:text-hot"
-              >
-                EXCLUIR
-              </button>
-            </form>
-          </div>
+            }
+            actions={
+              <form action={deleteNewsItem.bind(null, item.id)}>
+                <button
+                  type="submit"
+                  className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 hover:border-hot hover:text-hot"
+                >
+                  EXCLUIR
+                </button>
+              </form>
+            }
+          >
+            <NewsForm item={item} />
+          </AccordionItem>
         ))}
         {news.items.length === 0 && (
           <p className="text-sm text-on-dark-3">Nenhuma notícia ainda.</p>

@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { readContentFile, type Brasil } from "@/lib/content";
 import { deleteBrasilCard, saveBrasilIntro } from "@/lib/admin-actions";
+import { AccordionItem } from "@/components/admin/AccordionItem";
+import { BrasilCardForm } from "./BrasilCardForm";
 
 export const dynamic = "force-dynamic";
 
@@ -24,32 +26,30 @@ export default async function BrasilPage() {
       </p>
       <div className="mb-8 flex flex-col gap-2">
         {brasil.cards.map((card) => (
-          <div
+          <AccordionItem
             key={card.id}
-            className="flex items-center gap-4 border-2 border-border-dark bg-card-dark p-4"
-          >
-            <div className="flex-1">
-              <div className="mb-1 flex gap-2 font-mono text-[11px] text-on-dark-3">
-                <span>{card.label || "(sem selo)"}</span>
-                {card.wide && <span className="text-signal">LARGO</span>}
+            summary={
+              <div>
+                <div className="mb-1 flex gap-2 font-mono text-[11px] text-on-dark-3">
+                  <span>{card.label || "(sem selo)"}</span>
+                  {card.wide && <span className="text-signal">LARGO</span>}
+                </div>
+                <div className="text-sm font-bold text-paper">{card.title}</div>
               </div>
-              <div className="text-sm font-bold text-paper">{card.title}</div>
-            </div>
-            <Link
-              href={`/admin/brasil/${card.id}`}
-              className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 no-underline hover:border-signal hover:text-signal"
-            >
-              EDITAR
-            </Link>
-            <form action={deleteBrasilCard.bind(null, card.id)}>
-              <button
-                type="submit"
-                className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 hover:border-hot hover:text-hot"
-              >
-                EXCLUIR
-              </button>
-            </form>
-          </div>
+            }
+            actions={
+              <form action={deleteBrasilCard.bind(null, card.id)}>
+                <button
+                  type="submit"
+                  className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 hover:border-hot hover:text-hot"
+                >
+                  EXCLUIR
+                </button>
+              </form>
+            }
+          >
+            <BrasilCardForm item={card} />
+          </AccordionItem>
         ))}
         {brasil.cards.length === 0 && (
           <p className="text-sm text-on-dark-3">Nenhum card ainda.</p>

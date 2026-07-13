@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { readContentFile, type Tv } from "@/lib/content";
 import { deleteVideo, saveTvArchive } from "@/lib/admin-actions";
+import { AccordionItem } from "@/components/admin/AccordionItem";
+import { VideoForm } from "./VideoForm";
 
 export const dynamic = "force-dynamic";
 
@@ -24,32 +26,34 @@ export default async function VideosPage() {
       </p>
       <div className="mb-8 flex flex-col gap-2">
         {tv.videos.map((video) => (
-          <div
+          <AccordionItem
             key={video.id}
-            className="flex items-center gap-4 border-2 border-border-dark bg-card-dark p-4"
-          >
-            <div className="flex-1">
-              <div className="mb-1 flex gap-2 font-mono text-[11px] text-on-dark-3">
-                <span>{video.meta}</span>
-                {video.brasil && <span className="text-brasil-dark">BRASIL</span>}
+            summary={
+              <div>
+                <div className="mb-1 flex gap-2 font-mono text-[11px] text-on-dark-3">
+                  <span>{video.meta}</span>
+                  {video.brasil && (
+                    <span className="text-brasil-dark">BRASIL</span>
+                  )}
+                </div>
+                <div className="text-sm font-bold text-paper">
+                  {video.title}
+                </div>
               </div>
-              <div className="text-sm font-bold text-paper">{video.title}</div>
-            </div>
-            <Link
-              href={`/admin/videos/${video.id}`}
-              className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 no-underline hover:border-signal hover:text-signal"
-            >
-              EDITAR
-            </Link>
-            <form action={deleteVideo.bind(null, video.id)}>
-              <button
-                type="submit"
-                className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 hover:border-hot hover:text-hot"
-              >
-                EXCLUIR
-              </button>
-            </form>
-          </div>
+            }
+            actions={
+              <form action={deleteVideo.bind(null, video.id)}>
+                <button
+                  type="submit"
+                  className="border border-border-dark-2 px-3 py-[6px] text-xs font-bold text-on-dark-2 hover:border-hot hover:text-hot"
+                >
+                  EXCLUIR
+                </button>
+              </form>
+            }
+          >
+            <VideoForm item={video} />
+          </AccordionItem>
         ))}
         {tv.videos.length === 0 && (
           <p className="text-sm text-on-dark-3">Nenhum vídeo ainda.</p>
