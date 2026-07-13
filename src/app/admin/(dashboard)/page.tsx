@@ -1,0 +1,38 @@
+import Link from "next/link";
+import { getContent } from "@/lib/content";
+
+export const dynamic = "force-dynamic";
+
+export default async function AdminHome() {
+  const content = await getContent();
+
+  const cards = [
+    { href: "/admin/noticias", label: "Notícias", count: content.news.items.length },
+    { href: "/admin/videos", label: "Anthrax TV", count: content.tv.videos.length },
+    { href: "/admin/brasil", label: "Anthrax + Brasil", count: content.brasil.cards.length },
+    { href: "/admin/agenda", label: "Agenda", count: content.agenda.items.length },
+    { href: "/admin/nav", label: "Menu", count: content.nav.length },
+  ];
+
+  return (
+    <div>
+      <h1 className="mb-1 font-display text-2xl uppercase">Painel de conteúdo</h1>
+      <p className="mb-6 text-sm text-on-dark-3">
+        Edita aqui, salva, e o site atualiza na hora — sem rebuild.
+      </p>
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+        {cards.map((c) => (
+          <Link
+            key={c.href}
+            href={c.href}
+            className="border-2 border-border-dark bg-card-dark p-5 no-underline hover:border-signal"
+          >
+            <div className="font-display text-3xl text-signal">{c.count}</div>
+            <div className="mt-1 text-sm font-bold text-paper">{c.label}</div>
+            <div className="mt-1 text-xs text-on-dark-3">itens</div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}

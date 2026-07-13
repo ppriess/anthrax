@@ -1,0 +1,19 @@
+{
+  "title": "Agenda",
+  "items": [
+    {
+      "id": "maiden",
+      "date": "SET 26",
+      "title": "Abertura p/ Iron Maiden — América do Norte",
+      "meta": "RUN FOR YOUR LIVES TOUR"
+    },
+    {
+      "id": "release",
+      "date": "18.09",
+      "title": "Cursum Perficio — lançamento mundial",
+      "meta": "MEGAFORCE · NUCLEAR BLAST"
+    }
+  ],
+  "alert": "Brasil 2027?? cadastra teu email que a gente grita primeiro →",
+  "alertConfirm": "fechou! a gente grita no teu email primeiro ★"
+}

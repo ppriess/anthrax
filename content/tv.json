@@ -1,0 +1,27 @@
+{
+  "videos": [
+    {
+      "id": "wacken-2025",
+      "title": "Wacken 2025 · Set Completo",
+      "meta": "4K · BELLADONNA",
+      "duration": "58:12"
+    },
+    {
+      "id": "hellfest-2024",
+      "title": "Hellfest 2024 · ARTE Concert",
+      "meta": "HD · BELLADONNA",
+      "duration": "47:30"
+    },
+    {
+      "id": "monsters-sp",
+      "title": "Monsters of Rock SP · Oficial",
+      "meta": "HD · BELLADONNA",
+      "brasil": true
+    }
+  ],
+  "archive": {
+    "count": "+147",
+    "blurb": "vídeos profissionais catalogados\ne crescendo toda semana",
+    "cta": "ABRIR ANTHRAX TV"
+  }
+}

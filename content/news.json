@@ -1,0 +1,46 @@
+{
+  "title": "Últimas do Front",
+  "kicker": "● REDAÇÃO ANTHRAX BRASIL",
+  "archiveCta": "ARQUIVO COMPLETO →",
+  "items": [
+    {
+      "id": "scott-ian-single",
+      "source": "BLABBERMOUTH · 10 JUL",
+      "date": "2026-07-10",
+      "title": "\"A maior música da história do Anthrax\" — Scott Ian sobre o novo single",
+      "excerpt": "Tradução completa da entrevista + análise faixa a faixa do que já se sabe do disco.",
+      "hot": true,
+      "variant": "feature",
+      "photoLabel": "[ FOTO: Scott Ian ]"
+    },
+    {
+      "id": "bello-album",
+      "source": "LOUDWIRE · 24 JUN",
+      "date": "2026-06-24",
+      "title": "Frank Bello mergulha no novo disco: \"É o álbum que a gente precisava\"",
+      "variant": "dark"
+    },
+    {
+      "id": "turne-completa",
+      "source": "CONSEQUENCE · 19 MAR",
+      "date": "2026-03-19",
+      "title": "Banda promete turnê \"completa\" em apoio ao 12º álbum",
+      "variant": "dark"
+    },
+    {
+      "id": "cursum-latim",
+      "source": "METAL INJECTION · 14 MAI",
+      "date": "2026-05-14",
+      "title": "O que significa \"Cursum Perficio\"? Benante explica o latim",
+      "variant": "dark"
+    },
+    {
+      "id": "feed-nyc",
+      "source": "FEED OFICIAL · @anthrax · 2h",
+      "date": "2026-07-13",
+      "title": "\"NYC. Sept 18. Cursum Perficio. 🤘\"",
+      "variant": "dark",
+      "feed": true
+    }
+  ]
+}

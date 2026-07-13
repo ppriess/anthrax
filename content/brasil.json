@@ -1,0 +1,33 @@
+{
+  "title": "Anthrax + Brasil",
+  "subtitle": "as conexões verde-amarelas do thrash do Queens",
+  "subtitleShort": "as conexões verde-amarelas",
+  "cards": [
+    {
+      "id": "kisser",
+      "label": "1994–2011 · IRMANDADE",
+      "labelShort": "2011",
+      "photoLabel": "[ FOTO: Andreas Kisser + Anthrax ]",
+      "title": "Andreas Kisser no lugar de Scott Ian",
+      "body": "O guitarrista do Sepultura cobriu a ausência de Scott em 2011 — e tatuou o logo do Anthrax abrasileirado. Amizade documentada em fotos, palcos e tinta."
+    },
+    {
+      "id": "tributo",
+      "label": "2004 · TRIBUTO NACIONAL",
+      "labelShort": "2004",
+      "photoLabel": "[ CAPA: Tributo Brasileiro 2004 ]",
+      "title": "O tributo brasileiro ao Anthrax",
+      "body": "Bandas da cena nacional gravaram um disco inteiro de covers em 2004. Faixa a faixa, contamos quem tocou o quê."
+    },
+    {
+      "id": "arquivo",
+      "label": "",
+      "title": "Arquivo Brasil — todos os shows em solo nacional",
+      "body": "Pôsteres, ingressos, sets e memórias. Você estava lá?",
+      "bodyEmphasis": "Manda tua história.",
+      "wide": true,
+      "ticketLabel": "[ INGRESSO ]",
+      "cta": "EXPLORAR →"
+    }
+  ]
+}

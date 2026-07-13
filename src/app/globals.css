@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: #151318;
+    color: #efeae0;
+    /* Barlow Condensed as the UI/body face for the whole site */
+    font-family: var(--font-barlow), sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  /* Inputs do /admin */
+  .admin-input {
+    @apply border-2 border-border-dark-2 bg-ink px-3 py-2 text-sm text-paper focus:border-signal focus:outline-none;
+  }
+}
+
+@layer utilities {
+  /* Halftone paper texture — radial dot grid used on paper panels */
+  .halftone {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.13) 1px, transparent 1.5px);
+    background-size: 7px 7px;
+  }
+  .halftone-sm {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.12) 1px, transparent 1.5px);
+    background-size: 6px 6px;
+  }
+  .halftone-soft {
+    background-image: radial-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1.5px);
+    background-size: 7px 7px;
+  }
+
+  /* Diagonal hatch used for image placeholders (dark + paper variants) */
+  .hatch-dark {
+    background: repeating-linear-gradient(45deg, #221f27 0 12px, #1a1720 12px 24px);
+  }
+  .hatch-dark-45 {
+    background: repeating-linear-gradient(-45deg, #221f27 0 14px, #1a1720 14px 28px);
+  }
+  .hatch-paper {
+    background: repeating-linear-gradient(45deg, #ddd6c8 0 12px, #d2cabb 12px 24px);
+  }
+  .hatch-paper-45 {
+    background: repeating-linear-gradient(-45deg, #ddd6c8 0 12px, #d2cabb 12px 24px);
+  }
+  .hatch-paper-sm {
+    background: repeating-linear-gradient(45deg, #ddd6c8 0 10px, #d2cabb 10px 20px);
+  }
+
+  /* Card: rotated by default, straightens on hover (interaction spec) */
+  .card-hover {
+    transition: transform 150ms ease-out;
+  }
+  .card-hover:hover {
+    transform: rotate(0deg) !important;
+  }
+
+  .marquee-track {
+    animation: marquee 60s linear infinite;
+  }
+  .marquee:hover .marquee-track {
+    animation-play-state: paused;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes bar-grow {
+  from {
+    width: 0;
+  }
+}

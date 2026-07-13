@@ -1,0 +1,335 @@
+"use server";
+
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
+import {
+  readContentFile,
+  writeContentFile,
+  type Agenda,
+  type AgendaItem,
+  type Brasil,
+  type BrasilCard,
+  type Footer,
+  type Hero,
+  type NavItem,
+  type News,
+  type NewsItem,
+  type Quiz,
+  type Site,
+  type Tv,
+  type Video,
+} from "@/lib/content";
+import { slugify, uniqueSlug } from "@/lib/slug";
+
+const SESSION_COOKIE = "admin_session";
+
+function str(formData: FormData, key: string): string {
+  return String(formData.get(key) ?? "").trim();
+}
+function optStr(formData: FormData, key: string): string | undefined {
+  const v = str(formData, key);
+  return v === "" ? undefined : v;
+}
+function bool(formData: FormData, key: string): boolean {
+  return formData.get(key) === "on";
+}
+
+function revalidateAll(adminPath: string) {
+  revalidatePath("/");
+  revalidatePath(adminPath);
+}
+
+// ---------- auth ----------
+
+export async function login(formData: FormData) {
+  const password = str(formData, "password");
+  const expected = process.env.ADMIN_PASSWORD;
+  const token = process.env.ADMIN_SESSION_TOKEN;
+  if (!expected || !token) {
+    throw new Error(
+      "ADMIN_PASSWORD / ADMIN_SESSION_TOKEN não configurados (.env.local)",
+    );
+  }
+  if (password !== expected) {
+    redirect("/admin/login?erro=1");
+  }
+  const jar = await cookies();
+  jar.set(SESSION_COOKIE, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "lax",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 30,
+  });
+  redirect("/admin");
+}
+
+export async function logout() {
+  const jar = await cookies();
+  jar.delete(SESSION_COOKIE);
+  redirect("/admin/login");
+}
+
+// ---------- notícias ----------
+
+export async function saveNewsItem(id: string | null, formData: FormData) {
+  const news = await readContentFile<News>("news.json");
+  const title = str(formData, "title");
+  const item: NewsItem = {
+    id: id ?? uniqueSlug(slugify(title), news.items.map((n) => n.id)),
+    source: str(formData, "source"),
+    date: str(formData, "date"),
+    title,
+    excerpt: optStr(formData, "excerpt"),
+    hot: bool(formData, "hot"),
+    variant: str(formData, "variant") === "feature" ? "feature" : "dark",
+    photoLabel: optStr(formData, "photoLabel"),
+    feed: bool(formData, "feed"),
+  };
+
+  if (id) {
+    const idx = news.items.findIndex((n) => n.id === id);
+    if (idx === -1) throw new Error("Notícia não encontrada");
+    news.items[idx] = item;
+  } else {
+    news.items.unshift(item);
+  }
+  await writeContentFile("news.json", news);
+  revalidateAll("/admin/noticias");
+  redirect("/admin/noticias");
+}
+
+export async function deleteNewsItem(id: string) {
+  const news = await readContentFile<News>("news.json");
+  news.items = news.items.filter((n) => n.id !== id);
+  await writeContentFile("news.json", news);
+  revalidateAll("/admin/noticias");
+}
+
+// ---------- vídeos (Anthrax TV) ----------
+
+export async function saveVideo(id: string | null, formData: FormData) {
+  const tv = await readContentFile<Tv>("tv.json");
+  const title = str(formData, "title");
+  const item: Video = {
+    id: id ?? uniqueSlug(slugify(title), tv.videos.map((v) => v.id)),
+    title,
+    meta: str(formData, "meta"),
+    duration: optStr(formData, "duration"),
+    brasil: bool(formData, "brasil"),
+  };
+
+  if (id) {
+    const idx = tv.videos.findIndex((v) => v.id === id);
+    if (idx === -1) throw new Error("Vídeo não encontrado");
+    tv.videos[idx] = item;
+  } else {
+    tv.videos.unshift(item);
+  }
+  await writeContentFile("tv.json", tv);
+  revalidateAll("/admin/videos");
+  redirect("/admin/videos");
+}
+
+export async function deleteVideo(id: string) {
+  const tv = await readContentFile<Tv>("tv.json");
+  tv.videos = tv.videos.filter((v) => v.id !== id);
+  await writeContentFile("tv.json", tv);
+  revalidateAll("/admin/videos");
+}
+
+export async function saveTvArchive(formData: FormData) {
+  const tv = await readContentFile<Tv>("tv.json");
+  tv.archive = {
+    count: str(formData, "count"),
+    blurb: str(formData, "blurb"),
+    cta: str(formData, "cta"),
+  };
+  await writeContentFile("tv.json", tv);
+  revalidateAll("/admin/videos");
+}
+
+// ---------- Anthrax + Brasil (cards) ----------
+
+export async function saveBrasilCard(id: string | null, formData: FormData) {
+  const brasil = await readContentFile<Brasil>("brasil.json");
+  const title = str(formData, "title");
+  const card: BrasilCard = {
+    id: id ?? uniqueSlug(slugify(title), brasil.cards.map((c) => c.id)),
+    label: str(formData, "label"),
+    labelShort: optStr(formData, "labelShort"),
+    title,
+    body: optStr(formData, "body"),
+    bodyEmphasis: optStr(formData, "bodyEmphasis"),
+    wide: bool(formData, "wide"),
+    photoLabel: optStr(formData, "photoLabel"),
+    ticketLabel: optStr(formData, "ticketLabel"),
+    cta: optStr(formData, "cta"),
+  };
+
+  if (id) {
+    const idx = brasil.cards.findIndex((c) => c.id === id);
+    if (idx === -1) throw new Error("Card não encontrado");
+    brasil.cards[idx] = card;
+  } else {
+    brasil.cards.push(card);
+  }
+  await writeContentFile("brasil.json", brasil);
+  revalidateAll("/admin/brasil");
+  redirect("/admin/brasil");
+}
+
+export async function deleteBrasilCard(id: string) {
+  const brasil = await readContentFile<Brasil>("brasil.json");
+  brasil.cards = brasil.cards.filter((c) => c.id !== id);
+  await writeContentFile("brasil.json", brasil);
+  revalidateAll("/admin/brasil");
+}
+
+export async function saveBrasilIntro(formData: FormData) {
+  const brasil = await readContentFile<Brasil>("brasil.json");
+  brasil.title = str(formData, "title");
+  brasil.subtitle = str(formData, "subtitle");
+  brasil.subtitleShort = str(formData, "subtitleShort");
+  await writeContentFile("brasil.json", brasil);
+  revalidateAll("/admin/brasil");
+}
+
+// ---------- agenda ----------
+
+export async function saveAgendaItem(id: string | null, formData: FormData) {
+  const agenda = await readContentFile<Agenda>("agenda.json");
+  const title = str(formData, "title");
+  const item: AgendaItem = {
+    id: id ?? uniqueSlug(slugify(title), agenda.items.map((a) => a.id)),
+    date: str(formData, "date"),
+    title,
+    meta: str(formData, "meta"),
+  };
+
+  if (id) {
+    const idx = agenda.items.findIndex((a) => a.id === id);
+    if (idx === -1) throw new Error("Item de agenda não encontrado");
+    agenda.items[idx] = item;
+  } else {
+    agenda.items.push(item);
+  }
+  await writeContentFile("agenda.json", agenda);
+  revalidateAll("/admin/agenda");
+  redirect("/admin/agenda");
+}
+
+export async function deleteAgendaItem(id: string) {
+  const agenda = await readContentFile<Agenda>("agenda.json");
+  agenda.items = agenda.items.filter((a) => a.id !== id);
+  await writeContentFile("agenda.json", agenda);
+  revalidateAll("/admin/agenda");
+}
+
+export async function saveAgendaAlert(formData: FormData) {
+  const agenda = await readContentFile<Agenda>("agenda.json");
+  agenda.alert = str(formData, "alert");
+  agenda.alertConfirm = str(formData, "alertConfirm");
+  await writeContentFile("agenda.json", agenda);
+  revalidateAll("/admin/agenda");
+}
+
+// ---------- menu (nav) ----------
+
+export async function saveNavItem(index: number | null, formData: FormData) {
+  const nav = await readContentFile<NavItem[]>("nav.json");
+  const item: NavItem = {
+    label: str(formData, "label"),
+    href: str(formData, "href"),
+    active: bool(formData, "active"),
+    brasil: bool(formData, "brasil"),
+  };
+  if (index === null) {
+    nav.push(item);
+  } else {
+    nav[index] = item;
+  }
+  await writeContentFile("nav.json", nav);
+  revalidateAll("/admin/nav");
+}
+
+export async function deleteNavItem(index: number) {
+  const nav = await readContentFile<NavItem[]>("nav.json");
+  nav.splice(index, 1);
+  await writeContentFile("nav.json", nav);
+  revalidateAll("/admin/nav");
+}
+
+export async function moveNavItem(index: number, dir: -1 | 1) {
+  const nav = await readContentFile<NavItem[]>("nav.json");
+  const target = index + dir;
+  if (target < 0 || target >= nav.length) return;
+  [nav[index], nav[target]] = [nav[target], nav[index]];
+  await writeContentFile("nav.json", nav);
+  revalidateAll("/admin/nav");
+}
+
+// ---------- blocos únicos ----------
+
+export async function saveSite(formData: FormData) {
+  const site: Site = {
+    edition: str(formData, "edition"),
+    editionShort: str(formData, "editionShort"),
+    tagline: str(formData, "tagline"),
+    searchPlaceholder: str(formData, "searchPlaceholder"),
+    releaseDate: str(formData, "releaseDate"),
+  };
+  await writeContentFile("site.json", site);
+  revalidateAll("/admin/site");
+}
+
+export async function saveHero(formData: FormData) {
+  const hero: Hero = {
+    panelLabel: str(formData, "panelLabel"),
+    annotation: str(formData, "annotation"),
+    titleLines: str(formData, "titleLines")
+      .split("\n")
+      .map((l) => l.trim())
+      .filter(Boolean),
+    body: str(formData, "body"),
+    bodyMobile: str(formData, "bodyMobile"),
+    singleName: str(formData, "singleName"),
+    primaryCta: str(formData, "primaryCta"),
+    secondaryCta: str(formData, "secondaryCta"),
+    label: str(formData, "label"),
+    cover: {
+      placeholder: str(formData, "coverPlaceholder"),
+      placeholderMobile: str(formData, "coverPlaceholderMobile"),
+      sticker: str(formData, "coverSticker"),
+    },
+  };
+  await writeContentFile("hero.json", hero);
+  revalidateAll("/admin/hero");
+}
+
+export async function saveFooter(formData: FormData) {
+  const footer: Footer = {
+    wordmark: str(formData, "wordmark"),
+    disclaimer: str(formData, "disclaimer"),
+    signature: str(formData, "signature"),
+  };
+  await writeContentFile("footer.json", footer);
+  revalidateAll("/admin/footer");
+}
+
+export async function saveQuiz(formData: FormData) {
+  const quiz: Quiz = {
+    id: str(formData, "id"),
+    number: str(formData, "number"),
+    question: str(formData, "question"),
+    options: str(formData, "options")
+      .split("\n")
+      .map((l) => l.trim())
+      .filter(Boolean),
+    correct: str(formData, "correct"),
+    stats: str(formData, "stats"),
+  };
+  await writeContentFile("quiz.json", quiz);
+  revalidateAll("/admin/quiz");
+}
