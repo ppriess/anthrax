@@ -4,6 +4,10 @@
 > proxy.ts, Syne) estão em `~/.claude/CLAUDE.md`. Regras da VPS Hetzner estão em
 > `~/projetos/CLAUDE.md`. Este arquivo é específico deste projeto.
 
+> Existe um `CHANGELOG.md` na raiz com o histórico do que já foi feito. Não
+> precisa ler ele a cada sessão (gasta tokens à toa) — só consultar se for
+> preciso entender o que já foi construído/decidido antes.
+
 ## Domínio
 - **anthrax.com.br** — domínio de produção deste site. Registrado no
   Registro.br, mas **DNS delegado pra Vercel** (nameservers `ns1.vercel-dns.com`
