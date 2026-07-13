@@ -5,7 +5,14 @@
 > `~/projetos/CLAUDE.md`. Este arquivo é específico deste projeto.
 
 ## Domínio
-- **anthrax.com.br** — domínio de produção deste site.
+- **anthrax.com.br** — domínio de produção deste site. Registrado no
+  Registro.br, mas **DNS delegado pra Vercel** (nameservers `ns1.vercel-dns.com`
+  / `ns2.vercel-dns.com`) — Registro.br não oferece editor de zona DNS (só
+  troca de nameserver), então essa foi a única opção viável.
+- **Importante para o futuro**: e-mail deste domínio ainda não existe. Quando
+  for configurado, os registros MX/TXT/SPF entram no **painel da Vercel**
+  (Project anthrax → Settings → Domains → clicar no domínio → DNS Records),
+  **não** no Registro.br — o DNS não é mais gerenciado lá.
 
 ## Deploy
 - Conteúdo público → **Vercel** (padrão do usuário para sites públicos, vs. VPS
