@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 
 /**
- * Vídeo de fundo do YouTube: muted por padrão (autoplay exige isso), com
- * toggle discreto de som e modo tela cheia (só o vídeo, sem os dados do
- * banner). O iframe nunca desmonta ao trocar de modo — só a moldura ao redor
- * muda — pra não reiniciar o vídeo nem perder o estado de mute.
+ * Vídeo de fundo do YouTube pro painel de texto do hero: muted por padrão
+ * (autoplay exige isso), com toggle discreto de som e modo tela cheia (só o
+ * vídeo, sem o texto do banner por cima). O iframe nunca desmonta ao trocar
+ * de modo — só a moldura ao redor muda — pra não reiniciar o vídeo nem
+ * perder o estado de mute.
  */
 export function HeroVideoCover({ videoId }: { videoId: string }) {
   const [muted, setMuted] = useState(true);
@@ -45,7 +46,7 @@ export function HeroVideoCover({ videoId }: { videoId: string }) {
       className={
         expanded
           ? "fixed inset-0 z-[200] bg-black"
-          : "relative h-full w-full overflow-hidden"
+          : "absolute inset-0 overflow-hidden"
       }
     >
       <iframe
@@ -57,7 +58,7 @@ export function HeroVideoCover({ videoId }: { videoId: string }) {
         style={{ border: 0 }}
       />
       <div
-        className={`absolute flex gap-2 ${expanded ? "right-4 top-4" : "bottom-2 right-2"}`}
+        className={`absolute right-2 top-2 flex gap-2 ${expanded ? "right-4 top-4" : ""}`}
       >
         <button
           type="button"
@@ -79,8 +80,9 @@ export function HeroVideoCover({ videoId }: { videoId: string }) {
     </div>
   );
 
-  // O modo expandido escapa de qualquer ancestral com rotate/transform (o
-  // painel da capa é levemente rotacionado) via portal direto pro <body>.
+  // O modo expandido escapa de qualquer ancestral com rotate/transform via
+  // portal direto pro <body>, e também garante que só o vídeo apareça (o
+  // texto do painel não faz parte dessa árvore).
   if (expanded && mounted) {
     return createPortal(frame, document.body);
   }

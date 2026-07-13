@@ -39,12 +39,14 @@ export type Hero = {
   primaryCta: string;
   secondaryCta: string;
   label: string;
+  // se definido, vira fundo em vídeo do PAINEL DE TEXTO (não da capa do
+  // álbum) — texto sobreposto, com toggle de som e modo tela cheia (só o
+  // vídeo, sem o texto por cima).
+  videoUrl?: string;
   cover: {
-    type?: "image" | "video"; // padrão "image" se ausente
     placeholder: string;
     placeholderMobile: string;
     sticker: string;
-    videoUrl?: string; // URL do YouTube, usado quando type === "video"
   };
 };
 

@@ -117,34 +117,21 @@ export default async function HeroPage() {
         </label>
         <label className="flex flex-col gap-1">
           <span className="font-mono text-xs text-on-dark-3">
-            Tipo de capa
-          </span>
-          <select
-            name="coverType"
-            defaultValue={hero.cover.type ?? "image"}
-            className="admin-input"
-          >
-            <option value="image">Imagem (placeholder de texto)</option>
-            <option value="video">
-              Vídeo do YouTube (fundo com som mutado, toggle e tela cheia)
-            </option>
-          </select>
-        </label>
-        <label className="flex flex-col gap-1">
-          <span className="font-mono text-xs text-on-dark-3">
-            Link do YouTube (usado só quando o tipo acima é &quot;Vídeo&quot;)
+            Vídeo de fundo do painel de texto (YouTube — opcional; deixe
+            vazio pra usar só o fundo de papel normal). Toca mutado, em loop,
+            com toggle de som e botão de tela cheia (só o vídeo).
           </span>
           <input
             type="url"
-            name="coverVideoUrl"
-            defaultValue={hero.cover.videoUrl}
+            name="videoUrl"
+            defaultValue={hero.videoUrl}
             placeholder="https://www.youtube.com/watch?v=..."
             className="admin-input"
           />
         </label>
         <label className="flex flex-col gap-1">
           <span className="font-mono text-xs text-on-dark-3">
-            Placeholder da capa (desktop — usado só no tipo &quot;Imagem&quot;)
+            Placeholder da capa do álbum (desktop)
           </span>
           <input
             name="coverPlaceholder"
@@ -154,7 +141,8 @@ export default async function HeroPage() {
         </label>
         <label className="flex flex-col gap-1">
           <span className="font-mono text-xs text-on-dark-3">
-            Placeholder da capa (mobile — usado só no tipo &quot;Imagem&quot;)
+            Placeholder da capa do álbum (mobile — some se houver vídeo de
+            fundo)
           </span>
           <input
             name="coverPlaceholderMobile"
@@ -164,8 +152,7 @@ export default async function HeroPage() {
         </label>
         <label className="flex flex-col gap-1">
           <span className="font-mono text-xs text-on-dark-3">
-            Adesivo da capa (ex.: relíquia futura ★ — usado só no tipo
-            &quot;Imagem&quot;)
+            Adesivo da capa (ex.: relíquia futura ★)
           </span>
           <input
             name="coverSticker"

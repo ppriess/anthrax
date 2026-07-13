@@ -314,12 +314,11 @@ export async function saveHero(formData: FormData) {
     primaryCta: str(formData, "primaryCta"),
     secondaryCta: str(formData, "secondaryCta"),
     label: str(formData, "label"),
+    videoUrl: optStr(formData, "videoUrl"),
     cover: {
-      type: str(formData, "coverType") === "video" ? "video" : "image",
       placeholder: str(formData, "coverPlaceholder"),
       placeholderMobile: str(formData, "coverPlaceholderMobile"),
       sticker: str(formData, "coverSticker"),
-      videoUrl: optStr(formData, "coverVideoUrl"),
     },
   };
   await writeContentFile("hero.json", hero);
