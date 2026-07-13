@@ -41,6 +41,104 @@
       "bio": "Guitarrista solo desde 2013, ex-Shadows Fall.",
       "photoLabel": "[ FOTO: Jonathan Donais ]",
       "current": true
+    },
+    {
+      "id": "john-connelly",
+      "name": "John Connelly",
+      "role": "Vocal",
+      "years": "1981",
+      "bio": "Cofundador e primeiro vocalista, antes de a banda estabilizar a formação.",
+      "now": "Fundou o Nuclear Assault logo depois de deixar o Anthrax.",
+      "photoLabel": "[ FOTO: John Connelly ]",
+      "current": false
+    },
+    {
+      "id": "dirk-kennedy",
+      "name": "Dirk Kennedy",
+      "role": "Vocal",
+      "years": "1981–1982",
+      "bio": "Comandou os vocais por alguns meses nos primeiros shows de bar da banda.",
+      "now": "Depois cantou no Hittman.",
+      "photoLabel": "[ FOTO: Dirk Kennedy ]",
+      "current": false
+    },
+    {
+      "id": "jason-rosenfeld",
+      "name": "Jason Rosenfeld",
+      "role": "Vocal",
+      "years": "1982",
+      "bio": "Irmão mais novo de Scott Ian, assumiu os vocais por um curto período antes da gravação de qualquer material de estúdio.",
+      "photoLabel": "[ FOTO: Jason Rosenfeld ]",
+      "current": false
+    },
+    {
+      "id": "neil-turbin",
+      "name": "Neil Turbin",
+      "role": "Vocal",
+      "years": "1982–1984",
+      "bio": "Primeiro vocalista a gravar um álbum oficial da banda, Fistful of Metal (1984).",
+      "now": "Vocalista do DeathRiders, em turnê pela América Latina em 2025.",
+      "photoLabel": "[ FOTO: Neil Turbin ]",
+      "current": false
+    },
+    {
+      "id": "matt-fallon",
+      "name": "Matt Fallon",
+      "role": "Vocal",
+      "years": "1984",
+      "bio": "Substituiu Turbin brevemente, pouco antes da chegada de Joey Belladonna.",
+      "photoLabel": "[ FOTO: Matt Fallon ]",
+      "current": false
+    },
+    {
+      "id": "john-bush",
+      "name": "John Bush",
+      "role": "Vocal",
+      "years": "1992–2005, 2009–2010",
+      "bio": "Trouxe um som mais groove metal na era 90, como em Sound of White Noise (1993).",
+      "now": "Vocalista do Armored Saint e do supergrupo Category 7 (álbum de estreia em 2024).",
+      "photoLabel": "[ FOTO: John Bush ]",
+      "current": false
+    },
+    {
+      "id": "dan-nelson",
+      "name": "Dan Nelson",
+      "role": "Vocal",
+      "years": "2007–2009",
+      "bio": "Fronteou a banda brevemente entre as passagens de John Bush.",
+      "now": "Segue com o projeto Dan Nelson and The Contention.",
+      "photoLabel": "[ FOTO: Dan Nelson ]",
+      "current": false
+    },
+    {
+      "id": "dan-lilker",
+      "name": "Dan Lilker",
+      "role": "Baixo / Guitarra",
+      "years": "1980–1984",
+      "bio": "Membro fundador ao lado de Scott Ian. Saiu pouco depois do lançamento de Fistful of Metal (1984).",
+      "now": "Tocou em Nuclear Assault, S.O.D. e Brutal Truth; voltou ao Anthrax como substituto de Frank Bello em 2024.",
+      "photoLabel": "[ FOTO: Dan Lilker ]",
+      "current": false
+    },
+    {
+      "id": "dan-spitz",
+      "name": "Dan Spitz",
+      "role": "Guitarra solo",
+      "years": "1983–1995, 2005–2007",
+      "bio": "Guitarrista solo da era clássica do thrash.",
+      "now": "Relojoeiro profissional certificado.",
+      "photoLabel": "[ FOTO: Dan Spitz ]",
+      "current": false
+    },
+    {
+      "id": "rob-caggiano",
+      "name": "Rob Caggiano",
+      "role": "Guitarra solo",
+      "years": "2001–2005, 2007–2013",
+      "bio": "Produziu e tocou guitarra solo em boa parte dos anos 2000.",
+      "now": "Guitarrista do Volbeat.",
+      "photoLabel": "[ FOTO: Rob Caggiano ]",
+      "current": false
     }
   ]
 }

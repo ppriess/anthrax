@@ -10,6 +10,7 @@ const links = [
   { href: "/admin/membros", label: "Banda: Membros" },
   { href: "/admin/albuns", label: "Banda: Álbuns" },
   { href: "/admin/historia", label: "Banda: História" },
+  { href: "/admin/substitutos", label: "Banda: Substitutos" },
   { href: "/admin/nav", label: "Menu" },
   { href: "/admin/hero", label: "Destaque (hero)" },
   { href: "/admin/site", label: "Masthead" },

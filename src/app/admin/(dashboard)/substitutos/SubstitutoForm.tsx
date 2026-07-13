@@ -1,8 +1,8 @@
-import type { MembroItem } from "@/lib/content";
-import { saveMembro } from "@/lib/admin-actions";
+import type { SubstitutoItem } from "@/lib/content";
+import { saveSubstituto } from "@/lib/admin-actions";
 
-export function MembroForm({ item }: { item?: MembroItem }) {
-  const action = saveMembro.bind(null, item?.id ?? null);
+export function SubstitutoForm({ item }: { item?: SubstitutoItem }) {
+  const action = saveSubstituto.bind(null, item?.id ?? null);
 
   return (
     <form action={action} className="flex max-w-xl flex-col gap-4">
@@ -17,7 +17,7 @@ export function MembroForm({ item }: { item?: MembroItem }) {
       </label>
       <label className="flex flex-col gap-1">
         <span className="font-mono text-xs text-on-dark-3">
-          Função (ex.: Vocal, Guitarra base)
+          Função (ex.: Guitarra (no lugar de Scott Ian))
         </span>
         <input
           name="role"
@@ -27,47 +27,46 @@ export function MembroForm({ item }: { item?: MembroItem }) {
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="font-mono text-xs text-on-dark-3">Bio</span>
+        <span className="font-mono text-xs text-on-dark-3">
+          Período/ano (ex.: 2011 ou 2012–2018)
+        </span>
+        <input
+          name="year"
+          defaultValue={item?.year}
+          required
+          className="admin-input"
+        />
+      </label>
+      <label className="flex flex-col gap-1">
+        <span className="font-mono text-xs text-on-dark-3">Descrição</span>
         <textarea
-          name="bio"
-          defaultValue={item?.bio}
+          name="description"
+          defaultValue={item?.description}
           rows={3}
           className="admin-input"
         />
       </label>
       <label className="flex flex-col gap-1">
         <span className="font-mono text-xs text-on-dark-3">
-          Período ativo (ex.: 1982–1984 — sobretudo pra ex-membros)
+          Link do vídeo (opcional — YouTube/Vimeo/etc.)
         </span>
         <input
-          name="years"
-          defaultValue={item?.years}
+          type="url"
+          name="videoUrl"
+          defaultValue={item?.videoUrl}
+          placeholder="https://..."
           className="admin-input"
         />
       </label>
       <label className="flex flex-col gap-1">
         <span className="font-mono text-xs text-on-dark-3">
-          Atualmente (o que faz hoje / em qual banda está)
-        </span>
-        <input name="now" defaultValue={item?.now} className="admin-input" />
-      </label>
-      <label className="flex flex-col gap-1">
-        <span className="font-mono text-xs text-on-dark-3">
-          Label da foto (placeholder, ex.: [ FOTO: ... ])
+          Label do thumb (placeholder, ex.: [ VÍDEO: ... ])
         </span>
         <input
-          name="photoLabel"
-          defaultValue={item?.photoLabel}
+          name="videoLabel"
+          defaultValue={item?.videoLabel}
           className="admin-input"
         />
-      </label>
-      <label className="flex items-center gap-2 text-sm text-on-dark-2">
-        <input
-          type="checkbox"
-          name="current"
-          defaultChecked={item?.current ?? true}
-        />
-        Membro atual (desmarcar mostra &quot;EX-MEMBRO&quot;)
       </label>
       <button
         type="submit"

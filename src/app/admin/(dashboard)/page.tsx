@@ -5,16 +5,18 @@ import {
   type Albuns,
   type Historia,
   type Membros,
+  type Substitutos,
 } from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminHome() {
-  const [content, membros, albuns, historia] = await Promise.all([
+  const [content, membros, albuns, historia, substitutos] = await Promise.all([
     getContent(),
     readContentFile<Membros>("membros.json"),
     readContentFile<Albuns>("albuns.json"),
     readContentFile<Historia>("historia.json"),
+    readContentFile<Substitutos>("substitutos.json"),
   ]);
 
   const cards = [
@@ -25,6 +27,7 @@ export default async function AdminHome() {
     { href: "/admin/membros", label: "Banda: Membros", count: membros.items.length },
     { href: "/admin/albuns", label: "Banda: Álbuns", count: albuns.items.length },
     { href: "/admin/historia", label: "Banda: Timeline", count: historia.timeline.length },
+    { href: "/admin/substitutos", label: "Banda: Substitutos", count: substitutos.items.length },
     { href: "/admin/quiz", label: "Quiz diário", count: content.quiz.items.length },
     { href: "/admin/nav", label: "Menu", count: content.nav.length },
   ];

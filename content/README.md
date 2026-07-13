@@ -22,11 +22,12 @@ normal do dia a dia).
 | `agenda.json` | Agenda de datas + texto do alerta de e-mail |
 | `quiz.json` | Lista de quizzes (`items`) — só o que tem `active: true` aparece na home. Publicar um novo e marcá-lo ativo desativa o anterior e reseta o "1 voto por pessoa" (é o `id` do item que controla isso no navegador) |
 | `footer.json` | Rodapé |
-| `membros.json` | Página `/banda/membros`: título/subtítulo + `items` (nome, função, bio, `current: false` mostra "EX-MEMBRO") |
+| `membros.json` | Página `/banda/membros`: título/subtítulo + `items` (nome, função, bio, `years` período ativo, `now` o que faz hoje, `current: false` mostra "EX-MEMBRO" e joga o card pra seção "Ex-integrantes") |
 | `albuns.json` | Página `/banda/albuns`: título/subtítulo + `items` (título, ano, gravadora, descrição) |
 | `historia.json` | Página `/banda/historia`: título/subtítulo + `intro` (markdown) + `timeline` (ordem = ordem de exibição, reordenável no `/admin`) |
+| `substitutos.json` | Seção "Notáveis Substitutos" (aparece embaixo, na própria página `/banda/membros`): título/intro + `items` (músicos de turnê que nunca foram membros oficiais — `videoUrl`/`videoLabel` viram card clicável com thumb) + `curiosity` (markdown, texto final da seção) |
 
-Estes três últimos não fazem parte da home — só são lidos pelas próprias
+Estes quatro últimos não fazem parte da home — só são lidos pelas próprias
 páginas `/banda/*` e pelo `/admin`.
 
 Regras práticas:

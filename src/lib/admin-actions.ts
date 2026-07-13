@@ -23,6 +23,8 @@ import {
   type Quiz,
   type QuizItem,
   type Site,
+  type SubstitutoItem,
+  type Substitutos,
   type TimelineItem,
   type Tv,
   type Video,
@@ -387,6 +389,8 @@ export async function saveMembro(id: string | null, formData: FormData) {
     bio: optStr(formData, "bio"),
     photoLabel: optStr(formData, "photoLabel"),
     current: bool(formData, "current"),
+    years: optStr(formData, "years"),
+    now: optStr(formData, "now"),
   };
 
   if (id) {
@@ -508,4 +512,47 @@ export async function moveTimelineItem(id: string, dir: -1 | 1) {
   ];
   await writeContentFile("historia.json", historia);
   revalidateAll("/admin/historia");
+}
+
+// ---------- banda: notáveis substitutos ----------
+
+export async function saveSubstituto(id: string | null, formData: FormData) {
+  const substitutos = await readContentFile<Substitutos>("substitutos.json");
+  const name = str(formData, "name");
+  const item: SubstitutoItem = {
+    id: id ?? uniqueSlug(slugify(name), substitutos.items.map((s) => s.id)),
+    name,
+    role: str(formData, "role"),
+    year: str(formData, "year"),
+    description: optStr(formData, "description"),
+    videoUrl: optStr(formData, "videoUrl"),
+    videoLabel: optStr(formData, "videoLabel"),
+  };
+
+  if (id) {
+    const idx = substitutos.items.findIndex((s) => s.id === id);
+    if (idx === -1) throw new Error("Substituto não encontrado");
+    substitutos.items[idx] = item;
+  } else {
+    substitutos.items.push(item);
+  }
+  await writeContentFile("substitutos.json", substitutos);
+  revalidateAll("/admin/substitutos");
+  redirect("/admin/substitutos");
+}
+
+export async function deleteSubstituto(id: string) {
+  const substitutos = await readContentFile<Substitutos>("substitutos.json");
+  substitutos.items = substitutos.items.filter((s) => s.id !== id);
+  await writeContentFile("substitutos.json", substitutos);
+  revalidateAll("/admin/substitutos");
+}
+
+export async function saveSubstitutosIntro(formData: FormData) {
+  const substitutos = await readContentFile<Substitutos>("substitutos.json");
+  substitutos.title = str(formData, "title");
+  substitutos.intro = str(formData, "intro");
+  substitutos.curiosity = optStr(formData, "curiosity");
+  await writeContentFile("substitutos.json", substitutos);
+  revalidateAll("/admin/substitutos");
 }

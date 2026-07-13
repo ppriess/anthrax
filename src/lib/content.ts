@@ -150,12 +150,31 @@ export type MembroItem = {
   bio?: string;
   photoLabel?: string;
   current?: boolean; // membro atual vs ex-membro
+  years?: string; // período ativo, ex.: "1982–1984" — sobretudo pra ex-membros
+  now?: string; // "atualmente" — o que faz hoje / em qual banda está
 };
 
 export type Membros = {
   title: string;
   subtitle: string;
   items: MembroItem[];
+};
+
+export type SubstitutoItem = {
+  id: string;
+  name: string;
+  role: string; // instrumento
+  year: string; // período/ano
+  description?: string;
+  videoUrl?: string;
+  videoLabel?: string; // placeholder do thumb, ex.: "[ VÍDEO: Live in Gelsenkirchen 2011 ]"
+};
+
+export type Substitutos = {
+  title: string;
+  intro: string;
+  items: SubstitutoItem[];
+  curiosity?: string; // markdown — nota final tipo curiosidade
 };
 
 export type AlbumItem = {
