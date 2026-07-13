@@ -1,4 +1,19 @@
+import ReactMarkdown from "react-markdown";
 import type { News, NewsItem } from "@/lib/content";
+
+function Title({ item, className }: { item: NewsItem; className: string }) {
+  if (!item.link) return <span className={className}>{item.title}</span>;
+  return (
+    <a
+      href={item.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`${className} no-underline hover:underline`}
+    >
+      {item.title}
+    </a>
+  );
+}
 
 function FeatureCard({ item, mobile }: { item: NewsItem; mobile?: boolean }) {
   return (
@@ -9,13 +24,20 @@ function FeatureCard({ item, mobile }: { item: NewsItem; mobile?: boolean }) {
           : "border-[3px] border-black bg-paper text-ink shadow-[5px_5px_0_#000]"
       }
     >
-      {!mobile && (
-        <div className="hatch-paper flex h-[200px] items-center justify-center border-b-[3px] border-black">
-          <span className="font-mono text-[11px] text-paper-meta">
-            {item.photoLabel}
-          </span>
-        </div>
-      )}
+      {!mobile &&
+        (item.image ? (
+          <img
+            src={item.image}
+            alt={item.title}
+            className="h-[200px] w-full border-b-[3px] border-black object-cover"
+          />
+        ) : (
+          <div className="hatch-paper flex h-[200px] items-center justify-center border-b-[3px] border-black">
+            <span className="font-mono text-[11px] text-paper-meta">
+              {item.photoLabel}
+            </span>
+          </div>
+        ))}
       <div className={mobile ? "" : "px-[18px] py-4"}>
         <div className="mb-2 flex gap-2 font-mono text-[11px]">
           {item.hot && (
@@ -25,15 +47,25 @@ function FeatureCard({ item, mobile }: { item: NewsItem; mobile?: boolean }) {
           )}
           <span className="text-paper-meta">{item.source}</span>
         </div>
-        <h3
-          className={`m-0 font-bold leading-[1.1] ${mobile ? "text-lg" : "mb-[6px] text-2xl"}`}
-        >
-          {item.title}
+        <h3 className={mobile ? "m-0 text-lg font-bold leading-[1.1]" : "m-0"}>
+          <Title
+            item={item}
+            className={
+              mobile
+                ? "font-bold leading-[1.1] text-lg"
+                : "mb-[6px] block text-2xl font-bold leading-[1.1]"
+            }
+          />
         </h3>
         {!mobile && item.excerpt && (
           <p className="m-0 text-base leading-[1.35] text-paper-hi">
             {item.excerpt}
           </p>
+        )}
+        {!mobile && item.body && (
+          <div className="prose-news mt-2 text-base leading-[1.35] text-paper-hi">
+            <ReactMarkdown>{item.body}</ReactMarkdown>
+          </div>
         )}
       </div>
     </article>
@@ -48,8 +80,11 @@ function DarkCard({ item, grow }: { item: NewsItem; grow?: boolean }) {
       <div className="mb-[5px] font-mono text-[11px] text-on-dark-3">
         {item.source}
       </div>
-      <h4 className="m-0 text-lg font-semibold leading-[1.2] text-paper">
-        {item.title}
+      <h4 className="m-0">
+        <Title
+          item={item}
+          className="block text-lg font-semibold leading-[1.2] text-paper"
+        />
       </h4>
       {item.feed && (
         <span className="mt-[6px] inline-block text-[13px] font-semibold tracking-[0.08em] text-signal">

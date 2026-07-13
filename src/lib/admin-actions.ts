@@ -16,6 +16,7 @@ import {
   type News,
   type NewsItem,
   type Quiz,
+  type QuizItem,
   type Site,
   type Tv,
   type Video,
@@ -82,6 +83,9 @@ export async function saveNewsItem(id: string | null, formData: FormData) {
     date: str(formData, "date"),
     title,
     excerpt: optStr(formData, "excerpt"),
+    body: optStr(formData, "body"),
+    link: optStr(formData, "link"),
+    image: optStr(formData, "image"),
     hot: bool(formData, "hot"),
     variant: str(formData, "variant") === "feature" ? "feature" : "dark",
     photoLabel: optStr(formData, "photoLabel"),
@@ -118,6 +122,7 @@ export async function saveVideo(id: string | null, formData: FormData) {
     meta: str(formData, "meta"),
     duration: optStr(formData, "duration"),
     brasil: bool(formData, "brasil"),
+    sourceUrl: optStr(formData, "sourceUrl"),
   };
 
   if (id) {
@@ -318,10 +323,13 @@ export async function saveFooter(formData: FormData) {
   revalidateAll("/admin/footer");
 }
 
-export async function saveQuiz(formData: FormData) {
-  const quiz: Quiz = {
-    id: str(formData, "id"),
-    number: str(formData, "number"),
+export async function saveQuizItem(id: string | null, formData: FormData) {
+  const quiz = await readContentFile<Quiz>("quiz.json");
+  const number = str(formData, "number");
+  const active = bool(formData, "active");
+  const item: QuizItem = {
+    id: id ?? uniqueSlug(slugify(number), quiz.items.map((q) => q.id)),
+    number,
     question: str(formData, "question"),
     options: str(formData, "options")
       .split("\n")
@@ -329,7 +337,31 @@ export async function saveQuiz(formData: FormData) {
       .filter(Boolean),
     correct: str(formData, "correct"),
     stats: str(formData, "stats"),
+    active,
   };
+
+  // só um quiz pode estar ativo (é o que aparece na home) por vez
+  if (active) {
+    quiz.items.forEach((q) => {
+      q.active = false;
+    });
+  }
+
+  if (id) {
+    const idx = quiz.items.findIndex((q) => q.id === id);
+    if (idx === -1) throw new Error("Quiz não encontrado");
+    quiz.items[idx] = item;
+  } else {
+    quiz.items.unshift(item);
+  }
+  await writeContentFile("quiz.json", quiz);
+  revalidateAll("/admin/quiz");
+  redirect("/admin/quiz");
+}
+
+export async function deleteQuizItem(id: string) {
+  const quiz = await readContentFile<Quiz>("quiz.json");
+  quiz.items = quiz.items.filter((q) => q.id !== id);
   await writeContentFile("quiz.json", quiz);
   revalidateAll("/admin/quiz");
 }

@@ -20,6 +20,21 @@
   .admin-input {
     @apply border-2 border-border-dark-2 bg-ink px-3 py-2 text-sm text-paper focus:border-signal focus:outline-none;
   }
+
+  /* Markdown renderizado (corpo de notícia) */
+  .prose-news p {
+    @apply mb-3 last:mb-0;
+  }
+  .prose-news a {
+    @apply text-brasil-paper underline;
+  }
+  .prose-news strong {
+    @apply font-bold;
+  }
+  .prose-news ul,
+  .prose-news ol {
+    @apply mb-3 ml-5 list-disc;
+  }
 }
 
 @layer utilities {

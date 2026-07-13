@@ -62,6 +62,8 @@ export function BrasilSection({
   agenda: Agenda;
   quiz: QuizContent;
 }) {
+  const activeQuiz = quiz.items.find((q) => q.active) ?? quiz.items[0];
+
   return (
     <section id="brasil" aria-label="Anthrax + Brasil">
       {/* Desktop grid */}
@@ -110,7 +112,7 @@ export function BrasilSection({
             ))}
             <AlertaBrasil alert={agenda.alert} confirm={agenda.alertConfirm} />
           </div>
-          <Quiz quiz={quiz} />
+          {activeQuiz && <Quiz quiz={activeQuiz} />}
         </div>
       </div>
 

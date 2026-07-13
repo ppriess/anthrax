@@ -46,6 +46,9 @@ export type NewsItem = {
   date: string;
   title: string;
   excerpt?: string;
+  body?: string; // markdown — texto completo, opcional
+  link?: string; // URL da matéria original
+  image?: string; // URL de imagem real; sem isso usa o placeholder photoLabel
   hot?: boolean;
   variant: "feature" | "dark";
   photoLabel?: string;
@@ -65,6 +68,7 @@ export type Video = {
   meta: string;
   duration?: string;
   brasil?: boolean;
+  sourceUrl?: string; // link do YouTube/Vimeo/etc.
 };
 
 export type Tv = {
@@ -110,13 +114,18 @@ export type Agenda = {
   alertConfirm: string;
 };
 
-export type Quiz = {
+export type QuizItem = {
   id: string;
   number: string;
   question: string;
   options: string[];
   correct: string;
   stats: string;
+  active?: boolean; // qual item aparece na home; só um deve estar ativo
+};
+
+export type Quiz = {
+  items: QuizItem[];
 };
 
 export type Footer = {

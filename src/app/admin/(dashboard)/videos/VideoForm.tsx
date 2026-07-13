@@ -36,6 +36,18 @@ export function VideoForm({ item }: { item?: Video }) {
           className="admin-input"
         />
       </label>
+      <label className="flex flex-col gap-1">
+        <span className="font-mono text-xs text-on-dark-3">
+          Link da fonte (YouTube, Vimeo... — vira botão &quot;▶ ASSISTIR&quot;)
+        </span>
+        <input
+          type="url"
+          name="sourceUrl"
+          defaultValue={item?.sourceUrl}
+          placeholder="https://..."
+          className="admin-input"
+        />
+      </label>
       <label className="flex items-center gap-2 text-sm text-on-dark-2">
         <input type="checkbox" name="brasil" defaultChecked={item?.brasil} />
         Selo &quot;BRASIL 🇧🇷&quot;

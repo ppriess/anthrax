@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import type { Quiz as QuizContent } from "@/lib/content";
+import type { QuizItem } from "@/lib/content";
 
 /**
  * Daily quiz. One vote per user (persisted in localStorage). Clicking an option
  * reveals correct/incorrect with a bar-grow animation, per the interaction spec.
  */
-export function Quiz({ quiz }: { quiz: QuizContent }) {
+export function Quiz({ quiz }: { quiz: QuizItem }) {
   const [answered, setAnswered] = useState(false);
   const [picked, setPicked] = useState<string | null>(null);
 

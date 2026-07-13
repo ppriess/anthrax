@@ -14,22 +14,33 @@ const videoFilters: { label: VideoFilter; active?: boolean }[] = [
 
 function VideoCard({ video, rotate }: { video: Video; rotate: string }) {
   const accent = video.brasil ? "border-brasil-dark" : "border-paper";
+  const Wrapper = video.sourceUrl ? "a" : "article";
+  const linkProps = video.sourceUrl
+    ? { href: video.sourceUrl, target: "_blank", rel: "noopener noreferrer" }
+    : {};
   return (
-    <article
-      className={`card-hover border-[3px] ${accent} bg-ink`}
+    <Wrapper
+      className={`card-hover block border-[3px] ${accent} bg-ink no-underline`}
       style={{ transform: `rotate(${rotate})` }}
+      {...linkProps}
     >
       <div
         className={`hatch-dark relative flex h-[150px] items-center justify-center border-b-[3px] ${accent}`}
       >
         <span className="font-mono text-[10px] text-on-dark-3">[ THUMB ]</span>
-        {video.brasil ? (
+        {video.brasil && (
           <span className="absolute left-2 top-2 bg-brasil-dark px-[7px] py-[2px] text-[11px] font-bold text-tv-black">
             BRASIL 🇧🇷
           </span>
-        ) : (
+        )}
+        {video.duration && (
           <span className="absolute bottom-2 right-2 bg-black px-[5px] py-[2px] font-mono text-[11px] text-white">
             {video.duration}
+          </span>
+        )}
+        {video.sourceUrl && (
+          <span className="absolute right-2 top-2 bg-signal px-[6px] py-[2px] font-mono text-[10px] font-bold text-ink">
+            ▶ ASSISTIR
           </span>
         )}
       </div>
@@ -39,7 +50,7 @@ function VideoCard({ video, rotate }: { video: Video; rotate: string }) {
         </h4>
         <div className="font-mono text-[11px] text-on-dark-3">{video.meta}</div>
       </div>
-    </article>
+    </Wrapper>
   );
 }
 
@@ -103,22 +114,7 @@ export function AnthraxTV({ tv }: { tv: Tv }) {
 
       {/* Mobile: 1 card + CTA */}
       <div className="block md:hidden">
-        <article className="card-hover -rotate-[0.5deg] border-[3px] border-paper bg-ink">
-          <div className="hatch-dark relative flex h-[170px] items-center justify-center border-b-[3px] border-paper">
-            <span className="font-mono text-[10px] text-on-dark-3">[ THUMB ]</span>
-            <span className="absolute bottom-2 right-2 bg-black px-[5px] py-[2px] font-mono text-[11px] text-white">
-              {videos[0].duration}
-            </span>
-          </div>
-          <div className="px-[13px] py-[11px]">
-            <h4 className="m-0 mb-[3px] text-base font-bold text-paper">
-              {videos[0].title}
-            </h4>
-            <div className="font-mono text-[10px] text-on-dark-3">
-              {videos[0].meta}
-            </div>
-          </div>
-        </article>
+        <VideoCard video={videos[0]} rotate="-0.5deg" />
         <div className="mt-[10px] text-center">
           <button className="inline-block bg-signal px-[18px] py-[10px] text-sm font-bold tracking-[0.1em] text-ink">
             {archive.count} VÍDEOS → ANTHRAX TV

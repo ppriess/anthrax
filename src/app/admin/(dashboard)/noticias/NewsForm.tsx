@@ -39,7 +39,33 @@ export function NewsForm({ item }: { item?: NewsItem }) {
           className="admin-input"
         />
       </Field>
-      <Field label="Label da foto (placeholder)">
+      <Field label="Texto completo (markdown — **negrito**, [link](url), parágrafos; opcional, aparece só no card grande, abaixo do resumo)">
+        <textarea
+          name="body"
+          defaultValue={item?.body}
+          rows={6}
+          className="admin-input"
+        />
+      </Field>
+      <Field label="Link da matéria original (URL — vira link no título)">
+        <input
+          type="url"
+          name="link"
+          defaultValue={item?.link}
+          placeholder="https://..."
+          className="admin-input"
+        />
+      </Field>
+      <Field label="Imagem (URL — substitui o placeholder de foto)">
+        <input
+          type="url"
+          name="image"
+          defaultValue={item?.image}
+          placeholder="https://..."
+          className="admin-input"
+        />
+      </Field>
+      <Field label="Label da foto (placeholder, usado se não houver imagem acima)">
         <input
           name="photoLabel"
           defaultValue={item?.photoLabel}

@@ -11,6 +11,7 @@ export default async function AdminHome() {
     { href: "/admin/videos", label: "Anthrax TV", count: content.tv.videos.length },
     { href: "/admin/brasil", label: "Anthrax + Brasil", count: content.brasil.cards.length },
     { href: "/admin/agenda", label: "Agenda", count: content.agenda.items.length },
+    { href: "/admin/quiz", label: "Quiz diário", count: content.quiz.items.length },
     { href: "/admin/nav", label: "Menu", count: content.nav.length },
   ];
 

@@ -1,8 +1,13 @@
 {
-  "id": "184",
-  "number": "QUIZ DIÁRIO Nº 184",
-  "question": "Qual faixa de Among the Living abriu mais shows nos anos 80?",
-  "options": ["A.I.R.", "Among the Living", "Caught in a Mosh"],
-  "correct": "Caught in a Mosh",
-  "stats": "2.412 FÃS JÁ JOGARAM HOJE · SEQUÊNCIA: 🔥 6 DIAS"
+  "items": [
+    {
+      "id": "184",
+      "number": "QUIZ DIÁRIO Nº 184",
+      "question": "Qual faixa de Among the Living abriu mais shows nos anos 80?",
+      "options": ["A.I.R.", "Among the Living", "Caught in a Mosh"],
+      "correct": "Caught in a Mosh",
+      "stats": "2.412 FÃS JÁ JOGARAM HOJE · SEQUÊNCIA: 🔥 6 DIAS",
+      "active": true
+    }
+  ]
 }
