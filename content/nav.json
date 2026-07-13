@@ -1,8 +1,16 @@
 [
-  { "label": "NOTÍCIAS", "href": "#noticias", "active": true },
-  { "label": "ANTHRAX TV", "href": "#anthrax-tv" },
-  { "label": "DISCOGRAFIA", "href": "#discografia" },
-  { "label": "BANDA", "href": "#banda" },
-  { "label": "SHOWS", "href": "#shows" },
-  { "label": "BRASIL ★", "href": "#brasil", "brasil": true }
+  { "label": "NOTÍCIAS", "href": "/#noticias", "active": true },
+  { "label": "ANTHRAX TV", "href": "/#anthrax-tv" },
+  { "label": "DISCOGRAFIA", "href": "/#discografia" },
+  {
+    "label": "BANDA",
+    "href": "/banda/membros",
+    "children": [
+      { "label": "Membros", "href": "/banda/membros" },
+      { "label": "Álbuns", "href": "/banda/albuns" },
+      { "label": "História", "href": "/banda/historia" }
+    ]
+  },
+  { "label": "SHOWS", "href": "/#shows" },
+  { "label": "BRASIL ★", "href": "/#brasil", "brasil": true }
 ]

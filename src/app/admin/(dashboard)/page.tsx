@@ -1,16 +1,30 @@
 import Link from "next/link";
-import { getContent } from "@/lib/content";
+import {
+  getContent,
+  readContentFile,
+  type Albuns,
+  type Historia,
+  type Membros,
+} from "@/lib/content";
 
 export const dynamic = "force-dynamic";
 
 export default async function AdminHome() {
-  const content = await getContent();
+  const [content, membros, albuns, historia] = await Promise.all([
+    getContent(),
+    readContentFile<Membros>("membros.json"),
+    readContentFile<Albuns>("albuns.json"),
+    readContentFile<Historia>("historia.json"),
+  ]);
 
   const cards = [
     { href: "/admin/noticias", label: "Notícias", count: content.news.items.length },
     { href: "/admin/videos", label: "Anthrax TV", count: content.tv.videos.length },
     { href: "/admin/brasil", label: "Anthrax + Brasil", count: content.brasil.cards.length },
     { href: "/admin/agenda", label: "Agenda", count: content.agenda.items.length },
+    { href: "/admin/membros", label: "Banda: Membros", count: membros.items.length },
+    { href: "/admin/albuns", label: "Banda: Álbuns", count: albuns.items.length },
+    { href: "/admin/historia", label: "Banda: Timeline", count: historia.timeline.length },
     { href: "/admin/quiz", label: "Quiz diário", count: content.quiz.items.length },
     { href: "/admin/nav", label: "Menu", count: content.nav.length },
   ];

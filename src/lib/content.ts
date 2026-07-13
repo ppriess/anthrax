@@ -16,11 +16,17 @@ export type Site = {
   releaseDate: string;
 };
 
+export type NavChild = {
+  label: string;
+  href: string;
+};
+
 export type NavItem = {
   label: string;
   href: string;
   active?: boolean;
   brasil?: boolean;
+  children?: NavChild[];
 };
 
 export type Hero = {
@@ -132,6 +138,53 @@ export type Footer = {
   wordmark: string;
   disclaimer: string;
   signature: string;
+};
+
+// ---------- páginas "Banda" (/banda/*) — não fazem parte da home,
+// lidas isoladamente por cada página e pelo /admin. ----------
+
+export type MembroItem = {
+  id: string;
+  name: string;
+  role: string;
+  bio?: string;
+  photoLabel?: string;
+  current?: boolean; // membro atual vs ex-membro
+};
+
+export type Membros = {
+  title: string;
+  subtitle: string;
+  items: MembroItem[];
+};
+
+export type AlbumItem = {
+  id: string;
+  title: string;
+  year: string;
+  label?: string;
+  coverLabel?: string;
+  description?: string;
+};
+
+export type Albuns = {
+  title: string;
+  subtitle: string;
+  items: AlbumItem[];
+};
+
+export type TimelineItem = {
+  id: string;
+  year: string;
+  title: string;
+  description?: string;
+};
+
+export type Historia = {
+  title: string;
+  subtitle: string;
+  intro: string; // markdown
+  timeline: TimelineItem[];
 };
 
 export type Content = {

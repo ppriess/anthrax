@@ -1,0 +1,46 @@
+{
+  "title": "Membros",
+  "subtitle": "quem faz o thrash acontecer",
+  "items": [
+    {
+      "id": "scott-ian",
+      "name": "Scott Ian",
+      "role": "Guitarra base, fundador",
+      "bio": "Fundador da banda em 1981. A caveira que virou logo veio de uma ideia dele. Único membro presente em todos os discos.",
+      "photoLabel": "[ FOTO: Scott Ian ]",
+      "current": true
+    },
+    {
+      "id": "charlie-benante",
+      "name": "Charlie Benante",
+      "role": "Bateria",
+      "bio": "Baterista desde 1983. Também assina parte dos arranjos e da direção de arte da banda ao longo dos anos.",
+      "photoLabel": "[ FOTO: Charlie Benante ]",
+      "current": true
+    },
+    {
+      "id": "frank-bello",
+      "name": "Frank Bello",
+      "role": "Baixo",
+      "bio": "No baixo desde 1984. Um dos rostos mais reconhecíveis do thrash metal americano.",
+      "photoLabel": "[ FOTO: Frank Bello ]",
+      "current": true
+    },
+    {
+      "id": "joey-belladonna",
+      "name": "Joey Belladonna",
+      "role": "Vocal",
+      "bio": "Voz clássica do Anthrax, presente na era de ouro (1984–1992) e de volta desde 2010.",
+      "photoLabel": "[ FOTO: Joey Belladonna ]",
+      "current": true
+    },
+    {
+      "id": "jonathan-donais",
+      "name": "Jonathan Donais",
+      "role": "Guitarra solo",
+      "bio": "Guitarrista solo desde 2013, ex-Shadows Fall.",
+      "photoLabel": "[ FOTO: Jonathan Donais ]",
+      "current": true
+    }
+  ]
+}

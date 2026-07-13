@@ -1,5 +1,7 @@
 import type { NavItem, Site } from "@/lib/content";
 import { SearchBar } from "./SearchBar";
+import { NavDropdown } from "./NavDropdown";
+import { MobileMenu } from "./MobileMenu";
 
 function Wordmark({ size }: { size: "lg" | "sm" }) {
   const big = size === "lg";
@@ -35,20 +37,29 @@ export function Masthead({ site, nav }: { site: Site; nav: NavItem[] }) {
             </h1>
           </div>
           <div className="ml-auto flex flex-col items-end gap-2">
-            <nav className="flex gap-5 text-base font-bold tracking-[0.12em]">
-              {nav.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className={
-                    item.brasil
-                      ? "text-brasil-paper no-underline hover:text-brasil-dark"
-                      : `text-ink no-underline hover:text-brasil-paper ${item.active ? "border-b-[3px] border-ink" : ""}`
-                  }
-                >
-                  {item.label}
-                </a>
-              ))}
+            <nav className="flex items-center gap-5 text-base font-bold tracking-[0.12em]">
+              {nav.map((item) =>
+                item.children ? (
+                  <NavDropdown
+                    key={item.label}
+                    label={item.label}
+                    active={item.active}
+                    children={item.children}
+                  />
+                ) : (
+                  <a
+                    key={item.label}
+                    href={item.href}
+                    className={
+                      item.brasil
+                        ? "text-brasil-paper no-underline hover:text-brasil-dark"
+                        : `text-ink no-underline hover:text-brasil-paper ${item.active ? "border-b-[3px] border-ink" : ""}`
+                    }
+                  >
+                    {item.label}
+                  </a>
+                ),
+              )}
             </nav>
             <SearchBar placeholder={site.searchPlaceholder} />
           </div>
@@ -59,7 +70,7 @@ export function Masthead({ site, nav }: { site: Site; nav: NavItem[] }) {
       </div>
 
       {/* Mobile */}
-      <div className="halftone-sm block px-4 pb-3 pt-[14px] md:hidden">
+      <div className="halftone-sm relative block px-4 pb-3 pt-[14px] md:hidden">
         <div className="flex items-center gap-[10px]">
           <div>
             <div className="font-mono text-[9px] tracking-[0.2em]">
@@ -68,18 +79,10 @@ export function Masthead({ site, nav }: { site: Site; nav: NavItem[] }) {
             <Wordmark size="sm" />
           </div>
           <div className="ml-auto flex items-center gap-3">
-            <a href="#busca" aria-label="Busca" className="text-lg text-ink">
+            <a href="/#busca" aria-label="Busca" className="text-lg text-ink">
               ⌕
             </a>
-            <button
-              type="button"
-              aria-label="Menu"
-              className="flex flex-col gap-1"
-            >
-              <span className="h-[3px] w-[22px] bg-ink" />
-              <span className="h-[3px] w-[22px] bg-ink" />
-              <span className="h-[3px] w-[22px] bg-ink" />
-            </button>
+            <MobileMenu nav={nav} />
           </div>
         </div>
       </div>

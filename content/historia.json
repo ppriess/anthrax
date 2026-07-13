@@ -1,0 +1,43 @@
+{
+  "title": "História",
+  "subtitle": "quatro décadas de thrash",
+  "intro": "O Anthrax nasceu no Queens, Nova York, em 1981, e se tornou uma das **quatro grandes bandas do thrash metal** ao lado de Metallica, Megadeth e Slayer. É a única das quatro a manter uma ligação constante e afetuosa com o Brasil — presença marcante em festivais nacionais e uma base de fãs que só cresce.\n\nApós dez anos sem álbum de estúdio, a banda anuncia *Cursum Perficio* para 2026, reacendendo a expectativa de uma nova turnê sul-americana.",
+  "timeline": [
+    {
+      "id": "1981-fundacao",
+      "year": "1981",
+      "title": "Fundação",
+      "description": "Scott Ian funda o Anthrax no Queens, Nova York."
+    },
+    {
+      "id": "1987-among-the-living",
+      "year": "1987",
+      "title": "Among the Living",
+      "description": "Lançamento do álbum que consolida a banda como uma das \"quatro grandes\" do thrash."
+    },
+    {
+      "id": "1994-kisser",
+      "year": "1994–2011",
+      "title": "Irmandade com Andreas Kisser",
+      "description": "O guitarrista do Sepultura cobre a ausência de Scott Ian em shows ao longo desses anos."
+    },
+    {
+      "id": "2004-tributo",
+      "year": "2004",
+      "title": "Tributo brasileiro",
+      "description": "Bandas da cena nacional gravam um disco inteiro de covers do Anthrax."
+    },
+    {
+      "id": "2010-belladonna",
+      "year": "2010",
+      "title": "Volta de Joey Belladonna",
+      "description": "A formação clássica do vocal retorna à banda."
+    },
+    {
+      "id": "2026-cursum-perficio",
+      "year": "2026",
+      "title": "Cursum Perficio",
+      "description": "Depois de dez anos, o 12º álbum de estúdio é anunciado."
+    }
+  ]
+}

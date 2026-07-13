@@ -8,16 +8,22 @@ import {
   writeContentFile,
   type Agenda,
   type AgendaItem,
+  type AlbumItem,
+  type Albuns,
   type Brasil,
   type BrasilCard,
   type Footer,
   type Hero,
+  type Historia,
+  type MembroItem,
+  type Membros,
   type NavItem,
   type News,
   type NewsItem,
   type Quiz,
   type QuizItem,
   type Site,
+  type TimelineItem,
   type Tv,
   type Video,
 } from "@/lib/content";
@@ -249,6 +255,9 @@ export async function saveNavItem(index: number | null, formData: FormData) {
     href: str(formData, "href"),
     active: bool(formData, "active"),
     brasil: bool(formData, "brasil"),
+    // o editor de menu não tem UI pra submenu ainda — preserva o que já
+    // existia pra não apagar o dropdown "Banda" ao editar label/href/etc.
+    children: index !== null ? nav[index]?.children : undefined,
   };
   if (index === null) {
     nav.push(item);
@@ -364,4 +373,139 @@ export async function deleteQuizItem(id: string) {
   quiz.items = quiz.items.filter((q) => q.id !== id);
   await writeContentFile("quiz.json", quiz);
   revalidateAll("/admin/quiz");
+}
+
+// ---------- banda: membros ----------
+
+export async function saveMembro(id: string | null, formData: FormData) {
+  const membros = await readContentFile<Membros>("membros.json");
+  const name = str(formData, "name");
+  const item: MembroItem = {
+    id: id ?? uniqueSlug(slugify(name), membros.items.map((m) => m.id)),
+    name,
+    role: str(formData, "role"),
+    bio: optStr(formData, "bio"),
+    photoLabel: optStr(formData, "photoLabel"),
+    current: bool(formData, "current"),
+  };
+
+  if (id) {
+    const idx = membros.items.findIndex((m) => m.id === id);
+    if (idx === -1) throw new Error("Membro não encontrado");
+    membros.items[idx] = item;
+  } else {
+    membros.items.push(item);
+  }
+  await writeContentFile("membros.json", membros);
+  revalidateAll("/admin/membros");
+  redirect("/admin/membros");
+}
+
+export async function deleteMembro(id: string) {
+  const membros = await readContentFile<Membros>("membros.json");
+  membros.items = membros.items.filter((m) => m.id !== id);
+  await writeContentFile("membros.json", membros);
+  revalidateAll("/admin/membros");
+}
+
+export async function saveMembrosIntro(formData: FormData) {
+  const membros = await readContentFile<Membros>("membros.json");
+  membros.title = str(formData, "title");
+  membros.subtitle = str(formData, "subtitle");
+  await writeContentFile("membros.json", membros);
+  revalidateAll("/admin/membros");
+}
+
+// ---------- banda: álbuns ----------
+
+export async function saveAlbum(id: string | null, formData: FormData) {
+  const albuns = await readContentFile<Albuns>("albuns.json");
+  const title = str(formData, "title");
+  const item: AlbumItem = {
+    id: id ?? uniqueSlug(slugify(title), albuns.items.map((a) => a.id)),
+    title,
+    year: str(formData, "year"),
+    label: optStr(formData, "label"),
+    coverLabel: optStr(formData, "coverLabel"),
+    description: optStr(formData, "description"),
+  };
+
+  if (id) {
+    const idx = albuns.items.findIndex((a) => a.id === id);
+    if (idx === -1) throw new Error("Álbum não encontrado");
+    albuns.items[idx] = item;
+  } else {
+    albuns.items.unshift(item);
+  }
+  await writeContentFile("albuns.json", albuns);
+  revalidateAll("/admin/albuns");
+  redirect("/admin/albuns");
+}
+
+export async function deleteAlbum(id: string) {
+  const albuns = await readContentFile<Albuns>("albuns.json");
+  albuns.items = albuns.items.filter((a) => a.id !== id);
+  await writeContentFile("albuns.json", albuns);
+  revalidateAll("/admin/albuns");
+}
+
+export async function saveAlbunsIntro(formData: FormData) {
+  const albuns = await readContentFile<Albuns>("albuns.json");
+  albuns.title = str(formData, "title");
+  albuns.subtitle = str(formData, "subtitle");
+  await writeContentFile("albuns.json", albuns);
+  revalidateAll("/admin/albuns");
+}
+
+// ---------- banda: história ----------
+
+export async function saveHistoriaIntro(formData: FormData) {
+  const historia = await readContentFile<Historia>("historia.json");
+  historia.title = str(formData, "title");
+  historia.subtitle = str(formData, "subtitle");
+  historia.intro = str(formData, "intro");
+  await writeContentFile("historia.json", historia);
+  revalidateAll("/admin/historia");
+}
+
+export async function saveTimelineItem(id: string | null, formData: FormData) {
+  const historia = await readContentFile<Historia>("historia.json");
+  const year = str(formData, "year");
+  const item: TimelineItem = {
+    id: id ?? uniqueSlug(slugify(year), historia.timeline.map((t) => t.id)),
+    year,
+    title: str(formData, "title"),
+    description: optStr(formData, "description"),
+  };
+
+  if (id) {
+    const idx = historia.timeline.findIndex((t) => t.id === id);
+    if (idx === -1) throw new Error("Evento não encontrado");
+    historia.timeline[idx] = item;
+  } else {
+    historia.timeline.push(item);
+  }
+  await writeContentFile("historia.json", historia);
+  revalidateAll("/admin/historia");
+  redirect("/admin/historia");
+}
+
+export async function deleteTimelineItem(id: string) {
+  const historia = await readContentFile<Historia>("historia.json");
+  historia.timeline = historia.timeline.filter((t) => t.id !== id);
+  await writeContentFile("historia.json", historia);
+  revalidateAll("/admin/historia");
+}
+
+export async function moveTimelineItem(id: string, dir: -1 | 1) {
+  const historia = await readContentFile<Historia>("historia.json");
+  const index = historia.timeline.findIndex((t) => t.id === id);
+  const target = index + dir;
+  if (index === -1 || target < 0 || target >= historia.timeline.length) return;
+  [historia.timeline[index], historia.timeline[target]] = [
+    historia.timeline[target],
+    historia.timeline[index],
+  ];
+  await writeContentFile("historia.json", historia);
+  revalidateAll("/admin/historia");
 }

@@ -1,0 +1,59 @@
+{
+  "title": "Álbuns",
+  "subtitle": "a discografia completa",
+  "items": [
+    {
+      "id": "cursum-perficio",
+      "title": "Cursum Perficio",
+      "year": "2026",
+      "label": "Megaforce / Nuclear Blast",
+      "coverLabel": "[ CAPA — CURSUM PERFICIO ]",
+      "description": "O 12º álbum de estúdio, depois de dez anos de espera. Produção de Jay Ruston."
+    },
+    {
+      "id": "for-all-kings",
+      "title": "For All Kings",
+      "year": "2016",
+      "label": "Megaforce / Nuclear Blast",
+      "coverLabel": "[ CAPA — FOR ALL KINGS ]"
+    },
+    {
+      "id": "worship-music",
+      "title": "Worship Music",
+      "year": "2011",
+      "label": "Megaforce",
+      "coverLabel": "[ CAPA — WORSHIP MUSIC ]",
+      "description": "Marca o retorno de Joey Belladonna aos vocais."
+    },
+    {
+      "id": "weve-come-for-you-all",
+      "title": "We've Come for You All",
+      "year": "2003",
+      "label": "Sanctuary",
+      "coverLabel": "[ CAPA — WE'VE COME FOR YOU ALL ]"
+    },
+    {
+      "id": "sound-of-white-noise",
+      "title": "Sound of White Noise",
+      "year": "1993",
+      "label": "Elektra",
+      "coverLabel": "[ CAPA — SOUND OF WHITE NOISE ]",
+      "description": "Primeiro disco com John Bush nos vocais."
+    },
+    {
+      "id": "persistence-of-time",
+      "title": "Persistence of Time",
+      "year": "1990",
+      "label": "Megaforce / Island",
+      "coverLabel": "[ CAPA — PERSISTENCE OF TIME ]"
+    },
+    {
+      "id": "among-the-living",
+      "title": "Among the Living",
+      "year": "1987",
+      "label": "Megaforce / Island",
+      "coverLabel": "[ CAPA — AMONG THE LIVING ]",
+      "description": "Um dos discos mais influentes do thrash metal. \"Caught in a Mosh\" e a faixa-título viraram clássicos instantâneos."
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 // Estrutura de UI (não é conteúdo editável) — fica no código.
 const mobileTabs = [
-  { label: "INÍCIO", icon: "⌂", href: "#top", active: true },
-  { label: "NOTÍCIAS", icon: "▤", href: "#noticias" },
-  { label: "TV", icon: "▶", href: "#anthrax-tv" },
-  { label: "BUSCA", icon: "⌕", href: "#busca" },
-  { label: "BRASIL", icon: "★", href: "#brasil" },
+  { label: "INÍCIO", icon: "⌂", href: "/#top", active: true },
+  { label: "NOTÍCIAS", icon: "▤", href: "/#noticias" },
+  { label: "TV", icon: "▶", href: "/#anthrax-tv" },
+  { label: "BANDA", icon: "🤘", href: "/banda/membros" },
+  { label: "BRASIL", icon: "★", href: "/#brasil" },
 ];
 
 /** Fixed bottom tab bar (paper), mobile only. Touch targets ≥44px. */
