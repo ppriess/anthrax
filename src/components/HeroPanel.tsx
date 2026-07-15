@@ -51,8 +51,8 @@ export function HeroPanel({
     <div
       className={
         desktop
-          ? `relative overflow-hidden border-4 border-black px-[34px] py-[30px] shadow-[8px_8px_0_#E8B71A] ${videoId ? "text-paper" : "bg-paper text-ink"}`
-          : `relative overflow-hidden border-[3px] border-black p-5 shadow-[6px_6px_0_#E8B71A] ${videoId ? "text-paper" : "bg-paper text-ink"}`
+          ? `relative overflow-hidden border-4 border-hardline px-[34px] py-[30px] shadow-[8px_8px_0_var(--color-signal)] ${videoId ? "text-paper" : "bg-paper text-ink"}`
+          : `relative overflow-hidden border-[3px] border-hardline p-5 shadow-[6px_6px_0_var(--color-signal)] ${videoId ? "text-paper" : "bg-paper text-ink"}`
       }
     >
       {videoId && (
@@ -118,9 +118,9 @@ export function HeroPanel({
           <div className="mt-5 flex gap-[10px] font-mono text-[13px]">
             <Countdown
               target={releaseDate}
-              className="border border-[#b6b0a4] px-2 py-[3px]"
+              className="border border-border-soft px-2 py-[3px]"
             />
-            <span className="border border-[#b6b0a4] px-2 py-[3px]">
+            <span className="border border-border-soft px-2 py-[3px]">
               {hero.label}
             </span>
           </div>
@@ -139,7 +139,7 @@ export function HeroPanel({
             <Body text={hero.bodyMobile} single={hero.singleName} />
           </p>
           {!videoId && (
-            <div className="hatch-paper-45 mb-[14px] flex h-[200px] items-center justify-center border-[3px] border-black">
+            <div className="hatch-paper-45 mb-[14px] flex h-[200px] items-center justify-center border-[3px] border-hardline">
               <span className="font-mono text-[10px] text-paper-meta">
                 {hero.cover.placeholderMobile}
               </span>

@@ -1,27 +1,276 @@
 {
   "videos": [
     {
-      "id": "wacken-2025",
-      "title": "Wacken 2025 · Set Completo",
-      "meta": "4K · BELLADONNA",
-      "duration": "58:12"
+      "id": "it-s-for-the-kids-2026",
+      "title": "It's for the Kids",
+      "meta": "CLIPE · 2026 · CURSUM PERFICIO",
+      "sourceUrl": "https://www.youtube.com/watch?v=Pj5u8OagODo",
+      "year": "2026",
+      "videoType": "music_video",
+      "albumSlug": "cursum-perficio"
     },
     {
-      "id": "hellfest-2024",
-      "title": "Hellfest 2024 · ARTE Concert",
-      "meta": "HD · BELLADONNA",
-      "duration": "47:30"
+      "id": "the-edge-of-perfection-2026",
+      "title": "The Edge of Perfection",
+      "meta": "CLIPE · 2026 · CURSUM PERFICIO",
+      "sourceUrl": "https://www.youtube.com/watch?v=uqbhWhN4F74",
+      "year": "2026",
+      "videoType": "music_video",
+      "albumSlug": "cursum-perficio"
     },
     {
-      "id": "monsters-sp",
-      "title": "Monsters of Rock SP · Oficial",
-      "meta": "HD · BELLADONNA",
-      "brasil": true
+      "id": "bring-the-noise-live-2022",
+      "title": "Bring the Noise (live)",
+      "meta": "AO VIVO · 2022 · XL",
+      "sourceUrl": "https://www.youtube.com/watch?v=DKan0kfspTM",
+      "year": "2022",
+      "videoType": "live_video",
+      "albumSlug": "xl"
+    },
+    {
+      "id": "in-the-end-2017",
+      "title": "In the End",
+      "meta": "CLIPE · 2017 · WORSHIP MUSIC",
+      "sourceUrl": "https://www.youtube.com/watch?v=IyPZG6YGCqk",
+      "year": "2017",
+      "videoType": "music_video",
+      "albumSlug": "worship-music"
+    },
+    {
+      "id": "breathing-lightning-2016",
+      "title": "Breathing Lightning",
+      "meta": "LYRIC VIDEO · 2016 · FOR ALL KINGS",
+      "sourceUrl": "https://www.youtube.com/watch?v=rKh2Hb7mcU0",
+      "year": "2016",
+      "videoType": "lyric_video",
+      "albumSlug": "for-all-kings"
+    },
+    {
+      "id": "blood-eagle-wings-2016",
+      "title": "Blood Eagle Wings",
+      "meta": "CLIPE · 2016 · FOR ALL KINGS",
+      "sourceUrl": "https://www.youtube.com/watch?v=DFEgzGFuWGc",
+      "year": "2016",
+      "videoType": "music_video",
+      "albumSlug": "for-all-kings"
+    },
+    {
+      "id": "zero-tolerance-2016",
+      "title": "Zero Tolerance",
+      "meta": "LYRIC VIDEO · 2016 · FOR ALL KINGS",
+      "sourceUrl": "https://www.youtube.com/watch?v=T1_HKsoql1Y",
+      "year": "2016",
+      "videoType": "lyric_video",
+      "albumSlug": "for-all-kings"
+    },
+    {
+      "id": "monster-at-the-end-2016",
+      "title": "Monster at the End",
+      "meta": "CLIPE · 2016 · FOR ALL KINGS",
+      "sourceUrl": "https://www.youtube.com/watch?v=vcseSPDpslg",
+      "year": "2016",
+      "videoType": "music_video",
+      "albumSlug": "for-all-kings"
+    },
+    {
+      "id": "suzerain-2016",
+      "title": "Suzerain",
+      "meta": "LYRIC VIDEO · 2016 · FOR ALL KINGS",
+      "sourceUrl": "https://www.youtube.com/watch?v=6ojuQ4HGzp0",
+      "year": "2016",
+      "videoType": "lyric_video",
+      "albumSlug": "for-all-kings"
+    },
+    {
+      "id": "evil-twin-2015",
+      "title": "Evil Twin",
+      "meta": "LYRIC VIDEO · 2015 · FOR ALL KINGS",
+      "sourceUrl": "https://www.youtube.com/watch?v=xPmLkF3e6Fc",
+      "year": "2015",
+      "videoType": "lyric_video",
+      "albumSlug": "for-all-kings"
+    },
+    {
+      "id": "a-skeleton-in-the-closet-live-2014",
+      "title": "A Skeleton in the Closet (live)",
+      "meta": "AO VIVO · 2014 · CHILE ON HELL",
+      "sourceUrl": "https://www.youtube.com/watch?v=L3XvN9f4ulc",
+      "year": "2014",
+      "videoType": "live_video",
+      "albumSlug": "chile-on-hell"
+    },
+    {
+      "id": "the-devil-you-know-2012",
+      "title": "The Devil You Know",
+      "meta": "CLIPE · 2012 · WORSHIP MUSIC",
+      "sourceUrl": "https://www.youtube.com/watch?v=N8FxwSGNBZA",
+      "year": "2012",
+      "videoType": "music_video",
+      "albumSlug": "worship-music"
+    },
+    {
+      "id": "fight-em-til-you-can-t-2011",
+      "title": "Fight 'Em 'Til You Can't",
+      "meta": "LYRIC VIDEO · 2011 · WORSHIP MUSIC",
+      "sourceUrl": "https://www.youtube.com/watch?v=XMdO8BtovgU",
+      "year": "2011",
+      "videoType": "lyric_video",
+      "albumSlug": "worship-music"
+    },
+    {
+      "id": "caught-in-a-mosh-live-2005",
+      "title": "Caught in a Mosh (live)",
+      "meta": "AO VIVO · 2005 · ALIVE 2",
+      "sourceUrl": "https://www.youtube.com/watch?v=WgP6liQOozk",
+      "year": "2005",
+      "videoType": "live_video",
+      "albumSlug": "alive-2"
+    },
+    {
+      "id": "what-doesn-t-die-2004",
+      "title": "What Doesn't Die",
+      "meta": "CLIPE · 2004 · WE'VE COME FOR YOU ALL",
+      "sourceUrl": "https://www.youtube.com/watch?v=FI83RFPXw5s",
+      "year": "2004",
+      "videoType": "music_video",
+      "albumSlug": "weve-come-for-you-all"
+    },
+    {
+      "id": "deathrider-2004",
+      "title": "Deathrider",
+      "meta": "CLIPE · 2004 · THE GREATER OF TWO EVILS (REGRAVAÇÕES)",
+      "sourceUrl": "https://www.youtube.com/watch?v=WCN3uGx--Yg",
+      "year": "2004",
+      "videoType": "music_video"
+    },
+    {
+      "id": "safe-home-2003",
+      "title": "Safe Home",
+      "meta": "CLIPE · 2003 · WE'VE COME FOR YOU ALL",
+      "sourceUrl": "https://www.youtube.com/watch?v=G8SM_Hr1Ldk",
+      "year": "2003",
+      "videoType": "music_video",
+      "albumSlug": "weve-come-for-you-all"
+    },
+    {
+      "id": "taking-the-music-back-2003",
+      "title": "Taking the Music Back",
+      "meta": "CLIPE · 2003 · WE'VE COME FOR YOU ALL",
+      "sourceUrl": "https://www.youtube.com/watch?v=W9G38h_Pi1s",
+      "year": "2003",
+      "videoType": "music_video",
+      "albumSlug": "weve-come-for-you-all"
+    },
+    {
+      "id": "only-1993",
+      "title": "Only",
+      "meta": "CLIPE · 1993 · SOUND OF WHITE NOISE",
+      "sourceUrl": "https://www.youtube.com/watch?v=ZWSPItDCOkI",
+      "year": "1993",
+      "videoType": "music_video",
+      "albumSlug": "sound-of-white-noise"
+    },
+    {
+      "id": "belly-of-the-beast-1991",
+      "title": "Belly of the Beast",
+      "meta": "CLIPE · 1991 · PERSISTENCE OF TIME",
+      "sourceUrl": "https://www.youtube.com/watch?v=AUf8Ho60Zjg",
+      "year": "1991",
+      "videoType": "music_video",
+      "albumSlug": "persistence-of-time"
+    },
+    {
+      "id": "bring-the-noise-com-public-enemy-1991",
+      "title": "Bring the Noise (com Public Enemy)",
+      "meta": "CLIPE · 1991 · ATTACK OF THE KILLER B'S (COLETÂNEA)",
+      "sourceUrl": "https://www.youtube.com/watch?v=kl1hgXfX5-U",
+      "year": "1991",
+      "videoType": "music_video"
+    },
+    {
+      "id": "in-my-world-1990",
+      "title": "In My World",
+      "meta": "CLIPE · 1990 · PERSISTENCE OF TIME",
+      "sourceUrl": "https://www.youtube.com/watch?v=Zc7-6vq4GUQ",
+      "year": "1990",
+      "videoType": "music_video",
+      "albumSlug": "persistence-of-time"
+    },
+    {
+      "id": "got-the-time-1990",
+      "title": "Got the Time",
+      "meta": "CLIPE · 1990 · PERSISTENCE OF TIME",
+      "sourceUrl": "https://www.youtube.com/watch?v=be7iNHw8QoQ",
+      "year": "1990",
+      "videoType": "music_video",
+      "albumSlug": "persistence-of-time"
+    },
+    {
+      "id": "gung-ho-live-1988",
+      "title": "Gung-Ho (live)",
+      "meta": "AO VIVO · 1988 · SPREADING THE DISEASE",
+      "sourceUrl": "https://www.youtube.com/watch?v=7jAeZCUBVyA",
+      "year": "1988",
+      "videoType": "live_video",
+      "albumSlug": "spreading-the-disease"
+    },
+    {
+      "id": "antisocial-1988",
+      "title": "Antisocial",
+      "meta": "CLIPE · 1988 · STATE OF EUPHORIA",
+      "sourceUrl": "https://www.youtube.com/watch?v=Hx_m7Y9nGtU",
+      "year": "1988",
+      "videoType": "music_video",
+      "albumSlug": "state-of-euphoria"
+    },
+    {
+      "id": "who-cares-wins-1988",
+      "title": "Who Cares Wins",
+      "meta": "CLIPE · 1988 · STATE OF EUPHORIA",
+      "sourceUrl": "https://www.youtube.com/watch?v=gtD_GUvu-wc",
+      "year": "1988",
+      "videoType": "music_video",
+      "albumSlug": "state-of-euphoria"
+    },
+    {
+      "id": "indians-1987",
+      "title": "Indians",
+      "meta": "CLIPE · 1987 · AMONG THE LIVING",
+      "sourceUrl": "https://www.youtube.com/watch?v=RzpRU347BDU",
+      "year": "1987",
+      "videoType": "music_video",
+      "albumSlug": "among-the-living"
+    },
+    {
+      "id": "caught-in-a-mosh-1987",
+      "title": "Caught in a Mosh",
+      "meta": "CLIPE · 1987 · AMONG THE LIVING",
+      "sourceUrl": "https://www.youtube.com/watch?v=zlLn0UicWrM",
+      "year": "1987",
+      "videoType": "music_video",
+      "albumSlug": "among-the-living"
+    },
+    {
+      "id": "i-m-the-man-1987",
+      "title": "I'm the Man",
+      "meta": "CLIPE · 1987 · I'M THE MAN (EP)",
+      "sourceUrl": "https://www.youtube.com/watch?v=GiHdr4rWG98",
+      "year": "1987",
+      "videoType": "music_video"
+    },
+    {
+      "id": "madhouse-1985",
+      "title": "Madhouse",
+      "meta": "CLIPE · 1985 · SPREADING THE DISEASE",
+      "sourceUrl": "https://www.youtube.com/watch?v=uGHsxMqpL0c",
+      "year": "1985",
+      "videoType": "music_video",
+      "albumSlug": "spreading-the-disease"
     }
   ],
   "archive": {
-    "count": "+147",
-    "blurb": "vídeos profissionais catalogados\ne crescendo toda semana",
-    "cta": "ABRIR ANTHRAX TV"
+    "count": "30",
+    "blurb": "clipes e vídeos oficiais\ndo canal da banda",
+    "cta": "VER TODOS OS VÍDEOS"
   }
 }

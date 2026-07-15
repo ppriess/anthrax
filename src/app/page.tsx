@@ -1,8 +1,9 @@
-import { getContent } from "@/lib/content";
+import { getContent, readContentFile, type Albuns } from "@/lib/content";
 import { Masthead } from "@/components/Masthead";
 import { Hero } from "@/components/Hero";
 import { NewsSection } from "@/components/NewsSection";
 import { AnthraxTV } from "@/components/AnthraxTV";
+import { DiscografiaSection } from "@/components/DiscografiaSection";
 import { BrasilSection } from "@/components/BrasilSection";
 import { Footer } from "@/components/Footer";
 import { MobileTabBar } from "@/components/MobileTabBar";
@@ -12,7 +13,10 @@ import { MobileTabBar } from "@/components/MobileTabBar";
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const content = await getContent();
+  const [content, albuns] = await Promise.all([
+    getContent(),
+    readContentFile<Albuns>("albuns.json"),
+  ]);
 
   return (
     <>
@@ -21,6 +25,7 @@ export default async function Home() {
         <Hero hero={content.hero} releaseDate={content.site.releaseDate} />
         <NewsSection news={content.news} />
         <AnthraxTV tv={content.tv} />
+        <DiscografiaSection albuns={albuns} />
         <BrasilSection
           brasil={content.brasil}
           agenda={content.agenda}

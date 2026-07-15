@@ -48,6 +48,37 @@ export function VideoForm({ item }: { item?: Video }) {
           className="admin-input"
         />
       </label>
+      <label className="flex flex-col gap-1">
+        <span className="font-mono text-xs text-on-dark-3">
+          Ano (opcional, ex.: 2026)
+        </span>
+        <input name="year" defaultValue={item?.year} className="admin-input" />
+      </label>
+      <label className="flex flex-col gap-1">
+        <span className="font-mono text-xs text-on-dark-3">
+          Tipo (usado nos filtros da Anthrax TV)
+        </span>
+        <select
+          name="videoType"
+          defaultValue={item?.videoType ?? ""}
+          className="admin-input"
+        >
+          <option value="">— sem tipo —</option>
+          <option value="music_video">Clipe</option>
+          <option value="lyric_video">Lyric video</option>
+          <option value="live_video">Ao vivo</option>
+        </select>
+      </label>
+      <label className="flex flex-col gap-1">
+        <span className="font-mono text-xs text-on-dark-3">
+          Álbum (id/slug em Álbuns, opcional — ex.: cursum-perficio)
+        </span>
+        <input
+          name="albumSlug"
+          defaultValue={item?.albumSlug}
+          className="admin-input"
+        />
+      </label>
       <label className="flex items-center gap-2 text-sm text-on-dark-2">
         <input type="checkbox" name="brasil" defaultChecked={item?.brasil} />
         Selo &quot;BRASIL 🇧🇷&quot;

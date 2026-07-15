@@ -1,4 +1,9 @@
-import { Archivo_Black, Barlow_Condensed, Permanent_Marker } from "next/font/google";
+import {
+  Archivo_Black,
+  Barlow_Condensed,
+  JetBrains_Mono,
+  Permanent_Marker,
+} from "next/font/google";
 
 export const archivoBlack = Archivo_Black({
   weight: "400",
@@ -18,5 +23,12 @@ export const permanentMarker = Permanent_Marker({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-marker",
+  display: "swap",
+});
+
+export const jetbrainsMono = JetBrains_Mono({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
   display: "swap",
 });

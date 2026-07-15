@@ -10,7 +10,7 @@ import { Quiz } from "./Quiz";
 function PaperCard({ card, mobile }: { card: BrasilCard; mobile?: boolean }) {
   if (card.wide) {
     return (
-      <div className="flex items-center gap-4 border-2 border-ink bg-white p-[15px] [grid-column:1/-1]">
+      <div className="flex items-center gap-4 border-2 border-ink bg-card-paper p-[15px] [grid-column:1/-1]">
         <div className="hatch-paper-sm flex h-16 w-24 flex-none items-center justify-center border-2 border-ink">
           <span className="font-mono text-[9px] text-paper-meta">
             {card.ticketLabel}
@@ -32,7 +32,7 @@ function PaperCard({ card, mobile }: { card: BrasilCard; mobile?: boolean }) {
     );
   }
   return (
-    <div className={`border-2 border-ink bg-white p-3 md:p-[15px] ${mobile ? "mb-2" : ""}`}>
+    <div className={`border-2 border-ink bg-card-paper p-3 md:p-[15px] ${mobile ? "mb-2" : ""}`}>
       {card.photoLabel && (
         <div className="hatch-paper-sm mb-2 flex h-[70px] items-center justify-center border-2 border-ink md:h-[100px]">
           <span className="font-mono text-[9px] text-paper-meta">
@@ -69,7 +69,7 @@ export function BrasilSection({
       {/* Desktop grid */}
       <div className="hidden grid-cols-[1fr_460px] gap-8 p-10 md:grid">
         {/* paper panel */}
-        <div className="relative border-4 border-black bg-paper px-[30px] py-[26px] text-ink shadow-[8px_8px_0_#2E7D4F]">
+        <div className="relative border-4 border-hardline bg-paper px-[30px] py-[26px] text-ink shadow-[8px_8px_0_var(--color-brasil-paper)]">
           <div className="absolute left-[26px] top-[-14px] bg-brasil-paper px-3 py-[5px] font-mono text-xs tracking-[0.2em] text-paper">
             SEÇÃO ESPECIAL
           </div>
@@ -118,7 +118,7 @@ export function BrasilSection({
 
       {/* Mobile: brasil panel only */}
       <div className="block px-4 py-5 md:hidden">
-        <div className="border-[3px] border-black bg-paper p-4 text-ink shadow-[6px_6px_0_#2E7D4F]">
+        <div className="border-[3px] border-hardline bg-paper p-4 text-ink shadow-[6px_6px_0_var(--color-brasil-paper)]">
           <h2 className="m-0 mb-1 font-display text-[22px] uppercase">
             {brasil.title}
           </h2>

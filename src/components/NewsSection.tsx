@@ -20,8 +20,8 @@ function FeatureCard({ item, mobile }: { item: NewsItem; mobile?: boolean }) {
     <article
       className={
         mobile
-          ? "mb-[10px] border-[3px] border-black bg-paper p-[14px] text-ink shadow-[4px_4px_0_#000]"
-          : "border-[3px] border-black bg-paper text-ink shadow-[5px_5px_0_#000]"
+          ? "mb-[10px] border-[3px] border-hardline bg-paper p-[14px] text-ink shadow-[4px_4px_0_var(--color-hardline)]"
+          : "border-[3px] border-hardline bg-paper text-ink shadow-[5px_5px_0_var(--color-hardline)]"
       }
     >
       {!mobile &&
@@ -29,10 +29,10 @@ function FeatureCard({ item, mobile }: { item: NewsItem; mobile?: boolean }) {
           <img
             src={item.image}
             alt={item.title}
-            className="h-[200px] w-full border-b-[3px] border-black object-cover"
+            className="aspect-[4/3] w-full border-b-[3px] border-hardline object-cover"
           />
         ) : (
-          <div className="hatch-paper flex h-[200px] items-center justify-center border-b-[3px] border-black">
+          <div className="hatch-paper flex h-[200px] items-center justify-center border-b-[3px] border-hardline">
             <span className="font-mono text-[11px] text-paper-meta">
               {item.photoLabel}
             </span>

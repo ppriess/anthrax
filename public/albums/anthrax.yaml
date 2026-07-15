@@ -1,0 +1,633 @@
+# =============================================================================
+# ANTHRAX — Dados para ingestão
+# Gerado em: 2026-07-15
+# Fontes: MusicBrainz (discografia/faixas), Cover Art Archive (capas),
+#         Wikipedia (anos/selos/videografia), YouTube (URLs oficiais),
+#         Blabbermouth (fotos de imprensa 2026)
+#
+# SCHEMA:
+#   band: nome, país, formação, gênero, site, canal oficial
+#   albums[]: title, slug, type (studio|live), release_date, year, label,
+#             mb_release_group_id (MusicBrainz), cover {url, file},
+#             tracks[] {n, title, duration}, videos[] {title, year, type,
+#             url, channel, director}, notes
+#   extra_videos[]: vídeos oficiais de EPs/coletâneas fora do escopo de álbuns
+#   press_photos_2026[]: fotos oficiais de divulgação lançadas em 2026
+#
+#   videos.type: music_video | lyric_video | live_video
+#   videos.url: null = clipe existe mas sem upload oficial no YouTube
+#   cover.url: Cover Art Archive (front, 500px) — verificadas em 2026-07-15
+#   cover.file: caminho local após rodar download_assets.sh
+# =============================================================================
+
+band:
+  name: Anthrax
+  country: US
+  origin: New York City, NY
+  formed: 1981
+  genre: thrash metal
+  website: https://anthrax.com
+  youtube_channel: https://www.youtube.com/@Anthrax
+  mb_artist_id: b616d6f0-ec1f-4c69-8a79-12a97ece7372
+
+albums:
+  # ---------------------------------------------------------------- STUDIO --
+  - title: Fistful of Metal
+    slug: fistful-of-metal
+    type: studio
+    release_date: 1984-01-06
+    year: 1984
+    label: Megaforce
+    mb_release_group_id: 0bac2272-5f6a-3aae-a4ab-074d8c4fbad0
+    cover:
+      url: https://coverartarchive.org/release-group/0bac2272-5f6a-3aae-a4ab-074d8c4fbad0/front-500
+      file: covers/fistful-of-metal.jpg
+    tracks:
+      - {n: 1, title: Deathrider, duration: "3:10"}
+      - {n: 2, title: Metal Thrashing Mad, duration: "2:42"}
+      - {n: 3, title: I'm Eighteen, duration: "4:02"}
+      - {n: 4, title: Panic, duration: "4:02"}
+      - {n: 5, title: Subjugator, duration: "4:43"}
+      - {n: 6, title: Soldiers of Metal, duration: "2:59"}
+      - {n: 7, title: Death From Above, duration: "5:10"}
+      - {n: 8, title: Anthrax, duration: "3:28"}
+      - {n: 9, title: Across the River, duration: "1:26"}
+      - {n: 10, title: Howling Furies, duration: "3:52"}
+    videos:
+      - {title: Metal Thrashing Mad, year: 1984, type: music_video, url: null, channel: null, director: null}
+        # clipe de 1984 existe, mas sem upload oficial no YouTube (apenas fãs)
+
+  - title: Spreading the Disease
+    slug: spreading-the-disease
+    type: studio
+    release_date: 1985-10-30
+    year: 1985
+    label: Megaforce/Island
+    mb_release_group_id: 5ebc6b4f-6b03-3202-86ac-a999408143fe
+    cover:
+      url: https://coverartarchive.org/release-group/5ebc6b4f-6b03-3202-86ac-a999408143fe/front-500
+      file: covers/spreading-the-disease.jpg
+    tracks:
+      - {n: 1, title: A.I.R., duration: "5:45"}
+      - {n: 2, title: Lone Justice, duration: "4:37"}
+      - {n: 3, title: Madhouse, duration: "4:20"}
+      - {n: 4, title: S.S.C. / Stand or Fall, duration: "4:08"}
+      - {n: 5, title: The Enemy, duration: "5:25"}
+      - {n: 6, title: Aftershock, duration: "4:29"}
+      - {n: 7, title: Armed and Dangerous, duration: "5:43"}
+      - {n: 8, title: Medusa, duration: "4:44"}
+      - {n: 9, title: Gung-Ho, duration: "4:35"}
+    videos:
+      - {title: Madhouse, year: 1985, type: music_video, url: "https://www.youtube.com/watch?v=uGHsxMqpL0c", channel: AnthraxVEVO, director: Amos Poe}
+      - {title: Gung-Ho (live), year: 1988, type: live_video, url: "https://www.youtube.com/watch?v=7jAeZCUBVyA", channel: AnthraxVEVO, director: null}
+
+  - title: Among the Living
+    slug: among-the-living
+    type: studio
+    release_date: 1987-03-22
+    year: 1987
+    label: Megaforce/Island
+    mb_release_group_id: 413bc69f-9391-3fe3-802b-5bf4922f6066
+    cover:
+      url: https://coverartarchive.org/release-group/413bc69f-9391-3fe3-802b-5bf4922f6066/front-500
+      file: covers/among-the-living.jpg
+    tracks:
+      - {n: 1, title: Among the Living, duration: "5:16"}
+      - {n: 2, title: Caught in a Mosh, duration: "4:59"}
+      - {n: 3, title: I Am the Law, duration: "5:57"}
+      - {n: 4, title: Efilnikufesin (N.F.L.), duration: "4:54"}
+      - {n: 5, title: A Skeleton in the Closet, duration: "5:32"}
+      - {n: 6, title: Indians, duration: "5:40"}
+      - {n: 7, title: One World, duration: "5:56"}
+      - {n: 8, title: A.D.I./Horror of It All, duration: "7:49"}
+      - {n: 9, title: Imitation of Life, duration: "4:10"}
+    videos:
+      - {title: Indians, year: 1987, type: music_video, url: "https://www.youtube.com/watch?v=RzpRU347BDU", channel: AnthraxVEVO, director: Jean Pellerin}
+      - {title: Caught in a Mosh, year: 1987, type: music_video, url: "https://www.youtube.com/watch?v=zlLn0UicWrM", channel: AnthraxVEVO, director: null}
+      - {title: I Am the Law, year: 1987, type: music_video, url: null, channel: null, director: null}
+      - {title: Among the Living, year: 1987, type: music_video, url: null, channel: null, director: null}
+
+  - title: State of Euphoria
+    slug: state-of-euphoria
+    type: studio
+    release_date: 1988-09-18
+    year: 1988
+    label: Megaforce/Island
+    mb_release_group_id: 817163c9-8a98-37eb-82bb-53c761031da6
+    cover:
+      url: https://coverartarchive.org/release-group/817163c9-8a98-37eb-82bb-53c761031da6/front-500
+      file: covers/state-of-euphoria.jpg
+    tracks:
+      - {n: 1, title: "Be All, End All", duration: "6:23"}
+      - {n: 2, title: "Out of Sight, Out of Mind", duration: "5:13"}
+      - {n: 3, title: Make Me Laugh, duration: "5:42"}
+      - {n: 4, title: Antisocial, duration: "4:26"}
+      - {n: 5, title: Who Cares Wins, duration: "7:36"}
+      - {n: 6, title: Now It's Dark, duration: "5:36"}
+      - {n: 7, title: Schism, duration: "5:29"}
+      - {n: 8, title: Misery Loves Company, duration: "5:41"}
+      - {n: 9, title: "13", duration: "0:51"}
+      - {n: 10, title: Finale, duration: "5:49"}
+    videos:
+      - {title: Antisocial, year: 1988, type: music_video, url: "https://www.youtube.com/watch?v=Hx_m7Y9nGtU", channel: Anthrax, director: null}
+      - {title: Who Cares Wins, year: 1988, type: music_video, url: "https://www.youtube.com/watch?v=gtD_GUvu-wc", channel: AnthraxVEVO, director: Paul Rachman}
+
+  - title: Persistence of Time
+    slug: persistence-of-time
+    type: studio
+    release_date: 1990-08-07
+    year: 1990
+    label: Megaforce/Island
+    mb_release_group_id: ea25c463-c8e7-3f2b-8ec9-d883ed227e25
+    cover:
+      url: https://coverartarchive.org/release-group/ea25c463-c8e7-3f2b-8ec9-d883ed227e25/front-500
+      file: covers/persistence-of-time.jpg
+    tracks:
+      - {n: 1, title: Time, duration: "6:54"}
+      - {n: 2, title: Blood, duration: "7:06"}
+      - {n: 3, title: Keep It in the Family, duration: "7:07"}
+      - {n: 4, title: In My World, duration: "6:23"}
+      - {n: 5, title: Gridlock, duration: "5:08"}
+      - {n: 6, title: Intro to Reality, duration: "3:24"}
+      - {n: 7, title: Belly of the Beast, duration: "4:46"}
+      - {n: 8, title: Got the Time, duration: "2:44"}
+      - {n: 9, title: H8 Red, duration: "6:02"}
+      - {n: 10, title: One Man Stands, duration: "5:39"}
+      - {n: 11, title: Discharge, duration: "5:11"}
+    videos:
+      - {title: In My World, year: 1990, type: music_video, url: "https://www.youtube.com/watch?v=Zc7-6vq4GUQ", channel: AnthraxVEVO, director: Ian Fletcher}
+      - {title: Got the Time, year: 1990, type: music_video, url: "https://www.youtube.com/watch?v=be7iNHw8QoQ", channel: AnthraxVEVO, director: Parris Mayhew}
+      - {title: Belly of the Beast, year: 1991, type: music_video, url: "https://www.youtube.com/watch?v=AUf8Ho60Zjg", channel: AnthraxVEVO, director: Ian Fletcher}
+
+  - title: Sound of White Noise
+    slug: sound-of-white-noise
+    type: studio
+    release_date: 1993-05-17
+    year: 1993
+    label: Elektra
+    mb_release_group_id: 861ebe62-b5a1-3d67-b6a8-139a7a8e7b74
+    cover:
+      url: https://coverartarchive.org/release-group/861ebe62-b5a1-3d67-b6a8-139a7a8e7b74/front-500
+      file: covers/sound-of-white-noise.jpg
+    tracks:
+      - {n: 1, title: Potters Field, duration: "5:00"}
+      - {n: 2, title: Only, duration: "4:56"}
+      - {n: 3, title: Room for One More, duration: "4:56"}
+      - {n: 4, title: Packaged Rebellion, duration: "6:17"}
+      - {n: 5, title: Hy Pro Glo, duration: "4:31"}
+      - {n: 6, title: Invisible, duration: "6:10"}
+      - {n: 7, title: 1000 Points of Hate, duration: "5:00"}
+      - {n: 8, title: Black Lodge, duration: "5:26"}
+      - {n: 9, title: C11 H17 N2 O2 S Na, duration: "4:26"}
+      - {n: 10, title: Burst, duration: "3:42"}
+      - {n: 11, title: This Is Not an Exit, duration: "6:49"}
+    videos:
+      - {title: Only, year: 1993, type: music_video, url: "https://www.youtube.com/watch?v=ZWSPItDCOkI", channel: Anthrax, director: Paul Elledge}
+      - {title: Black Lodge, year: 1993, type: music_video, url: null, channel: null, director: Mark Pellington}
+      - {title: Room for One More, year: 1994, type: music_video, url: null, channel: null, director: George Dougherty}
+      - {title: Hy Pro Glo, year: 1994, type: music_video, url: null, channel: null, director: null}
+
+  - title: Stomp 442
+    slug: stomp-442
+    type: studio
+    release_date: 1995-10-24
+    year: 1995
+    label: Elektra
+    mb_release_group_id: b88346b1-f8b2-3220-abca-807fa3b091cf
+    cover:
+      url: https://coverartarchive.org/release-group/b88346b1-f8b2-3220-abca-807fa3b091cf/front-500
+      file: covers/stomp-442.jpg
+    tracks:
+      - {n: 1, title: Random Acts of Senseless Violence, duration: "4:03"}
+      - {n: 2, title: Fueled, duration: "4:02"}
+      - {n: 3, title: King Size, duration: "4:00"}
+      - {n: 4, title: Riding Shotgun, duration: "4:27"}
+      - {n: 5, title: Perpetual Motion, duration: "4:21"}
+      - {n: 6, title: In a Zone, duration: "5:08"}
+      - {n: 7, title: Nothing, duration: "4:34"}
+      - {n: 8, title: American Pompeii, duration: "5:31"}
+      - {n: 9, title: Drop the Ball, duration: "4:59"}
+      - {n: 10, title: Tester, duration: "4:22"}
+      - {n: 11, title: Bare, duration: "5:30"}
+    videos:
+      - {title: Fueled, year: 1995, type: music_video, url: null, channel: null, director: Marcos Siega}
+      - {title: Nothing, year: 1996, type: music_video, url: null, channel: null, director: Marcos Siega}
+
+  - title: "Volume 8: The Threat Is Real"
+    slug: volume-8-the-threat-is-real
+    type: studio
+    release_date: 1998-06-11
+    year: 1998
+    label: Ignition
+    mb_release_group_id: 1da85c79-a271-34b3-9bb7-03424b2edf1b
+    cover:
+      url: https://coverartarchive.org/release-group/1da85c79-a271-34b3-9bb7-03424b2edf1b/front-500
+      file: covers/volume-8-the-threat-is-real.jpg
+    tracks:
+      - {n: 1, title: Crush, duration: "4:21"}
+      - {n: 2, title: Catharsis, duration: "4:54"}
+      - {n: 3, title: Inside Out, duration: "5:31"}
+      - {n: 4, title: Piss 'n' Vinegar, duration: "3:13"}
+      - {n: 5, title: "604", duration: "0:35"}
+      - {n: 6, title: Toast to the Extras, duration: "4:25"}
+      - {n: 7, title: Born Again Idiot, duration: "4:17"}
+      - {n: 8, title: Killing Box, duration: "3:38"}
+      - {n: 9, title: Harms Way, duration: "5:14"}
+      - {n: 10, title: Hog Tied, duration: "4:36"}
+      - {n: 11, title: Big Fat, duration: "6:01"}
+      - {n: 12, title: Cupajoe, duration: "0:46"}
+      - {n: 13, title: Alpha Male, duration: "3:05"}
+      - {n: 14, title: Stealing From a Thief / Pieces, duration: "13:02"}
+    videos:
+      - {title: Inside Out, year: 1998, type: music_video, url: null, channel: null, director: null}
+
+  - title: We've Come for You All
+    slug: weve-come-for-you-all
+    type: studio
+    release_date: 2003-02-14
+    year: 2003
+    label: Sanctuary
+    mb_release_group_id: 6aa334a0-a473-389b-98d4-87dcc9810a26
+    cover:
+      url: https://coverartarchive.org/release-group/6aa334a0-a473-389b-98d4-87dcc9810a26/front-500
+      file: covers/weve-come-for-you-all.jpg
+    tracks:
+      - {n: 1, title: Contact, duration: "1:16"}
+      - {n: 2, title: What Doesn't Die, duration: "4:09"}
+      - {n: 3, title: Superhero, duration: "4:03"}
+      - {n: 4, title: Refuse to Be Denied, duration: "3:20"}
+      - {n: 5, title: Safe Home, duration: "5:11"}
+      - {n: 6, title: Any Place but Here, duration: "5:49"}
+      - {n: 7, title: Nobody Knows Anything, duration: "2:57"}
+      - {n: 8, title: Strap It On, duration: "3:31"}
+      - {n: 9, title: Black Dahlia, duration: "2:39"}
+      - {n: 10, title: Cadillac Rock Box, duration: "3:41"}
+      - {n: 11, title: Taking the Music Back, duration: "3:10"}
+      - {n: 12, title: Crash, duration: "0:59"}
+      - {n: 13, title: Think About an End, duration: "5:09"}
+      - {n: 14, title: W.C.F.Y.A., duration: "7:19"}
+      - {n: 15, title: We're a Happy Family, duration: "2:01"}
+    videos:
+      - {title: Safe Home, year: 2003, type: music_video, url: "https://www.youtube.com/watch?v=G8SM_Hr1Ldk", channel: Nuclear Blast Records, director: Robert Carlsen}
+      - {title: Taking the Music Back, year: 2003, type: music_video, url: "https://www.youtube.com/watch?v=W9G38h_Pi1s", channel: Nuclear Blast Records, director: null}
+      - {title: What Doesn't Die, year: 2004, type: music_video, url: "https://www.youtube.com/watch?v=FI83RFPXw5s", channel: Nuclear Blast Records, director: Michael John Sarna}
+
+  - title: Worship Music
+    slug: worship-music
+    type: studio
+    release_date: 2011-09-13
+    year: 2011
+    label: Megaforce
+    mb_release_group_id: f9884e4f-663b-4c85-9751-da46ae668cb1
+    cover:
+      url: https://coverartarchive.org/release-group/f9884e4f-663b-4c85-9751-da46ae668cb1/front-500
+      file: covers/worship-music.jpg
+    tracks:
+      - {n: 1, title: Worship, duration: "1:40"}
+      - {n: 2, title: Earth on Hell, duration: "3:10"}
+      - {n: 3, title: The Devil You Know, duration: "4:46"}
+      - {n: 4, title: Fight 'Em 'Til You Can't, duration: "5:48"}
+      - {n: 5, title: I'm Alive, duration: "5:36"}
+      - {n: 6, title: Hymn 1, duration: "0:38"}
+      - {n: 7, title: In the End, duration: "6:48"}
+      - {n: 8, title: The Giant, duration: "3:47"}
+      - {n: 9, title: Hymn 2, duration: "0:44"}
+      - {n: 10, title: Judas Priest, duration: "6:24"}
+      - {n: 11, title: Crawl, duration: "5:29"}
+      - {n: 12, title: The Constant, duration: "5:01"}
+      - {n: 13, title: Revolution Screams, duration: "6:08"}
+      - {n: 14, title: New Noise, duration: "4:46"}
+    videos:
+      - {title: The Devil You Know, year: 2012, type: music_video, url: "https://www.youtube.com/watch?v=N8FxwSGNBZA", channel: Anthrax, director: null}
+      - {title: Fight 'Em 'Til You Can't, year: 2011, type: lyric_video, url: "https://www.youtube.com/watch?v=XMdO8BtovgU", channel: Nuclear Blast Records, director: null}
+      - {title: In the End, year: 2017, type: music_video, url: "https://www.youtube.com/watch?v=IyPZG6YGCqk", channel: Anthrax, director: Matt Hanaran}
+
+  - title: For All Kings
+    slug: for-all-kings
+    type: studio
+    release_date: 2016-02-26
+    year: 2016
+    label: Megaforce
+    mb_release_group_id: 7962a2c6-fb24-45da-925c-b00835408474
+    cover:
+      url: https://coverartarchive.org/release-group/7962a2c6-fb24-45da-925c-b00835408474/front-500
+      file: covers/for-all-kings.jpg
+    tracks:
+      - {n: 1, title: You Gotta Believe, duration: "7:32"}
+      - {n: 2, title: Monster at the End, duration: "3:55"}
+      - {n: 3, title: For All Kings, duration: "5:00"}
+      - {n: 4, title: Breathing Lightning, duration: "6:33"}
+      - {n: 5, title: Suzerain, duration: "4:53"}
+      - {n: 6, title: Evil Twin, duration: "4:40"}
+      - {n: 7, title: Blood Eagle Wings, duration: "7:53"}
+      - {n: 8, title: Defend Avenge, duration: "5:13"}
+      - {n: 9, title: All of Them Thieves, duration: "5:14"}
+      - {n: 10, title: This Battle Chose Us, duration: "4:53"}
+      - {n: 11, title: Zero Tolerance, duration: "3:48"}
+      - {n: 12, title: Vice of the People, duration: "5:19"}
+      - {n: 13, title: Carry on a Wayward Son, duration: "5:24"}
+    videos:
+      - {title: Evil Twin, year: 2015, type: lyric_video, url: "https://www.youtube.com/watch?v=xPmLkF3e6Fc", channel: Anthrax, director: null}
+      - {title: Breathing Lightning, year: 2016, type: lyric_video, url: "https://www.youtube.com/watch?v=rKh2Hb7mcU0", channel: Anthrax, director: null}
+      - {title: Blood Eagle Wings, year: 2016, type: music_video, url: "https://www.youtube.com/watch?v=DFEgzGFuWGc", channel: Megaforce Records, director: Jack Bennett}
+      - {title: Zero Tolerance, year: 2016, type: lyric_video, url: "https://www.youtube.com/watch?v=T1_HKsoql1Y", channel: AnthraxVEVO, director: null}
+      - {title: Monster at the End, year: 2016, type: music_video, url: "https://www.youtube.com/watch?v=vcseSPDpslg", channel: AnthraxVEVO, director: null}
+      - {title: Suzerain, year: 2016, type: lyric_video, url: "https://www.youtube.com/watch?v=6ojuQ4HGzp0", channel: AnthraxVEVO, director: null}
+
+  - title: Cursum Perficio
+    slug: cursum-perficio
+    type: studio
+    status: upcoming            # ainda não lançado (previsto 2026-09-18)
+    release_date: 2026-09-18
+    year: 2026
+    label: Megaforce (América do Norte) / Nuclear Blast (Europa)
+    mb_release_group_id: 8ec7ac16-5003-42d3-9f5e-1475f9a9d428
+    cover:
+      url: https://coverartarchive.org/release-group/8ec7ac16-5003-42d3-9f5e-1475f9a9d428/front-500
+      file: covers/cursum-perficio.jpg
+    tracks:                      # durações ainda não divulgadas
+      - {n: 1, title: Persistence of Memory, duration: null}
+      - {n: 2, title: The Long Goodbye, duration: null}
+      - {n: 3, title: It's for the Kids, duration: null}
+      - {n: 4, title: Everybody's Got a Plan, duration: null}
+      - {n: 5, title: The Edge of Perfection, duration: null}
+      - {n: 6, title: Infectious, duration: null}
+      - {n: 7, title: NYC93, duration: null}
+      - {n: 8, title: Cursum Perficio, duration: null}
+      - {n: 9, title: T.O.M.B, duration: null}
+      - {n: 10, title: Watch It Go, duration: null}
+      - {n: 11, title: My Victory, duration: null}
+    videos:
+      - {title: It's for the Kids, year: 2026, type: music_video, url: "https://www.youtube.com/watch?v=Pj5u8OagODo", channel: AnthraxVEVO, director: null}
+      - {title: The Edge of Perfection, year: 2026, type: music_video, url: "https://www.youtube.com/watch?v=uqbhWhN4F74", channel: Anthrax, director: Joel Harlow}
+    notes: >
+      Primeiro álbum de estúdio em 10 anos. Produção de Jay Ruston; mixagem no
+      Studio 606 (Dave Grohl). Tracklist conforme MusicBrainz/anúncio oficial.
+
+  # ------------------------------------------------------------------ LIVE --
+  - title: "Live: The Island Years"
+    slug: live-the-island-years
+    type: live
+    release_date: 1994-04-05
+    year: 1994
+    label: Island
+    mb_release_group_id: 54dfb25b-2c9f-3156-8913-1d9e8720dbe0
+    cover:
+      url: https://coverartarchive.org/release-group/54dfb25b-2c9f-3156-8913-1d9e8720dbe0/front-500
+      file: covers/live-the-island-years.jpg
+    tracks:
+      - {n: 1, title: Efilnikufesin (N.F.L.), duration: "6:25"}
+      - {n: 2, title: A.I.R., duration: "3:16"}
+      - {n: 3, title: Parasite, duration: "4:26"}
+      - {n: 4, title: Keep It in the Family, duration: "7:46"}
+      - {n: 5, title: Caught in a Mosh, duration: "5:39"}
+      - {n: 6, title: Indians, duration: "6:48"}
+      - {n: 7, title: Antisocial, duration: "6:37"}
+      - {n: 8, title: Bring the Noise, duration: "7:40"}
+      - {n: 9, title: I Am the Law, duration: "6:07"}
+      - {n: 10, title: Metal Thrashing Mad, duration: "2:49"}
+      - {n: 11, title: In My World, duration: "6:38"}
+      - {n: 12, title: Now It's Dark, duration: "5:50"}
+    videos: []
+
+  - title: Music of Mass Destruction
+    slug: music-of-mass-destruction
+    type: live
+    release_date: 2004-04-20
+    year: 2004
+    label: Sanctuary
+    mb_release_group_id: 132441c7-bf8e-3005-b2ff-9ca13a265639
+    cover:
+      url: https://coverartarchive.org/release-group/132441c7-bf8e-3005-b2ff-9ca13a265639/front-500
+      file: covers/music-of-mass-destruction.jpg
+    tracks:                      # CD; a edição original inclui DVD bônus
+      - {n: 1, title: What Doesn't Die, duration: "5:27"}
+      - {n: 2, title: Got the Time, duration: "3:25"}
+      - {n: 3, title: Caught in a Mosh, duration: "5:28"}
+      - {n: 4, title: Safe Home, duration: "5:37"}
+      - {n: 5, title: Room for One More, duration: "5:53"}
+      - {n: 6, title: Antisocial, duration: "4:51"}
+      - {n: 7, title: Nobody Knows Anything, duration: "4:04"}
+      - {n: 8, title: Fueled, duration: "4:26"}
+      - {n: 9, title: Inside Out, duration: "5:47"}
+      - {n: 10, title: Refuse to Be Denied, duration: "5:11"}
+      - {n: 11, title: I Am the Law, duration: "6:10"}
+      - {n: 12, title: Only, duration: "5:28"}
+    videos: []
+
+  - title: Alive 2
+    slug: alive-2
+    type: live
+    release_date: 2005-09-20
+    year: 2005
+    label: Sanctuary
+    mb_release_group_id: a7e12df2-336b-3b55-9467-9fda9c0a0f40
+    cover:
+      url: https://coverartarchive.org/release-group/a7e12df2-336b-3b55-9467-9fda9c0a0f40/front-500
+      file: covers/alive-2.jpg
+    tracks:
+      - {n: 1, title: Among the Living, duration: "5:29"}
+      - {n: 2, title: Caught in a Mosh, duration: "5:43"}
+      - {n: 3, title: A.I.R., duration: "6:21"}
+      - {n: 4, title: Antisocial, duration: "6:05"}
+      - {n: 5, title: Efilnikufesin (N.F.L.), duration: "5:59"}
+      - {n: 6, title: Deathrider, duration: "3:37"}
+      - {n: 7, title: Medusa, duration: "4:59"}
+      - {n: 8, title: In My World, duration: "6:09"}
+      - {n: 9, title: Indians, duration: "7:44"}
+      - {n: 10, title: Time, duration: "6:55"}
+      - {n: 11, title: Metal Thrashing Mad, duration: "2:42"}
+      - {n: 12, title: Be All End All, duration: "7:44"}
+      - {n: 13, title: I Am the Law, duration: "7:04"}
+    videos:
+      - {title: Caught in a Mosh (live), year: 2005, type: live_video, url: "https://www.youtube.com/watch?v=WgP6liQOozk", channel: Nuclear Blast Records, director: Dale Resteghini}
+
+  - title: "Caught in a Mosh: BBC Live in Concert"
+    slug: caught-in-a-mosh-bbc-live-in-concert
+    type: live
+    release_date: 2007-01-22
+    year: 2007
+    label: Universal
+    mb_release_group_id: ddcc7067-8ea2-4736-a668-bae8e36997f2
+    cover:
+      url: https://coverartarchive.org/release-group/ddcc7067-8ea2-4736-a668-bae8e36997f2/front-500
+      file: covers/caught-in-a-mosh-bbc-live-in-concert.jpg
+    tracks:                      # 2 discos (gravações BBC 1987/1994)
+      - {n: 1, title: A.I.R., duration: "6:46"}
+      - {n: 2, title: Metal Thrashing Mad, duration: "3:11"}
+      - {n: 3, title: Panic, duration: "3:13"}
+      - {n: 4, title: The Enemy, duration: "6:07"}
+      - {n: 5, title: I Am the Law, duration: "5:44"}
+      - {n: 6, title: Madhouse, duration: "8:35"}
+      - {n: 7, title: Howling Furies, duration: "4:14"}
+      - {n: 8, title: Medusa, duration: "5:09"}
+      - {n: 9, title: Armed and Dangerous, duration: "4:53"}
+      - {n: 10, title: Sabbath Bloody Sabbath, duration: "5:29"}
+      - {n: 11, title: God Save the Queen, duration: "2:57"}
+      - {n: 12, title: Gung-Ho, duration: "5:55"}
+      - {n: 13, title: Among the Living, duration: "4:23"}
+      - {n: 14, title: Caught in a Mosh, duration: "5:10"}
+      - {n: 15, title: Madhouse, duration: "4:01"}
+      - {n: 16, title: I Am the Law, duration: "5:41"}
+      - {n: 17, title: Medusa, duration: "4:21"}
+      - {n: 18, title: Indians, duration: "5:37"}
+      - {n: 19, title: God Save the Queen, duration: "3:10"}
+      - {n: 20, title: A.I.R., duration: "4:16"}
+      - {n: 21, title: I'm the Man, duration: "3:56"}
+    videos: []
+
+  - title: "The Big 4: Live from Sofia, Bulgaria"
+    slug: the-big-4-live-from-sofia-bulgaria
+    type: live
+    release_date: 2010-10-29
+    year: 2010
+    label: Warner Bros. / Universal
+    mb_release_group_id: 0ad18f14-c0bc-4046-92fd-1e94e97c0ac1
+    cover:
+      url: https://coverartarchive.org/release-group/0ad18f14-c0bc-4046-92fd-1e94e97c0ac1/front-500
+      file: covers/the-big-4-live-from-sofia-bulgaria.jpg
+    tracks:                      # apenas o set do Anthrax (lançamento conjunto
+                                 # com Metallica, Slayer e Megadeth)
+      - {n: 1, title: Caught in a Mosh, duration: "6:04"}
+      - {n: 2, title: Got the Time, duration: "3:43"}
+      - {n: 3, title: Madhouse, duration: "4:25"}
+      - {n: 4, title: "Be All, End All", duration: "8:01"}
+      - {n: 5, title: Antisocial, duration: "6:37"}
+      - {n: 6, title: Indians / Heaven and Hell, duration: "10:10"}
+      - {n: 7, title: Medusa, duration: "5:53"}
+      - {n: 8, title: Only, duration: "6:46"}
+      - {n: 9, title: Metal Thrashing Mad, duration: "3:27"}
+      - {n: 10, title: I Am the Law, duration: "8:14"}
+    videos: []
+    notes: Lançamento conjunto dos Big 4; listado aqui apenas o set do Anthrax.
+
+  - title: Chile on Hell
+    slug: chile-on-hell
+    type: live
+    release_date: 2014-09-16
+    year: 2014
+    label: Nuclear Blast
+    mb_release_group_id: 35298f8e-e365-4f1d-800a-a5e79bf3c50a
+    cover:
+      url: https://coverartarchive.org/release-group/35298f8e-e365-4f1d-800a-a5e79bf3c50a/front-500
+      file: covers/chile-on-hell.jpg
+    tracks:
+      - {n: 1, title: Among the Living, duration: "5:41"}
+      - {n: 2, title: Caught in a Mosh, duration: "5:58"}
+      - {n: 3, title: I Am the Law, duration: "6:21"}
+      - {n: 4, title: Chile on Hell, duration: "0:37"}
+      - {n: 5, title: Efilgnikcufecin (N.F.L.), duration: "6:28"}
+      - {n: 6, title: A Skeleton in the Closet, duration: "6:46"}
+      - {n: 7, title: March of the S.O.D., duration: "1:43"}
+      - {n: 8, title: Years of Anthrax, duration: "2:31"}
+      - {n: 9, title: In the End, duration: "7:35"}
+      - {n: 10, title: T.N.T. (AC/DC cover), duration: "4:35"}
+      - {n: 11, title: I'm Alive, duration: "6:13"}
+      - {n: 12, title: Indians, duration: "8:52"}
+      - {n: 13, title: Metal Masters, duration: "2:17"}
+      - {n: 14, title: Medusa, duration: "5:35"}
+      - {n: 15, title: In My World, duration: "7:19"}
+      - {n: 16, title: Fight 'Em 'Til You Can't, duration: "6:32"}
+      - {n: 17, title: The Scene, duration: "2:18"}
+      - {n: 18, title: I'm the Man, duration: "4:33"}
+      - {n: 19, title: Madhouse, duration: "4:14"}
+      - {n: 20, title: Antisocial, duration: "8:32"}
+      - {n: 21, title: Credit Sequence, duration: "3:40"}
+      - {n: 22, title: Righteous Scheduling, duration: "2:34"}
+    videos:
+      - {title: A Skeleton in the Closet (live), year: 2014, type: live_video, url: "https://www.youtube.com/watch?v=L3XvN9f4ulc", channel: Nuclear Blast Records, director: null}
+
+  - title: Kings Among Scotland
+    slug: kings-among-scotland
+    type: live
+    release_date: 2018-04-27
+    year: 2018
+    label: Nuclear Blast
+    mb_release_group_id: 9dcdb6d3-884a-43f1-a1ba-5f7a761dfb40
+    cover:
+      url: https://coverartarchive.org/release-group/9dcdb6d3-884a-43f1-a1ba-5f7a761dfb40/front-500
+      file: covers/kings-among-scotland.jpg
+    tracks:
+      - {n: 1, title: A.I.R., duration: "7:19"}
+      - {n: 2, title: Madhouse, duration: "4:37"}
+      - {n: 3, title: Evil Twin, duration: "5:26"}
+      - {n: 4, title: Medusa, duration: "5:21"}
+      - {n: 5, title: Blood Eagle Wings, duration: "7:49"}
+      - {n: 6, title: Fight 'Em 'Til You Can't, duration: "6:22"}
+      - {n: 7, title: "Be All, End All", duration: "8:06"}
+      - {n: 8, title: Breathing Lightning, duration: "6:20"}
+      - {n: 9, title: Among the Living, duration: "4:56"}
+      - {n: 10, title: Caught in a Mosh, duration: "6:13"}
+      - {n: 11, title: One World, duration: "6:18"}
+      - {n: 12, title: I Am the Law, duration: "6:33"}
+      - {n: 13, title: A Skeleton in the Closet, duration: "6:53"}
+      - {n: 14, title: Efilnikufesin, duration: "6:39"}
+      - {n: 15, title: A.D.I. / Horror of It All, duration: "10:26"}
+      - {n: 16, title: Indians, duration: "10:34"}
+      - {n: 17, title: Imitation of Life, duration: "5:52"}
+      - {n: 18, title: Antisocial, duration: "7:30"}
+    videos: []
+
+  - title: "XL"
+    slug: xl
+    type: live
+    release_date: 2022-07-15
+    year: 2022
+    label: Nuclear Blast
+    mb_release_group_id: 9ec5a410-d26c-47f3-9ee1-92d1b599ac4a
+    cover:
+      url: https://coverartarchive.org/release-group/9ec5a410-d26c-47f3-9ee1-92d1b599ac4a/front-500
+      file: covers/xl.jpg
+    tracks:                      # show de 40 anos (streaming 2021)
+      - {n: 1, title: Time Intro / Fight 'Em 'Til You Can't, duration: "7:09"}
+      - {n: 2, title: Madhouse, duration: "4:10"}
+      - {n: 3, title: Caught in a Mosh, duration: "5:36"}
+      - {n: 4, title: Metal Thrashing Mad, duration: "2:47"}
+      - {n: 5, title: Got the Time, duration: "3:19"}
+      - {n: 6, title: I Am the Law, duration: "6:08"}
+      - {n: 7, title: Keep It in the Family, duration: "7:42"}
+      - {n: 8, title: Lone Justice, duration: "4:50"}
+      - {n: 9, title: The Devil You Know, duration: "4:51"}
+      - {n: 10, title: Be All End All, duration: "6:37"}
+      - {n: 11, title: Now It's Dark, duration: "6:11"}
+      - {n: 12, title: Antisocial, duration: "4:39"}
+      - {n: 13, title: In the End, duration: "7:40"}
+      - {n: 14, title: Medusa, duration: "5:02"}
+      - {n: 15, title: Evil Twin, duration: "4:48"}
+      - {n: 16, title: Indians, duration: "6:29"}
+      - {n: 17, title: A Skeleton in the Closet, duration: "6:11"}
+      - {n: 18, title: Aftershock, duration: "4:21"}
+      - {n: 19, title: Blood Eagle Wings, duration: "7:44"}
+      - {n: 20, title: Bring the Noise, duration: "4:03"}
+      - {n: 21, title: A.I.R., duration: "6:29"}
+      - {n: 22, title: Among the Living, duration: "6:08"}
+      - {n: 23, title: Breathing Lightning, duration: "5:32"}
+      - {n: 24, title: Protest and Survive, duration: "2:28"}
+      - {n: 25, title: Efilnikufesin (N.F.L.), duration: "5:34"}
+    videos:
+      - {title: Bring the Noise (live), year: 2022, type: live_video, url: "https://www.youtube.com/watch?v=DKan0kfspTM", channel: Anthrax, director: null}
+
+# Vídeos oficiais ligados a EPs/coletâneas (fora do escopo studio+live):
+extra_videos:
+  - {title: I'm the Man, year: 1987, release: "I'm the Man (EP)", type: music_video, url: "https://www.youtube.com/watch?v=GiHdr4rWG98", channel: AnthraxVEVO, director: John Mills}
+  - {title: Bring the Noise (com Public Enemy), year: 1991, release: "Attack of the Killer B's (coletânea)", type: music_video, url: "https://www.youtube.com/watch?v=kl1hgXfX5-U", channel: Anthrax, director: Mick Mayhew e Parris Mayhew}
+  - {title: Deathrider, year: 2004, release: "The Greater of Two Evils (regravações)", type: music_video, url: "https://www.youtube.com/watch?v=WCN3uGx--Yg", channel: Nuclear Blast Records, director: null}
+
+# Fotos oficiais de divulgação lançadas em 2026 (ciclo do Cursum Perficio):
+press_photos_2026:
+  - file: photos/anthrax-2026-press-may.jpg
+    url: https://assets.blabbermouth.net/media/anthraxmay2026press_638.jpg
+    credit: Travis Shinn
+    released: 2026-05
+    context: Anúncio do álbum Cursum Perficio / single "It's for the Kids"
+    source_article: https://blabbermouth.net/news/anthrax-announces-new-album-cursum-perficio-shares-first-single-and-video-its-for-the-kids
+    width: 638
+  - file: photos/anthrax-2026-press-july.jpg
+    url: https://assets.blabbermouth.net/media/anthraxpressjuly2026_638.jpg
+    credit: Travis Shinn
+    released: 2026-07
+    context: Lançamento do single/vídeo "The Edge of Perfection"
+    source_article: https://blabbermouth.net/news/anthrax-shares-music-video-for-the-edge-of-perfection-single-from-upcoming-cursum-perficio-album
+    width: 638
+# Nota: 638px é a resolução distribuída à imprensa via Blabbermouth. Versões em
+# alta resolução exigem acesso ao press kit do selo (Nuclear Blast/Megaforce).

@@ -1,0 +1,330 @@
+{
+  "artist": "Anthrax",
+  "generated_at": "2026-07-15",
+  "scope": {
+    "included": "Released studio albums",
+    "album_count": 11,
+    "excluded": [
+      {
+        "title": "Cursum Perficio",
+        "reason": "Announced for 2026-09-18 and not yet released on the date this file was generated."
+      },
+      {
+        "category": "Live albums, compilations, EPs, singles and duplicate remaster/deluxe listings",
+        "reason": "The file consolidates the core studio discography and identifies the edition used by each platform."
+      }
+    ]
+  },
+  "catalog_notes": [
+    "Availability and editions can vary by country.",
+    "Brazilian storefront links were preferred. US or language-neutral links were used where a Brazilian album page was not reliably exposed.",
+    "A YouTube Music search fallback is identified explicitly when a stable official album playlist URL could not be verified.",
+    "Deluxe, expanded or remastered editions are identified in each platform entry when they differ from the original album edition."
+  ],
+  "official_channels": {
+    "spotify": "https://open.spotify.com/artist/3JysSUOyfVs1UQ0UaESheP",
+    "apple_music": "https://music.apple.com/us/artist/anthrax/80417",
+    "deezer": "https://www.deezer.com/en/artist/3580",
+    "youtube_music": "https://music.youtube.com/@AnthraxBandOfficial",
+    "youtube": "https://www.youtube.com/channel/UCAaoOvkl49ngKzomWxpjzGg"
+  },
+  "albums": [
+    {
+      "title": "Fistful of Metal",
+      "year": 1984,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/1xg9CNkTZ6zxN48GxyjANK",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/fistful-of-metal/932619879",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/br/album/9351464",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://music.youtube.com/search?q=Anthrax%20Fistful%20of%20Metal",
+          "edition": "standard",
+          "link_type": "youtube_music_search_fallback",
+          "direct_album_page_verified": false
+        }
+      }
+    },
+    {
+      "title": "Spreading the Disease",
+      "year": 1985,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/0qEFMrunmeRHqzI9xAnu9L",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/spreading-the-disease/1440847288",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/br/album/125789",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_mdXOejOusvUUgUSBGkN_gJgbWDOWMx4X0",
+          "edition": "standard",
+          "link_type": "youtube_music_album",
+          "direct_album_page_verified": true
+        }
+      }
+    },
+    {
+      "title": "Among the Living",
+      "year": 1987,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/4Y2jEzU70sLpTCMCl6JE0t",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/among-the-living/1440824574",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/br/album/119067",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://music.youtube.com/search?q=Anthrax%20Among%20the%20Living",
+          "edition": "standard",
+          "link_type": "youtube_music_search_fallback",
+          "direct_album_page_verified": false
+        }
+      }
+    },
+    {
+      "title": "State of Euphoria",
+      "year": 1988,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/3dy6mgYszZm3noUMEgWYGE",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/state-of-euphoria/1442459723",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/br/album/245775",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_kfSBzHmBmnKdVjqcihfyx2v-OBdTNluIU",
+          "edition": "standard",
+          "link_type": "youtube_music_album",
+          "direct_album_page_verified": true
+        }
+      }
+    },
+    {
+      "title": "Persistence of Time",
+      "year": 1990,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/5dTWuMi1JUNNAgqdOfBsuQ",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/persistence-of-time/1531807492",
+          "edition": "remastered catalog edition",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/br/album/174179242",
+          "edition": "30th anniversary remastered edition",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://music.youtube.com/search?q=Anthrax%20Persistence%20of%20Time",
+          "edition": "catalog edition",
+          "link_type": "youtube_music_search_fallback",
+          "direct_album_page_verified": false
+        }
+      }
+    },
+    {
+      "title": "Sound of White Noise",
+      "year": 1993,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/671Dv2eT2ovV33M4UtQnMJ",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/sound-of-white-noise-deluxe-edition/932602233",
+          "edition": "deluxe edition",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/br/album/9353244",
+          "edition": "expanded edition",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://music.youtube.com/search?q=Anthrax%20Sound%20of%20White%20Noise",
+          "edition": "catalog edition",
+          "link_type": "youtube_music_search_fallback",
+          "direct_album_page_verified": false
+        }
+      }
+    },
+    {
+      "title": "Stomp 442",
+      "year": 1995,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/4Jn7ICuweRDMzz37hztARn",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/us/album/stomp-442-deluxe-edition/932599842",
+          "edition": "deluxe edition",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/en/album/90897052",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_nIXyt2us1GjHz1CI9j_9jS2mr6OBQHIfw",
+          "edition": "expanded edition",
+          "link_type": "youtube_music_album",
+          "direct_album_page_verified": true
+        }
+      }
+    },
+    {
+      "title": "Volume 8: The Threat Is Real",
+      "year": 1998,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/4JLWdIRzizSmNtltk5TnO6",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/volume-8-the-threat-is-real-deluxe-edition/1466892888",
+          "edition": "deluxe edition",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/br/album/99219492",
+          "edition": "catalog edition",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://music.youtube.com/playlist?list=OLAK5uy_kvr5rqB4_lfdXKz9-XCqa0MSC7dOU5Rww",
+          "edition": "catalog edition",
+          "link_type": "youtube_music_album",
+          "direct_album_page_verified": true
+        }
+      }
+    },
+    {
+      "title": "We've Come for You All",
+      "year": 2003,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/4iM6mBL6xr6XUSPAO1u2T3",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/us/album/weve-come-for-you-all/1466891702",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/us/album/99219342",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://www.youtube.com/watch?v=GyEFk075FKY",
+          "edition": "standard",
+          "link_type": "official_full_album_stream",
+          "direct_album_page_verified": true
+        }
+      }
+    },
+    {
+      "title": "Worship Music",
+      "year": 2011,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/2FdvKC7tnsi31H8bCtgU5s",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/worship-music/1456971873",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/en/album/90903832",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://www.youtube.com/watch?v=hoFO3Um5iW4",
+          "edition": "standard",
+          "link_type": "official_full_album_stream",
+          "direct_album_page_verified": true
+        }
+      }
+    },
+    {
+      "title": "For All Kings",
+      "year": 2016,
+      "links": {
+        "spotify": {
+          "url": "https://open.spotify.com/album/3uaMUU4WpSbdlM2M3A8t4G",
+          "edition": "standard",
+          "link_type": "album"
+        },
+        "apple_music": {
+          "url": "https://music.apple.com/br/album/for-all-kings/1460462539",
+          "edition": "catalog edition",
+          "link_type": "album"
+        },
+        "deezer": {
+          "url": "https://www.deezer.com/en/album/94349102",
+          "edition": "catalog edition",
+          "link_type": "album"
+        },
+        "youtube": {
+          "url": "https://www.youtube.com/watch?v=MPrsfSurOps",
+          "edition": "standard",
+          "link_type": "official_full_album_stream",
+          "direct_album_page_verified": true
+        }
+      }
+    }
+  ]
+}

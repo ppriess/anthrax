@@ -13,7 +13,7 @@ export function SearchBar({ placeholder }: { placeholder: string }) {
   return (
     <label
       id="busca"
-      className="flex w-[280px] items-center gap-2 border-2 border-ink bg-white px-3 py-[7px] shadow-[3px_3px_0_#151318] focus-within:shadow-[3px_3px_0_#E8B71A]"
+      className="flex w-[280px] items-center gap-2 border-2 border-ink bg-card-paper px-3 py-[7px] shadow-[3px_3px_0_var(--color-ink)] focus-within:shadow-[3px_3px_0_var(--color-signal)]"
     >
       <span className="text-sm text-ink">⌕</span>
       <input

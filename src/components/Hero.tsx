@@ -24,12 +24,12 @@ export function Hero({
 
         {/* cover: capa do álbum, sempre imagem/placeholder */}
         <div className="relative">
-          <div className="hatch-dark-45 flex h-[420px] rotate-[1.2deg] items-center justify-center border-4 border-black shadow-[8px_8px_0_#2E7D4F]">
+          <div className="hatch-dark-45 flex h-[420px] rotate-[1.2deg] items-center justify-center border-4 border-hardline shadow-[8px_8px_0_var(--color-brasil-paper)]">
             <span className="border border-dashed border-border-dark-2 bg-ink px-[10px] py-[5px] font-mono text-xs text-on-dark-3">
               {hero.cover.placeholder}
             </span>
           </div>
-          <div className="absolute left-[-14px] top-[-12px] -rotate-[5deg] border-2 border-black bg-paper px-3 py-[6px] font-marker text-[15px] text-ink">
+          <div className="absolute left-[-14px] top-[-12px] -rotate-[5deg] border-2 border-hardline bg-paper px-3 py-[6px] font-marker text-[15px] text-ink">
             {hero.cover.sticker}
           </div>
           {/* translucent tape */}

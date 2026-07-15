@@ -123,19 +123,30 @@ export async function deleteNewsItem(id: string) {
 
 export async function saveVideo(id: string | null, formData: FormData) {
   const tv = await readContentFile<Tv>("tv.json");
+  const idx = id ? tv.videos.findIndex((v) => v.id === id) : -1;
+  if (id && idx === -1) throw new Error("Vídeo não encontrado");
+  const prev = idx !== -1 ? tv.videos[idx] : undefined;
   const title = str(formData, "title");
+  const videoType = str(formData, "videoType");
   const item: Video = {
+    ...prev,
     id: id ?? uniqueSlug(slugify(title), tv.videos.map((v) => v.id)),
     title,
     meta: str(formData, "meta"),
     duration: optStr(formData, "duration"),
     brasil: bool(formData, "brasil"),
     sourceUrl: optStr(formData, "sourceUrl"),
+    year: optStr(formData, "year"),
+    videoType:
+      videoType === "music_video" ||
+      videoType === "lyric_video" ||
+      videoType === "live_video"
+        ? videoType
+        : undefined,
+    albumSlug: optStr(formData, "albumSlug"),
   };
 
-  if (id) {
-    const idx = tv.videos.findIndex((v) => v.id === id);
-    if (idx === -1) throw new Error("Vídeo não encontrado");
+  if (idx !== -1) {
     tv.videos[idx] = item;
   } else {
     tv.videos.unshift(item);
@@ -417,27 +428,55 @@ export async function saveMembrosIntro(formData: FormData) {
   const membros = await readContentFile<Membros>("membros.json");
   membros.title = str(formData, "title");
   membros.subtitle = str(formData, "subtitle");
+  membros.photo = optStr(formData, "photo");
+  membros.photoCredit = optStr(formData, "photoCredit");
   await writeContentFile("membros.json", membros);
   revalidateAll("/admin/membros");
 }
 
 // ---------- banda: álbuns ----------
 
+// textarea "uma faixa por linha", formato "Título | 3:10" (duração opcional).
+// Textarea vazia limpa a tracklist — o form vem preenchido, então apagar tudo
+// é um gesto explícito.
+function parseTracks(text: string): AlbumItem["tracks"] {
+  const lines = text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+  if (lines.length === 0) return undefined;
+  return lines.map((line, i) => {
+    const [title, duration] = line.split("|").map((p) => p.trim());
+    return { n: i + 1, title, duration: duration || undefined };
+  });
+}
+
 export async function saveAlbum(id: string | null, formData: FormData) {
   const albuns = await readContentFile<Albuns>("albuns.json");
+  const idx = id ? albuns.items.findIndex((a) => a.id === id) : -1;
+  if (id && idx === -1) throw new Error("Álbum não encontrado");
+  // parte do item existente (spread) pra não perder campos que o form ainda
+  // não conheça
+  const prev = idx !== -1 ? albuns.items[idx] : undefined;
   const title = str(formData, "title");
+  const albumType = str(formData, "albumType");
   const item: AlbumItem = {
+    ...prev,
     id: id ?? uniqueSlug(slugify(title), albuns.items.map((a) => a.id)),
     title,
     year: str(formData, "year"),
     label: optStr(formData, "label"),
     coverLabel: optStr(formData, "coverLabel"),
     description: optStr(formData, "description"),
+    cover: optStr(formData, "cover"),
+    albumType:
+      albumType === "studio" || albumType === "live" ? albumType : undefined,
+    releaseDate: optStr(formData, "releaseDate"),
+    tracks: parseTracks(str(formData, "tracks")),
+    upcoming: bool(formData, "upcoming") || undefined,
   };
 
-  if (id) {
-    const idx = albuns.items.findIndex((a) => a.id === id);
-    if (idx === -1) throw new Error("Álbum não encontrado");
+  if (idx !== -1) {
     albuns.items[idx] = item;
   } else {
     albuns.items.unshift(item);

@@ -2,15 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* fontes semânticas — indireção pra permitir troca de skin sem tocar componente */
+  --theme-font-display: var(--font-archivo-black);
+  --theme-font-body: var(--font-barlow);
+  --theme-font-marker: var(--font-marker);
+
+  /* paleta padrão (fanzine) */
+  --color-signal: #e8b71a;
+  --color-brasil-dark: #2e9e5b;
+  --color-brasil-paper: #2e7d4f;
+  --color-hot: #b23a2e;
+  --color-ink: #151318;
+  --color-tv-black: #0d0b10;
+  --color-card-dark: #1e1b23;
+  --color-paper: #efeae0;
+  --color-paper-hi: #3a362e;
+  --color-paper-meta: #6a655c;
+  --color-on-dark-2: #b5b0ba;
+  --color-on-dark-3: #8a8590;
+  --color-border-dark: #3a3542;
+  --color-border-dark-2: #55505c;
+  --color-card-paper: #ffffff;
+  --color-hardline: #000000;
+  --color-border-soft: #b6b0a4;
+  --color-border-soft-2: #d8d2c4;
+  --color-muted-soft: #8b8578;
+  --color-brasil-alert-bg: #1e2a20;
+}
+
+/* transmissão pirata — terminal fosforescente, monoespaçado, sinal roubado */
+[data-theme="pirate"] {
+  --theme-font-display: var(--font-jetbrains-mono);
+  --theme-font-body: var(--font-jetbrains-mono);
+  --theme-font-marker: var(--font-jetbrains-mono);
+
+  --color-signal: #ffb000;
+  --color-brasil-dark: #3ad8ff;
+  --color-brasil-paper: #1fb1dd;
+  --color-hot: #ff2b4d;
+  --color-ink: #060d08;
+  --color-tv-black: #030503;
+  --color-card-dark: #0a1610;
+  --color-paper: #d6ffe0;
+  --color-paper-hi: #163021;
+  --color-paper-meta: #2f6b47;
+  --color-on-dark-2: #7fffa0;
+  --color-on-dark-3: #4bcf7a;
+  --color-border-dark: #114420;
+  --color-border-dark-2: #1c6b34;
+  --color-card-paper: #d6ffe0;
+  --color-hardline: #39ff6a;
+  --color-border-soft: #2f6b47;
+  --color-border-soft-2: #1c6b34;
+  --color-muted-soft: #3a7a52;
+  --color-brasil-alert-bg: #08262c;
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
   }
   body {
-    background: #151318;
-    color: #efeae0;
-    /* Barlow Condensed as the UI/body face for the whole site */
-    font-family: var(--font-barlow), sans-serif;
+    background: var(--color-ink);
+    color: var(--color-paper);
+    /* Barlow Condensed as the UI/body face for the whole site (JetBrains Mono na skin pirata) */
+    font-family: var(--theme-font-body), sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 }
@@ -69,6 +126,33 @@
     background: repeating-linear-gradient(45deg, #ddd6c8 0 10px, #d2cabb 10px 20px);
   }
 
+  /* transmissão pirata — texturas viram scanline/ruído, sempre em cima da paleta atual */
+  [data-theme="pirate"] .halftone,
+  [data-theme="pirate"] .halftone-sm,
+  [data-theme="pirate"] .halftone-soft {
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.35) 0px,
+      rgba(0, 0, 0, 0.35) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    background-size: auto;
+  }
+  [data-theme="pirate"] .hatch-dark,
+  [data-theme="pirate"] .hatch-dark-45,
+  [data-theme="pirate"] .hatch-paper,
+  [data-theme="pirate"] .hatch-paper-45,
+  [data-theme="pirate"] .hatch-paper-sm {
+    background: repeating-linear-gradient(
+      0deg,
+      var(--color-card-dark) 0px,
+      var(--color-card-dark) 2px,
+      var(--color-ink) 2px,
+      var(--color-ink) 4px
+    );
+  }
+
   /* Card: rotated by default, straightens on hover (interaction spec) */
   .card-hover {
     transition: transform 150ms ease-out;
@@ -97,5 +181,77 @@
 @keyframes bar-grow {
   from {
     width: 0;
+  }
+}
+
+/* transmissão pirata — sinal roubado: sem os cortes/rotações de fanzine,
+   CRT com scanline fixa + flicker + leve aberração cromática nos títulos */
+[data-theme="pirate"] [class*="rotate"] {
+  transform: none !important;
+}
+
+[data-theme="pirate"] body {
+  animation: pirate-flicker 7s infinite;
+}
+
+.pirate-overlay {
+  display: none;
+}
+[data-theme="pirate"] .pirate-overlay {
+  display: block;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.12) 0px,
+      rgba(0, 0, 0, 0.12) 1px,
+      transparent 1px,
+      transparent 3px
+    ),
+    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.45) 100%);
+  mix-blend-mode: multiply;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-theme="pirate"] h1,
+  [data-theme="pirate"] h2 {
+    animation: pirate-glitch 9s infinite;
+  }
+}
+
+@keyframes pirate-flicker {
+  0%,
+  96%,
+  100% {
+    filter: none;
+  }
+  97% {
+    filter: brightness(1.08) contrast(1.05);
+  }
+  98% {
+    filter: brightness(0.92);
+  }
+}
+
+@keyframes pirate-glitch {
+  0%,
+  97%,
+  100% {
+    text-shadow: none;
+    transform: translate(0, 0);
+  }
+  97.5% {
+    text-shadow:
+      2px 0 var(--color-hot),
+      -2px 0 var(--color-brasil-dark);
+    transform: translate(-1px, 0);
+  }
+  98.5% {
+    text-shadow:
+      -2px 0 var(--color-hot),
+      2px 0 var(--color-brasil-dark);
+    transform: translate(1px, 0);
   }
 }

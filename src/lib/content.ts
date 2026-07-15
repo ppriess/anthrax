@@ -79,6 +79,9 @@ export type Video = {
   duration?: string;
   brasil?: boolean;
   sourceUrl?: string; // link do YouTube/Vimeo/etc.
+  year?: string;
+  videoType?: "music_video" | "lyric_video" | "live_video";
+  albumSlug?: string; // id do álbum em albuns.json, quando o clipe pertence a um
 };
 
 export type Tv = {
@@ -161,6 +164,8 @@ export type MembroItem = {
 export type Membros = {
   title: string;
   subtitle: string;
+  photo?: string; // foto de grupo real, ex.: "/albums/photos/anthrax-2026-press-july.jpg"
+  photoCredit?: string; // ex.: "Foto: Travis Shinn"
   items: MembroItem[];
 };
 
@@ -181,13 +186,53 @@ export type Substitutos = {
   curiosity?: string; // markdown — nota final tipo curiosidade
 };
 
+export type AlbumTrack = {
+  n: number;
+  title: string;
+  duration?: string;
+};
+
+// ---------- links de streaming (catálogo gerado, não editável pelo /admin —
+// vive em content/anthrax_official_streaming_links_by_album.json) ----------
+
+export type StreamingPlatform =
+  | "spotify"
+  | "apple_music"
+  | "deezer"
+  | "youtube";
+
+export type StreamingLink = {
+  url: string;
+  edition?: string;
+  link_type?: string;
+  direct_album_page_verified?: boolean;
+};
+
+export type StreamingAlbumEntry = {
+  title: string;
+  year: number;
+  links: Partial<Record<StreamingPlatform, StreamingLink>>;
+};
+
+export type StreamingLinksFile = {
+  artist: string;
+  generated_at: string;
+  official_channels: Partial<Record<StreamingPlatform, string>>;
+  albums: StreamingAlbumEntry[];
+};
+
 export type AlbumItem = {
   id: string;
   title: string;
   year: string;
   label?: string;
-  coverLabel?: string;
+  coverLabel?: string; // placeholder de texto — fallback quando não há cover
   description?: string;
+  cover?: string; // caminho da capa real, ex.: "/albums/covers/among-the-living.jpg"
+  albumType?: "studio" | "live";
+  releaseDate?: string; // ISO, ex.: "2026-09-18"
+  tracks?: AlbumTrack[];
+  upcoming?: boolean; // lançamento futuro — ganha destaque na discografia
 };
 
 export type Albuns = {

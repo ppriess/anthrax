@@ -8,9 +8,9 @@ function MemberCard({
   m: Membros["items"][number];
 }) {
   return (
-    <article className="border-2 border-black bg-white shadow-[5px_5px_0_#000]">
+    <article className="border-2 border-hardline bg-card-paper shadow-[5px_5px_0_var(--color-hardline)]">
       {m.photoLabel && (
-        <div className="hatch-paper flex h-[160px] items-center justify-center border-b-2 border-black">
+        <div className="hatch-paper flex h-[160px] items-center justify-center border-b-2 border-hardline">
           <span className="font-mono text-[11px] text-paper-meta">
             {m.photoLabel}
           </span>
@@ -57,6 +57,22 @@ export function MembrosSection({
           {membros.subtitle}
         </p>
 
+        {membros.photo && (
+          <figure className="m-0 mb-8 max-w-3xl border-2 border-hardline bg-card-paper shadow-[5px_5px_0_var(--color-hardline)]">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={membros.photo}
+              alt="Foto de grupo do Anthrax"
+              className="aspect-[4/3] w-full border-b-2 border-hardline object-cover"
+            />
+            {membros.photoCredit && (
+              <figcaption className="px-3 py-2 font-mono text-[11px] tracking-[0.1em] text-paper-meta">
+                {membros.photoCredit.toUpperCase()}
+              </figcaption>
+            )}
+          </figure>
+        )}
+
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {atuais.map((m) => (
             <MemberCard key={m.id} m={m} />
@@ -100,11 +116,11 @@ export function MembrosSection({
                 return (
                   <Wrapper
                     key={s.id}
-                    className="block border-2 border-black bg-white text-ink no-underline shadow-[5px_5px_0_#000]"
+                    className="block border-2 border-hardline bg-card-paper text-ink no-underline shadow-[5px_5px_0_var(--color-hardline)]"
                     {...linkProps}
                   >
                     {s.videoLabel && (
-                      <div className="hatch-paper relative flex h-[110px] items-center justify-center border-b-2 border-black">
+                      <div className="hatch-paper relative flex h-[110px] items-center justify-center border-b-2 border-hardline">
                         <span className="font-mono text-[10px] text-paper-meta">
                           {s.videoLabel}
                         </span>

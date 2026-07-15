@@ -26,7 +26,7 @@ export function HistoriaSection({ historia }: { historia: Historia }) {
               key={item.id}
               className={`relative pb-8 ${i === historia.timeline.length - 1 ? "pb-0" : ""}`}
             >
-              <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full border-2 border-black bg-signal" />
+              <span className="absolute -left-[31px] top-1 h-3 w-3 rounded-full border-2 border-hardline bg-signal" />
               <div className="font-display text-lg text-signal">
                 {item.year}
               </div>

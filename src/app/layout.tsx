@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { archivoBlack, barlow, permanentMarker } from "./fonts";
+import { archivoBlack, barlow, jetbrainsMono, permanentMarker } from "./fonts";
+import { ThemeProvider, themeInitScript } from "@/components/ThemeProvider";
+import { PirateOverlay } from "@/components/PirateOverlay";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,9 +16,17 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${archivoBlack.variable} ${barlow.variable} ${permanentMarker.variable}`}
+      className={`${archivoBlack.variable} ${barlow.variable} ${permanentMarker.variable} ${jetbrainsMono.variable}`}
     >
-      <body suppressHydrationWarning>{children}</body>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body suppressHydrationWarning>
+        <ThemeProvider>
+          {children}
+          <PirateOverlay />
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

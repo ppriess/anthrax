@@ -18,7 +18,7 @@ export function AlertaBrasil({
 
   if (submitted) {
     return (
-      <div className="mt-3 border-2 border-dashed border-brasil-dark bg-[#1e2a20] px-[14px] py-3">
+      <div className="mt-3 border-2 border-dashed border-brasil-dark bg-brasil-alert-bg px-[14px] py-3">
         <span className="font-marker text-sm text-brasil-dark">{confirm}</span>
       </div>
     );
@@ -30,7 +30,7 @@ export function AlertaBrasil({
         e.preventDefault();
         setSubmitted(true);
       }}
-      className="mt-3 border-2 border-dashed border-brasil-dark bg-[#1e2a20] px-[14px] py-3"
+      className="mt-3 border-2 border-dashed border-brasil-dark bg-brasil-alert-bg px-[14px] py-3"
     >
       <label className="font-marker text-sm text-brasil-dark">{alert}</label>
       <div className="mt-2 flex gap-2">

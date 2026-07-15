@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { NavItem } from "@/lib/content";
+import { SkinToggle } from "./SkinToggle";
 
 export function MobileMenu({ nav }: { nav: NavItem[] }) {
   const [open, setOpen] = useState(false);
@@ -21,10 +22,13 @@ export function MobileMenu({ nav }: { nav: NavItem[] }) {
       </button>
       {open && (
         <div className="halftone-sm absolute inset-x-0 top-full z-50 max-h-[70vh] overflow-y-auto border-b-4 border-ink bg-paper px-4 py-3">
+          <div className="border-b border-border-soft-2 pb-2">
+            <SkinToggle />
+          </div>
           {nav.map((item) => (
             <div
               key={item.label}
-              className="border-b border-[#d8d2c4] py-2 last:border-0"
+              className="border-b border-border-soft-2 py-2 last:border-0"
             >
               <a
                 href={item.href}

@@ -4,6 +4,17 @@
   "archiveCta": "ARQUIVO COMPLETO →",
   "items": [
     {
+      "id": "cursum-perficio-anuncio",
+      "source": "BLABBERMOUTH · 14 MAI",
+      "date": "2026-05-14",
+      "title": "Anthrax anuncia Cursum Perficio, 12º álbum de estúdio, para 18 de setembro",
+      "excerpt": "Primeiro disco em dez anos chega com o single \"It's for the Kids\" já no ar. Produção de Jay Ruston. Foto: Travis Shinn.",
+      "link": "https://blabbermouth.net/news/anthrax-announces-new-album-cursum-perficio-shares-first-single-and-video-its-for-the-kids",
+      "image": "/albums/photos/anthrax-2026-press-may.jpg",
+      "hot": true,
+      "variant": "feature"
+    },
+    {
       "id": "scott-ian-single",
       "source": "BLABBERMOUTH · 10 JUL",
       "date": "2026-07-10",

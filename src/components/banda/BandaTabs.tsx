@@ -10,7 +10,7 @@ export function BandaTabs({
   active: "membros" | "albuns" | "historia";
 }) {
   return (
-    <div className="flex gap-2 border-b-[3px] border-black bg-paper px-4 pt-4 md:px-10">
+    <div className="flex gap-2 border-b-[3px] border-hardline bg-paper px-4 pt-4 md:px-10">
       {tabs.map((tab) => (
         <a
           key={tab.key}

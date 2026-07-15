@@ -77,6 +77,27 @@ export default async function MembrosPage() {
             className="admin-input"
           />
         </label>
+        <label className="flex flex-col gap-1">
+          <span className="font-mono text-xs text-on-dark-3">
+            Foto de grupo (caminho/URL, opcional — ex.:
+            /albums/photos/anthrax-2026-press-july.jpg)
+          </span>
+          <input
+            name="photo"
+            defaultValue={membros.photo}
+            className="admin-input"
+          />
+        </label>
+        <label className="flex flex-col gap-1">
+          <span className="font-mono text-xs text-on-dark-3">
+            Crédito da foto (opcional, ex.: Foto: Travis Shinn)
+          </span>
+          <input
+            name="photoCredit"
+            defaultValue={membros.photoCredit}
+            className="admin-input"
+          />
+        </label>
         <button
           type="submit"
           className="mt-2 w-fit bg-signal px-5 py-2 text-sm font-bold tracking-[0.1em] text-ink"
