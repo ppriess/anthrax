@@ -14,6 +14,20 @@ export function Footer({ footer }: { footer: FooterContent }) {
           {footer.signature}
         </span>
       </div>
+      <div className="mt-3 border-t border-hardline/20 pt-3 text-center">
+        <span className="font-mono text-[11px] text-paper-hi">
+          Developed by{" "}
+          <a
+            href="https://paulopriess.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="no-underline hover:underline"
+          >
+            Paulo Priess
+          </a>{" "}
+          | © 2026 - Anthrax | 45 Anos de Anthrax
+        </span>
+      </div>
     </footer>
   );
 }
