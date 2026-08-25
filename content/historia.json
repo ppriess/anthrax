@@ -2,36 +2,172 @@
   "title": "História",
   "subtitle": "quatro décadas de thrash",
   "intro": "O Anthrax nasceu no Queens, Nova York, em 1981, e se tornou uma das **quatro grandes bandas do thrash metal** ao lado de Metallica, Megadeth e Slayer. É a única das quatro a manter uma ligação constante e afetuosa com o Brasil — presença marcante em festivais nacionais e uma base de fãs que só cresce.\n\nApós dez anos sem álbum de estúdio, a banda anuncia *Cursum Perficio* para 2026, reacendendo a expectativa de uma nova turnê sul-americana.",
+  "playlistUrl": "https://www.youtube.com/playlist?list=PLFdcG9gTDhXx7cVlxItyN-yioVPYPQGT4",
+  "playlistLabel": "Anthrax 40 anos — a história do Anthrax (playlist oficial)",
   "timeline": [
     {
       "id": "1981-fundacao",
       "year": "1981",
       "title": "Fundação",
-      "description": "Scott Ian funda o Anthrax no Queens, Nova York."
+      "description": "Scott Ian e Dan Lilker fundam o Anthrax no Queens, Nova York — o embrião da banda que viraria uma das \"quatro grandes\" do thrash metal."
+    },
+    {
+      "id": "1983-benante-megaforce",
+      "year": "1983",
+      "title": "Charlie Benante e o contrato com a Megaforce",
+      "description": "Charlie Benante assume a bateria e a banda assina com a gravadora Megaforce, selo que também lançaria o primeiro disco do Metallica."
+    },
+    {
+      "id": "1984-fistful-of-metal",
+      "year": "1984",
+      "title": "Fistful of Metal",
+      "description": "Estreia em estúdio. No mesmo ano chegam Joey Belladonna (vocal) e Frank Bello (baixo), formando o núcleo que ficaria conhecido como a formação clássica."
+    },
+    {
+      "id": "1985-spreading-the-disease",
+      "year": "1985",
+      "title": "Spreading the Disease",
+      "description": "Segundo álbum, já com a nova formação, começa a moldar o som mais técnico e agressivo que definiria a banda."
     },
     {
       "id": "1987-among-the-living",
       "year": "1987",
       "title": "Among the Living",
-      "description": "Lançamento do álbum que consolida a banda como uma das \"quatro grandes\" do thrash."
+      "description": "O álbum que consolida o Anthrax como uma das quatro grandes do thrash, com faixas como \"Indians\" e \"Caught in a Mosh\".",
+      "videoUrl": "https://www.youtube.com/watch?v=RzpRU347BDU",
+      "videoLabel": "Clipe: Indians (1987)"
     },
     {
-      "id": "1994-kisser",
-      "year": "1994–2011",
-      "title": "Irmandade com Andreas Kisser",
-      "description": "O guitarrista do Sepultura cobre a ausência de Scott Ian em shows ao longo desses anos."
+      "id": "1988-state-of-euphoria",
+      "year": "1988",
+      "title": "State of Euphoria",
+      "description": "Novo álbum de estúdio, seguido de forte presença em turnês e festivais ao lado dos outros nomes do thrash."
     },
     {
-      "id": "2004-tributo",
+      "id": "1990-persistence-of-time",
+      "year": "1990",
+      "title": "Persistence of Time",
+      "description": "Disco mais sombrio e experimental, com boa recepção de crítica e público."
+    },
+    {
+      "id": "1991-bring-the-noise",
+      "year": "1991",
+      "title": "Bring the Noise com Public Enemy",
+      "description": "Parceria com o grupo de hip hop Public Enemy regravando \"Bring the Noise\" ajuda a aproximar metal e rap, um cruzamento raro para a época."
+    },
+    {
+      "id": "1992-john-bush",
+      "year": "1992",
+      "title": "Belladonna sai, John Bush assume o vocal",
+      "description": "Joey Belladonna deixa a banda e John Bush, ex-vocalista do Armored Saint, assume o microfone — início de uma fase de mais de uma década."
+    },
+    {
+      "id": "1993-sound-of-white-noise",
+      "year": "1993",
+      "title": "Sound of White Noise",
+      "description": "Primeiro álbum com John Bush chega ao Top 10 da Billboard 200 — o melhor desempenho comercial da banda até então."
+    },
+    {
+      "id": "1995-stomp-442",
+      "year": "1995",
+      "title": "Stomp 442 e saída de Dan Spitz",
+      "description": "Novo álbum é lançado enquanto o guitarrista Dan Spitz deixa a banda."
+    },
+    {
+      "id": "1998-volume-8",
+      "year": "1998",
+      "title": "Volume 8: The Threat Is Real",
+      "description": "Disco é lançado em meio à falência da gravadora, complicando sua divulgação e desempenho comercial."
+    },
+    {
+      "id": "2001-anthrax-real",
+      "year": "2001",
+      "title": "Os ataques com antraz e o nome da banda",
+      "description": "Após os ataques com esporos de antraz pelo correio nos EUA, a banda se manifesta publicamente e decide manter o próprio nome — em uso muito antes do episódio."
+    },
+    {
+      "id": "2003-weve-come-for-you-all",
+      "year": "2003",
+      "title": "We've Come for You All",
+      "description": "Álbum de estúdio bem recebido pela crítica, reafirmando a relevância da banda no cenário metal do início dos anos 2000."
+    },
+    {
+      "id": "2004-site-anthrax-brasil",
       "year": "2004",
-      "title": "Tributo brasileiro",
-      "description": "Bandas da cena nacional gravam um disco inteiro de covers do Anthrax."
+      "title": "Estreia deste site",
+      "description": "Vai ao ar a primeira versão do Anthrax Brasil, ponto de partida do que hoje é este site."
     },
     {
-      "id": "2010-belladonna",
+      "id": "2005-reuniao-classica",
+      "year": "2005",
+      "title": "Reunião da formação clássica",
+      "description": "Ian, Benante, Spitz, Belladonna e Bello se reencontram, tocando o álbum Among the Living na íntegra em turnê. John Bush deixa a banda ao fim do período."
+    },
+    {
+      "id": "2007-nelson-tributo",
+      "year": "2007",
+      "title": "Fim da reunião, Dan Nelson anunciado, e um tributo brasileiro",
+      "description": "Belladonna recusa gravar um novo álbum, encerrando a reunião da formação clássica; Dan Nelson é anunciado como novo vocalista. No Brasil, sai a coletânea \"Indians... Not! Tributo Brasileiro ao Anthrax Vol. 1/2\", reunindo bandas nacionais regravando clássicos do Anthrax.",
+      "link": "https://www.discogs.com/release/13694579-Various-Indians--Not-Brazilian-Tribute-To-Anthrax-Vol-1-2",
+      "linkLabel": "Ver no Discogs"
+    },
+    {
+      "id": "2009-bush-sonisphere",
+      "year": "2009",
+      "title": "Saída abrupta de Nelson, Bush volta emprestado",
+      "description": "Dan Nelson deixa a banda de forma repentina. John Bush cobre a apresentação no Sonisphere UK, embalado pela campanha de fãs \"Bring Back Bush\"."
+    },
+    {
+      "id": "2010-belladonna-big-four",
       "year": "2010",
-      "title": "Volta de Joey Belladonna",
-      "description": "A formação clássica do vocal retorna à banda."
+      "title": "Belladonna volta, nasce o \"Big Four\"",
+      "description": "Joey Belladonna retorna ao vocal pela terceira vez. No Sonisphere, Anthrax, Metallica, Slayer e Megadeth dividem o palco pela primeira vez como o \"Big Four\", em show gravado em Sofia, na Bulgária."
+    },
+    {
+      "id": "2011-worship-music-kisser",
+      "year": "2011",
+      "title": "Worship Music e a cobertura de Andreas Kisser",
+      "description": "Worship Music chega ao Top 15 da Billboard e o Big Four se apresenta no Yankee Stadium. Na turnê, Andreas Kisser (Sepultura) cobre Scott Ian em shows — parceria que já vinha desde meados dos anos 1990.",
+      "videoUrl": "https://www.youtube.com/watch?v=OIio-om76Uc",
+      "videoLabel": "Vídeo: Andreas Kisser ao vivo em Gelsenkirchen (2011)"
+    },
+    {
+      "id": "2013-donais",
+      "year": "2013",
+      "title": "Rob Caggiano sai, Jonathan Donais assume",
+      "description": "Rob Caggiano deixa a banda para se dedicar ao Volbeat. Jonathan Donais, ex-Shadows Fall, entra como guitarrista de turnê e depois oficial."
+    },
+    {
+      "id": "2016-for-all-kings",
+      "year": "2016",
+      "title": "For All Kings",
+      "description": "Novo álbum de estúdio alcança o Top 10 da Billboard 200, reforçando o momento de popularidade renovada da banda."
+    },
+    {
+      "id": "2018-kings-among-scotland",
+      "year": "2018",
+      "title": "Kings Among Scotland e turnê de despedida do Slayer",
+      "description": "Sai o álbum ao vivo Kings Among Scotland, no mesmo ano em que a banda integra a turnê de despedida do Slayer."
+    },
+    {
+      "id": "2021-livestream-40-anos",
+      "year": "2021",
+      "title": "Show de transmissão dos 40 anos",
+      "description": "Para marcar quatro décadas de carreira, a banda realiza um show especial transmitido ao vivo pela internet."
+    },
+    {
+      "id": "2022-xl",
+      "year": "2022",
+      "title": "XL",
+      "description": "O álbum ao vivo XL reúne o registro do show de 40 anos, acompanhado de turnê comemorativa.",
+      "videoUrl": "https://www.youtube.com/watch?v=DKan0kfspTM",
+      "videoLabel": "Vídeo: Bring the Noise, ao vivo (2022)"
+    },
+    {
+      "id": "2024-lilker-sul-americana",
+      "year": "2024",
+      "title": "Dan Lilker volta para a turnê sul-americana",
+      "description": "O baixista original, Dan Lilker, substitui Frank Bello em parte da turnê pela América do Sul — a primeira vez que volta a tocar com a banda em 40 anos."
     },
     {
       "id": "2026-cursum-perficio",

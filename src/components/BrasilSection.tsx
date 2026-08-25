@@ -4,10 +4,13 @@ import type {
   BrasilCard,
   Quiz as QuizContent,
 } from "@/lib/content";
+import { extractYouTubeId } from "@/lib/youtube";
 import { AlertaBrasil } from "./AlertaBrasil";
 import { Quiz } from "./Quiz";
 
 function PaperCard({ card, mobile }: { card: BrasilCard; mobile?: boolean }) {
+  const ytId = card.sourceUrl ? extractYouTubeId(card.sourceUrl) : null;
+
   if (card.wide) {
     return (
       <div className="flex items-center gap-4 border-2 border-ink bg-card-paper p-[15px] [grid-column:1/-1]">
@@ -33,13 +36,34 @@ function PaperCard({ card, mobile }: { card: BrasilCard; mobile?: boolean }) {
   }
   return (
     <div className={`border-2 border-ink bg-card-paper p-3 md:p-[15px] ${mobile ? "mb-2" : ""}`}>
-      {card.photoLabel && (
+      {ytId ? (
+        <div className="mb-2 aspect-video overflow-hidden border-2 border-ink bg-ink">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
+            title={card.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="h-full w-full border-0"
+          />
+        </div>
+      ) : card.sourceUrl ? (
+        <a
+          href={card.sourceUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hatch-paper-sm mb-2 flex h-[70px] items-center justify-center border-2 border-ink no-underline md:h-[100px]"
+        >
+          <span className="font-mono text-[9px] text-paper-meta">
+            {card.photoLabel ?? "[ VIDEO ]"}
+          </span>
+        </a>
+      ) : card.photoLabel ? (
         <div className="hatch-paper-sm mb-2 flex h-[70px] items-center justify-center border-2 border-ink md:h-[100px]">
           <span className="font-mono text-[9px] text-paper-meta">
             {card.photoLabel}
           </span>
         </div>
-      )}
+      ) : null}
       <div className="mb-1 font-mono text-[10px] font-bold text-brasil-paper md:mb-[6px] md:text-[11px]">
         {mobile ? (card.labelShort ?? card.label) : card.label}
       </div>
@@ -125,8 +149,11 @@ export function BrasilSection({
           <p className="m-0 mb-3 font-marker text-[13px] text-brasil-paper">
             {brasil.subtitleShort}
           </p>
-          <PaperCard card={brasil.cards[0]} mobile />
-          <PaperCard card={brasil.cards[1]} mobile />
+          {brasil.cards
+            .filter((card) => !card.wide)
+            .map((card) => (
+              <PaperCard key={card.id} card={card} mobile />
+            ))}
         </div>
       </div>
     </section>

@@ -188,6 +188,7 @@ export async function saveBrasilCard(id: string | null, formData: FormData) {
     bodyEmphasis: optStr(formData, "bodyEmphasis"),
     wide: bool(formData, "wide"),
     photoLabel: optStr(formData, "photoLabel"),
+    sourceUrl: optStr(formData, "sourceUrl"),
     ticketLabel: optStr(formData, "ticketLabel"),
     cta: optStr(formData, "cta"),
   };
@@ -508,23 +509,31 @@ export async function saveHistoriaIntro(formData: FormData) {
   historia.title = str(formData, "title");
   historia.subtitle = str(formData, "subtitle");
   historia.intro = str(formData, "intro");
+  historia.playlistUrl = optStr(formData, "playlistUrl");
+  historia.playlistLabel = optStr(formData, "playlistLabel");
   await writeContentFile("historia.json", historia);
   revalidateAll("/admin/historia");
 }
 
 export async function saveTimelineItem(id: string | null, formData: FormData) {
   const historia = await readContentFile<Historia>("historia.json");
+  const idx = id ? historia.timeline.findIndex((t) => t.id === id) : -1;
+  if (id && idx === -1) throw new Error("Evento não encontrado");
+  const prev = idx !== -1 ? historia.timeline[idx] : undefined;
   const year = str(formData, "year");
   const item: TimelineItem = {
+    ...prev,
     id: id ?? uniqueSlug(slugify(year), historia.timeline.map((t) => t.id)),
     year,
     title: str(formData, "title"),
     description: optStr(formData, "description"),
+    videoUrl: optStr(formData, "videoUrl"),
+    videoLabel: optStr(formData, "videoLabel"),
+    link: optStr(formData, "link"),
+    linkLabel: optStr(formData, "linkLabel"),
   };
 
-  if (id) {
-    const idx = historia.timeline.findIndex((t) => t.id === id);
-    if (idx === -1) throw new Error("Evento não encontrado");
+  if (idx !== -1) {
     historia.timeline[idx] = item;
   } else {
     historia.timeline.push(item);

@@ -62,6 +62,16 @@ export function BrasilCardForm({ item }: { item?: BrasilCard }) {
       </label>
       <label className="flex flex-col gap-1">
         <span className="font-mono text-xs text-on-dark-3">
+          Link do vídeo (YouTube/Vimeo/etc. — YouTube vira embed no card)
+        </span>
+        <input
+          name="sourceUrl"
+          defaultValue={item?.sourceUrl}
+          className="admin-input"
+        />
+      </label>
+      <label className="flex flex-col gap-1">
+        <span className="font-mono text-xs text-on-dark-3">
           Placeholder de ingresso (só no card largo, ex.: [ INGRESSO ])
         </span>
         <input

@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta
+      name="description"
+      content="Machine-oriented project context for the Anthrax Brasil website."
+    >
+    <title>Anthrax Brasil — AI Agent Project Context</title>
+    <style>
+      body {
+        max-width: 76rem;
+        margin: 0 auto;
+        padding: 2rem;
+        color: #171717;
+        background: #fafafa;
+        font: 16px/1.55 system-ui, sans-serif;
+      }
+      code {
+        padding: 0.1rem 0.3rem;
+        background: #ececec;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      th,
+      td {
+        padding: 0.65rem;
+        border: 1px solid #bbb;
+        text-align: left;
+        vertical-align: top;
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Anthrax Brasil",
+        "url": "https://anthrax.com.br",
+        "applicationCategory": "Fan and editorial website",
+        "operatingSystem": "Web",
+        "inLanguage": "pt-BR",
+        "description": "Brazilian Anthrax website with multiple candidate audience interfaces and a custom JSON-based CMS backed by Vercel Blob.",
+        "codeRepository": "https://github.com/ppriess/anthrax"
+      }
+    </script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p><strong>Document purpose:</strong> AI agent project orientation</p>
+        <h1>Anthrax Brasil — Project Context</h1>
+        <p>
+          This document is intentionally structured as a concise, semantic
+          reference for AI coding agents. Treat the repository implementation,
+          <code>CLAUDE.md</code>, and <code>content/README.md</code> as the
+          authoritative sources when details conflict.
+        </p>
+      </header>
+
+      <section id="identity">
+        <h2>1. Product identity and purpose</h2>
+        <dl>
+          <dt>Product</dt>
+          <dd>Anthrax Brasil</dd>
+          <dt>Production domain</dt>
+          <dd><a href="https://anthrax.com.br">anthrax.com.br</a></dd>
+          <dt>Primary language</dt>
+          <dd>Brazilian Portuguese (<code>pt-BR</code>)</dd>
+          <dt>Audience</dt>
+          <dd>
+            Brazilian fans of the band Anthrax and readers interested in band
+            news, videos, albums, history, members, shows, and the band's
+            connection with Brazil.
+          </dd>
+          <dt>Deployment</dt>
+          <dd>Vercel, deployed from the repository's <code>main</code> branch.</dd>
+        </dl>
+      </section>
+
+      <section id="interface-surfaces">
+        <h2>2. Multiple interface surfaces and active product decision</h2>
+        <p>
+          <strong>
+            Important: this project has more than one audience-facing interface.
+          </strong>
+          The user is currently deciding which interface or visual direction
+          works best for the intended audience. Do not assume that the current
+          root homepage is the permanently selected design, and do not remove,
+          merge, or replace another interface unless explicitly requested.
+        </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Surface</th>
+              <th>Location</th>
+              <th>Purpose and character</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Primary homepage</td>
+              <td><code>/</code></td>
+              <td>
+                Editorial/fanzine-inspired homepage containing the hero, news,
+                Anthrax TV, discography, Brazil content, agenda, quiz, and
+                footer.
+              </td>
+              <td>Public candidate interface</td>
+            </tr>
+            <tr>
+              <td>Theme/skin variation</td>
+              <td>Available through the main interface theme system</td>
+              <td>
+                An alternate “pirate” skin driven by CSS variables and the
+                theme provider. It changes visual presentation without changing
+                the underlying editorial content model.
+              </td>
+              <td>Alternative visual direction</td>
+            </tr>
+            <tr>
+              <td>“A Transmissão” interface</td>
+              <td><code>/v3</code></td>
+              <td>
+                Experimental broadcast-style experience using video, cinematic
+                scenes, GSAP/ScrollTrigger, Lenis smooth scrolling, a HUD,
+                motion controls, sound controls, and reduced-motion behavior.
+              </td>
+              <td>
+                Audience-interface candidate; additive and intentionally kept
+                separate from the root homepage
+              </td>
+            </tr>
+            <tr>
+              <td>Band information</td>
+              <td><code>/banda/*</code></td>
+              <td>
+                Albums, members, former members, substitutes, and band-history
+                timeline.
+              </td>
+              <td>Supporting public content surfaces</td>
+            </tr>
+            <tr>
+              <td>Administration</td>
+              <td><code>/admin</code></td>
+              <td>Password-protected custom CMS for managing site content.</td>
+              <td>Private operational interface</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p>
+          The repository also includes
+          <code>AnthraxBrasil Homepage.dc.html</code>, an original visual-design
+          reference containing “Road Case” and “Fanzine/Comic” directions. It is
+          a design artifact, not the production application entry point.
+        </p>
+      </section>
+
+      <section id="content-origin">
+        <h2>3. Content origin and provenance</h2>
+        <p>
+          Site content is editorial data assembled for Anthrax Brasil. It
+          includes band information, discography, member/history records,
+          news, official or externally sourced video links, agenda entries,
+          Brazil-specific editorial material, quizzes, navigation, and homepage
+          copy. Individual records may include a source URL, YouTube/Vimeo URL,
+          image URL, or other attribution field.
+        </p>
+        <p>
+          The versioned JSON files in <code>content/</code> are the initial and
+          recoverable seed copies of this content. They are not the live
+          production datastore. Some older design copy is illustrative, so
+          factual claims, dates, media ownership, and external links should be
+          verified before publication when adding or revising editorial
+          content.
+        </p>
+      </section>
+
+      <section id="cms">
+        <h2>4. Custom CMS architecture</h2>
+        <p>
+          This project uses a <strong>custom-built CMS</strong>; it does not use
+          a third-party CMS product such as WordPress, Contentful, or Sanity.
+          The CMS is implemented inside the Next.js application.
+        </p>
+        <ol>
+          <li>
+            Editors authenticate at <code>/admin</code> using the configured
+            <code>ADMIN_PASSWORD</code>.
+          </li>
+          <li>
+            Authentication creates an HTTP-only session cookie, validated by
+            <code>src/middleware.ts</code> against
+            <code>ADMIN_SESSION_TOKEN</code>.
+          </li>
+          <li>
+            Admin forms call Next.js server actions in
+            <code>src/lib/admin-actions.ts</code>.
+          </li>
+          <li>
+            The actions read and write typed JSON documents through
+            <code>src/lib/content.ts</code>.
+          </li>
+          <li>
+            Runtime JSON is stored as private objects under
+            <code>content/*.json</code> in the Vercel Blob store
+            <code>anthrax-content</code>.
+          </li>
+          <li>
+            Public pages are dynamically rendered so saved CMS changes can
+            appear without a rebuild.
+          </li>
+        </ol>
+        <p>
+          Running <code>node scripts/seed-content.mjs</code> uploads the
+          repository's <code>content/*.json</code> files and can initialize or
+          reset the Blob content. Editing a repository JSON file alone does
+          <strong>not</strong> update the live website.
+        </p>
+      </section>
+
+      <section id="technical-map">
+        <h2>5. Technical map</h2>
+        <ul>
+          <li>Framework: Next.js 15 App Router</li>
+          <li>UI runtime: React 19 and TypeScript in strict mode</li>
+          <li>Styling: Tailwind CSS plus global/scoped CSS</li>
+          <li>Content storage: private Vercel Blob JSON documents</li>
+          <li>Animation for <code>/v3</code>: GSAP, ScrollTrigger, and Lenis</li>
+          <li>Markdown rendering: <code>react-markdown</code></li>
+          <li>Local development: <code>pnpm dev</code> on port <code>3321</code></li>
+        </ul>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Path</th>
+              <th>Responsibility</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>src/app/page.tsx</code></td>
+              <td>Root homepage composition and CMS content loading</td>
+            </tr>
+            <tr>
+              <td><code>src/app/v3/</code>, <code>src/components/v3/</code></td>
+              <td>Separate broadcast-style interface</td>
+            </tr>
+            <tr>
+              <td><code>src/app/banda/</code></td>
+              <td>Band albums, members, and history routes</td>
+            </tr>
+            <tr>
+              <td><code>src/app/admin/</code></td>
+              <td>Custom CMS user interface</td>
+            </tr>
+            <tr>
+              <td><code>src/lib/content.ts</code></td>
+              <td>Content types and Vercel Blob persistence</td>
+            </tr>
+            <tr>
+              <td><code>src/lib/admin-actions.ts</code></td>
+              <td>CMS authentication and content mutation actions</td>
+            </tr>
+            <tr>
+              <td><code>content/</code></td>
+              <td>Version-controlled seed content and schema documentation</td>
+            </tr>
+            <tr>
+              <td><code>scripts/seed-content.mjs</code></td>
+              <td>Uploads seed JSON to the runtime content store</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="agent-guidance">
+        <h2>6. Guidance for AI agents</h2>
+        <ul>
+          <li>
+            Preserve the distinct interface surfaces unless the user explicitly
+            selects, replaces, or retires one.
+          </li>
+          <li>
+            Reuse the shared CMS content model across audience interfaces where
+            practical; avoid hard-coding editorial content into components.
+          </li>
+          <li>
+            For live content changes, work through the custom CMS or explicitly
+            coordinate a seed operation. Repository seed edits and live CMS
+            edits are different operations.
+          </li>
+          <li>
+            Preserve existing uncommitted work. Inspect the working tree before
+            editing overlapping files.
+          </li>
+          <li>
+            Do not expose admin passwords, session tokens, or
+            <code>BLOB_READ_WRITE_TOKEN</code>.
+          </li>
+          <li>
+            Maintain Brazilian Portuguese for public copy unless the user asks
+            for another language.
+          </li>
+          <li>
+            Keep accessibility, responsive behavior, reduced-motion support,
+            media attribution, and factual verification in scope.
+          </li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

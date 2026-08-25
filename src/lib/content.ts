@@ -102,6 +102,7 @@ export type BrasilCard = {
   bodyEmphasis?: string;
   wide?: boolean;
   photoLabel?: string;
+  sourceUrl?: string;
   ticketLabel?: string;
   cta?: string;
 };
@@ -246,6 +247,10 @@ export type TimelineItem = {
   year: string;
   title: string;
   description?: string;
+  videoUrl?: string; // ilustra o marco com um clipe oficial do YouTube
+  videoLabel?: string;
+  link?: string; // referência externa (ex.: Discogs), quando não há vídeo
+  linkLabel?: string;
 };
 
 export type Historia = {
@@ -253,6 +258,8 @@ export type Historia = {
   subtitle: string;
   intro: string; // markdown
   timeline: TimelineItem[];
+  playlistUrl?: string; // playlist oficial do YouTube com a história em vídeo
+  playlistLabel?: string;
 };
 
 export type Content = {
