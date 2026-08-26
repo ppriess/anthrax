@@ -139,10 +139,19 @@ export function HeroPanel({
             <Body text={hero.bodyMobile} single={hero.singleName} />
           </p>
           {!videoId && (
-            <div className="hatch-paper-45 mb-[14px] flex h-[200px] items-center justify-center border-[3px] border-hardline">
-              <span className="font-mono text-[10px] text-paper-meta">
-                {hero.cover.placeholderMobile}
-              </span>
+            <div className="hatch-paper-45 mb-[14px] flex h-[200px] items-center justify-center overflow-hidden border-[3px] border-hardline">
+              {hero.cover.src ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={hero.cover.src}
+                  alt={`Capa de ${hero.titleLines.join(" ")}`}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <span className="font-mono text-[10px] text-paper-meta">
+                  {hero.cover.placeholderMobile}
+                </span>
+              )}
             </div>
           )}
           <button

@@ -9,7 +9,8 @@
       "labelShort": "2011",
       "photoLabel": "[ FOTO: Andreas Kisser + Anthrax ]",
       "title": "Andreas Kisser no lugar de Scott Ian",
-      "body": "O guitarrista do Sepultura cobriu a ausência de Scott em 2011 — e tatuou o logo do Anthrax abrasileirado. Amizade documentada em fotos, palcos e tinta."
+      "body": "O guitarrista do Sepultura cobriu a ausência de Scott em 2011 — e tatuou o logo do Anthrax abrasileirado. Amizade documentada em fotos, palcos e tinta.",
+      "image": "/kisser-anthrax.png"
     },
     {
       "id": "tributo",
@@ -17,7 +18,9 @@
       "labelShort": "2004",
       "photoLabel": "[ CAPA: Tributo Brasileiro 2004 ]",
       "title": "O tributo brasileiro ao Anthrax",
-      "body": "Bandas da cena nacional gravaram um disco inteiro de covers em 2004. Faixa a faixa, contamos quem tocou o quê."
+      "body": "Bandas da cena nacional gravaram um disco inteiro de covers em 2004. Faixa a faixa, contamos quem tocou o quê.",
+      "image": "/capa-tributo.jpg",
+      "imageContain": true
     },
     {
       "id": "kisser-summer-breeze-2024",

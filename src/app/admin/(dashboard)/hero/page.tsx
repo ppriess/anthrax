@@ -131,6 +131,18 @@ export default async function HeroPage() {
         </label>
         <label className="flex flex-col gap-1">
           <span className="font-mono text-xs text-on-dark-3">
+            Capa do álbum — caminho do arquivo em /public (opcional; vazio
+            mostra o placeholder hachurado)
+          </span>
+          <input
+            name="coverSrc"
+            defaultValue={hero.cover.src}
+            placeholder="/albums/covers/cursum-perficio.jpg"
+            className="admin-input"
+          />
+        </label>
+        <label className="flex flex-col gap-1">
+          <span className="font-mono text-xs text-on-dark-3">
             Placeholder da capa do álbum (desktop)
           </span>
           <input

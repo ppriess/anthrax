@@ -1,7 +1,10 @@
 {
   "panelLabel": "EM DESTAQUE",
   "annotation": "saiu! depois de DEZ anos!!",
-  "titleLines": ["Cursum", "Perficio"],
+  "titleLines": [
+    "Cursum",
+    "Perficio"
+  ],
   "body": "18.09.2026 — o 12º disco da banda do Queens. Jay Ruston na produção, Studio 606 na gravação, e o segundo single \"The Edge of Perfection\" já tocando no volume máximo.",
   "bodyMobile": "18.09.2026 · o 12º disco. Segundo single \"The Edge of Perfection\" já no ar.",
   "singleName": "The Edge of Perfection",
@@ -10,6 +13,7 @@
   "label": "MEGAFORCE / NUCLEAR BLAST",
   "videoUrl": "https://www.youtube.com/watch?v=uqbhWhN4F74",
   "cover": {
+    "src": "/albums/covers/cursum-perficio.jpg",
     "placeholder": "[ CAPA — CURSUM PERFICIO ]",
     "placeholderMobile": "[ CAPA DO ÁLBUM ]",
     "sticker": "relíquia futura ★"

@@ -46,19 +46,29 @@ function PaperCard({ card, mobile }: { card: BrasilCard; mobile?: boolean }) {
             className="h-full w-full border-0"
           />
         </div>
+      ) : card.image ? (
+        <div className="hatch-paper-sm mb-2 aspect-[3/2] overflow-hidden border-2 border-ink">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={card.image}
+            alt={card.title}
+            loading="lazy"
+            className={`h-full w-full ${card.imageContain ? "object-contain" : "object-cover"}`}
+          />
+        </div>
       ) : card.sourceUrl ? (
         <a
           href={card.sourceUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="hatch-paper-sm mb-2 flex h-[70px] items-center justify-center border-2 border-ink no-underline md:h-[100px]"
+          className="hatch-paper-sm mb-2 flex aspect-[3/2] items-center justify-center border-2 border-ink no-underline"
         >
           <span className="font-mono text-[9px] text-paper-meta">
             {card.photoLabel ?? "[ VIDEO ]"}
           </span>
         </a>
       ) : card.photoLabel ? (
-        <div className="hatch-paper-sm mb-2 flex h-[70px] items-center justify-center border-2 border-ink md:h-[100px]">
+        <div className="hatch-paper-sm mb-2 flex aspect-[3/2] items-center justify-center border-2 border-ink">
           <span className="font-mono text-[9px] text-paper-meta">
             {card.photoLabel}
           </span>

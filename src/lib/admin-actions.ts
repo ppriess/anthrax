@@ -187,6 +187,8 @@ export async function saveBrasilCard(id: string | null, formData: FormData) {
     body: optStr(formData, "body"),
     bodyEmphasis: optStr(formData, "bodyEmphasis"),
     wide: bool(formData, "wide"),
+    image: optStr(formData, "image"),
+    imageContain: bool(formData, "imageContain"),
     photoLabel: optStr(formData, "photoLabel"),
     sourceUrl: optStr(formData, "sourceUrl"),
     ticketLabel: optStr(formData, "ticketLabel"),
@@ -328,6 +330,7 @@ export async function saveHero(formData: FormData) {
     label: str(formData, "label"),
     videoUrl: optStr(formData, "videoUrl"),
     cover: {
+      src: optStr(formData, "coverSrc"),
       placeholder: str(formData, "coverPlaceholder"),
       placeholderMobile: str(formData, "coverPlaceholderMobile"),
       sticker: str(formData, "coverSticker"),

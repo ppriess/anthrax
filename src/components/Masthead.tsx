@@ -68,9 +68,6 @@ export function Masthead({ site, nav }: { site: Site; nav: NavItem[] }) {
             </div>
           </div>
         </div>
-        <div className="absolute left-[38%] top-[-6px] -rotate-[3deg] border-2 border-ink bg-signal px-[14px] py-[5px] font-marker text-[15px] text-ink">
-          {site.tagline}
-        </div>
       </div>
 
       {/* Mobile */}

@@ -24,10 +24,19 @@ export function Hero({
 
         {/* cover: capa do álbum, sempre imagem/placeholder */}
         <div className="relative">
-          <div className="hatch-dark-45 flex h-[420px] rotate-[1.2deg] items-center justify-center border-4 border-hardline shadow-[8px_8px_0_var(--color-brasil-paper)]">
-            <span className="border border-dashed border-border-dark-2 bg-ink px-[10px] py-[5px] font-mono text-xs text-on-dark-3">
-              {hero.cover.placeholder}
-            </span>
+          <div className="hatch-dark-45 flex h-[420px] rotate-[1.2deg] items-center justify-center overflow-hidden border-4 border-hardline shadow-[8px_8px_0_var(--color-brasil-paper)]">
+            {hero.cover.src ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={hero.cover.src}
+                alt={`Capa de ${hero.titleLines.join(" ")}`}
+                className="h-full w-full object-cover"
+              />
+            ) : (
+              <span className="border border-dashed border-border-dark-2 bg-ink px-[10px] py-[5px] font-mono text-xs text-on-dark-3">
+                {hero.cover.placeholder}
+              </span>
+            )}
           </div>
           <div className="absolute left-[-14px] top-[-12px] -rotate-[5deg] border-2 border-hardline bg-paper px-3 py-[6px] font-marker text-[15px] text-ink">
             {hero.cover.sticker}

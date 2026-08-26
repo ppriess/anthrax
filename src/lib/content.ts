@@ -7,6 +7,8 @@
  * inicial a partir dos JSONs versionados nesta pasta `content/`.
  */
 import { get, put } from "@vercel/blob";
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 
 export type Site = {
   edition: string;
@@ -44,6 +46,9 @@ export type Hero = {
   // vídeo, sem o texto por cima).
   videoUrl?: string;
   cover: {
+    /** Capa real do álbum (ex.: "/albums/covers/cursum-perficio.jpg").
+     *  Ausente → cai no placeholder hachurado. */
+    src?: string;
     placeholder: string;
     placeholderMobile: string;
     sticker: string;
@@ -99,6 +104,11 @@ export type Tv = {
 };
 
 export type BrasilCard = {
+  /** Imagem real do card; sem isso usa o placeholder photoLabel. */
+  image?: string;
+  /** true → a imagem aparece inteira dentro do 3:2 (object-contain), pra arte
+   *  quadrada com texto nas bordas. Padrão (false) preenche cortando. */
+  imageContain?: boolean;
   id: string;
   label: string;
   labelShort?: string;
@@ -341,12 +351,45 @@ function blobPathname(file: string): string {
   return `content/${file}`;
 }
 
+/**
+ * Fallback de desenvolvimento: lê o content/*.json versionado no repo quando o
+ * Blob não responde. Nunca é usado em produção — ver readContentFile.
+ */
+async function readLocalContentFile<T>(file: string, reason: string): Promise<T> {
+  const local = path.join(process.cwd(), "content", file);
+  let raw: string;
+  try {
+    raw = await readFile(local, "utf-8");
+  } catch {
+    throw new Error(
+      `Blob indisponível (${reason}) e não há cópia local em content/${file}.`,
+    );
+  }
+  console.warn(
+    `[content] Blob indisponível (${reason}) — usando content/${file} do disco. Só vale em desenvolvimento.`,
+  );
+  try {
+    return JSON.parse(raw) as T;
+  } catch (e) {
+    throw new Error(`JSON inválido em content/${file}: ${(e as Error).message}`);
+  }
+}
+
 /** Lê um content/*.json isolado do Blob — usado pela home e pelas telas do /admin. */
 export async function readContentFile<T>(file: string): Promise<T> {
   const pathname = blobPathname(file);
   // useCache: false — conteúdo é editado pelo /admin e precisa refletir na
   // hora; sem isso, o CDN do Blob pode servir a versão anterior por um tempo.
-  const result = await get(pathname, { access: "private", useCache: false });
+  let result: Awaited<ReturnType<typeof get>>;
+  try {
+    result = await get(pathname, { access: "private", useCache: false });
+  } catch (e) {
+    // Em desenvolvimento, um Blob indisponível (token expirado/ausente) não
+    // deve derrubar o site inteiro: cai para a cópia versionada em content/.
+    // Em produção o erro sobe, para não mascarar falha real de storage.
+    if (process.env.NODE_ENV === "production") throw e;
+    return readLocalContentFile<T>(file, (e as Error).message);
+  }
   if (!result || result.stream === null) {
     throw new Error(
       `Conteúdo "${file}" não encontrado no Blob store. Rode "node scripts/seed-content.mjs" para carregar o conteúdo inicial.`,

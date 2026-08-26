@@ -52,6 +52,29 @@ export function BrasilCardForm({ item }: { item?: BrasilCard }) {
       </label>
       <label className="flex flex-col gap-1">
         <span className="font-mono text-xs text-on-dark-3">
+          Imagem — caminho em /public ou URL (substitui o placeholder abaixo).
+          O container é 3:2.
+        </span>
+        <input
+          name="image"
+          defaultValue={item?.image}
+          placeholder="/kisser-anthrax.png"
+          className="admin-input"
+        />
+      </label>
+      <label className="flex items-center gap-2">
+        <input
+          type="checkbox"
+          name="imageContain"
+          defaultChecked={item?.imageContain}
+        />
+        <span className="font-mono text-xs text-on-dark-3">
+          Mostrar a imagem inteira, sem corte (para arte quadrada ou com texto
+          nas bordas)
+        </span>
+      </label>
+      <label className="flex flex-col gap-1">
+        <span className="font-mono text-xs text-on-dark-3">
           Placeholder de imagem (ex.: [ FOTO: ... ])
         </span>
         <input
