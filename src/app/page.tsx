@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import { NewsSection } from "@/components/NewsSection";
 import { AnthraxTV } from "@/components/AnthraxTV";
 import { DiscografiaSection } from "@/components/DiscografiaSection";
+import { TurneSection } from "@/components/TurneSection";
 import { BrasilSection } from "@/components/BrasilSection";
 import { Footer } from "@/components/Footer";
 import { MobileTabBar } from "@/components/MobileTabBar";
@@ -26,6 +27,7 @@ export default async function Home() {
         <NewsSection news={content.news} />
         <AnthraxTV tv={content.tv} />
         <DiscografiaSection albuns={albuns} />
+        <TurneSection turne={content.turne} />
         <BrasilSection
           brasil={content.brasil}
           agenda={content.agenda}
