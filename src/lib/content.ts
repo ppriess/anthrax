@@ -80,7 +80,12 @@ export type Video = {
   brasil?: boolean;
   sourceUrl?: string; // link do YouTube/Vimeo/etc.
   year?: string;
-  videoType?: "music_video" | "lyric_video" | "live_video";
+  videoType?:
+    | "music_video"
+    | "lyric_video"
+    | "live_video"
+    | "behind_scenes"
+    | "full_album";
   albumSlug?: string; // id do álbum em albuns.json, quando o clipe pertence a um
 };
 
@@ -112,6 +117,38 @@ export type Brasil = {
   subtitle: string;
   subtitleShort: string;
   cards: BrasilCard[];
+};
+
+export type TurneShow = {
+  id: string;
+  /** ISO (YYYY-MM-DD) — é o que ordena a lista e decide passado/futuro. */
+  date: string;
+  /** Rótulo curto exibido na coluna de data, ex.: "03 SET". */
+  dateLabel: string;
+  city: string;
+  region?: string; // estado/província, ex.: "QC", "TX"
+  country: string;
+  flag?: string; // emoji da bandeira, ex.: "🇺🇸"
+  venue: string;
+  festival?: string; // quando a data é um festival
+  billing?: string; // ex.: "abrindo p/ Iron Maiden · com Megadeth"
+  setTime?: string; // horário do set, quando anunciado
+  ticketUrl?: string;
+  sourceUrl?: string; // de onde a data foi confirmada
+  brasil?: boolean; // data em solo brasileiro — ganha destaque verde-amarelo
+};
+
+export type Turne = {
+  title: string;
+  subtitle: string;
+  kicker: string;
+  /** Chamada do bloco de destaque do próximo show. */
+  nextLabel: string;
+  /** Markdown — nota editorial (ex.: "nenhuma data no Brasil confirmada"). */
+  note?: string;
+  ticketCta: string;
+  emptyMessage: string;
+  shows: TurneShow[];
 };
 
 export type AgendaItem = {
@@ -185,6 +222,31 @@ export type Substitutos = {
   intro: string;
   items: SubstitutoItem[];
   curiosity?: string; // markdown — nota final tipo curiosidade
+};
+
+// ---------- Arquivo Brasil (/brasil/arquivo) — histórico de shows em solo
+// nacional; lido só pela própria página e pelo /admin. ----------
+
+export type ArquivoBrasilShow = {
+  id: string;
+  date: string; // ISO (YYYY-MM-DD)
+  dateLabel: string; // ex.: "28.04.2024"
+  city: string;
+  state?: string;
+  venue: string;
+  context?: string; // festival / turnê / com quem tocou
+  note?: string; // curiosidade daquela noite
+  setlistUrl?: string;
+  videoUrl?: string;
+};
+
+export type ArquivoBrasil = {
+  title: string;
+  subtitle: string;
+  intro: string; // markdown
+  callout?: string; // markdown — "você estava lá? manda tua história"
+  sourceNote?: string;
+  shows: ArquivoBrasilShow[];
 };
 
 export type AlbumTrack = {
@@ -269,6 +331,7 @@ export type Content = {
   news: News;
   tv: Tv;
   brasil: Brasil;
+  turne: Turne;
   agenda: Agenda;
   quiz: Quiz;
   footer: Footer;
@@ -309,7 +372,7 @@ export async function writeContentFile(file: string, data: unknown): Promise<voi
 }
 
 export async function getContent(): Promise<Content> {
-  const [site, nav, hero, news, tv, brasil, agenda, quiz, footer] =
+  const [site, nav, hero, news, tv, brasil, turne, agenda, quiz, footer] =
     await Promise.all([
       readContentFile<Site>("site.json"),
       readContentFile<NavItem[]>("nav.json"),
@@ -317,9 +380,10 @@ export async function getContent(): Promise<Content> {
       readContentFile<News>("news.json"),
       readContentFile<Tv>("tv.json"),
       readContentFile<Brasil>("brasil.json"),
+      readContentFile<Turne>("turne.json"),
       readContentFile<Agenda>("agenda.json"),
       readContentFile<Quiz>("quiz.json"),
       readContentFile<Footer>("footer.json"),
     ]);
-  return { site, nav, hero, news, tv, brasil, agenda, quiz, footer };
+  return { site, nav, hero, news, tv, brasil, turne, agenda, quiz, footer };
 }

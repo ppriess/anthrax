@@ -1,0 +1,108 @@
+{
+  "title": "Turnê",
+  "subtitle": "as datas confirmadas do Cursum Perficio",
+  "kicker": "● DATAS CONFIRMADAS · ATUALIZADO 25.08.2026",
+  "nextLabel": "PRÓXIMO SHOW",
+  "note": "A banda fecha 2026 na estrada com o **Iron Maiden** no *Run For Your Lives World Tour* — as datas abaixo são as que o Anthrax toca, não a turnê inteira do Maiden. **Nenhuma data no Brasil está confirmada até agora**; quando cair uma, aparece aqui primeiro.",
+  "ticketCta": "INGRESSOS",
+  "emptyMessage": "Sem datas confirmadas no momento.",
+  "shows": [
+    {
+      "id": "2026-09-03-montreal",
+      "date": "2026-09-03",
+      "dateLabel": "03 SET",
+      "city": "Montréal",
+      "region": "QC",
+      "country": "Canadá",
+      "flag": "🇨🇦",
+      "venue": "Parc Jean-Drapeau",
+      "billing": "abrindo p/ Iron Maiden · com Megadeth",
+      "sourceUrl": "https://www.songkick.com/artists/447883-anthrax/calendar"
+    },
+    {
+      "id": "2026-09-05-harrison",
+      "date": "2026-09-05",
+      "dateLabel": "05 SET",
+      "city": "Harrison",
+      "region": "NJ",
+      "country": "EUA",
+      "flag": "🇺🇸",
+      "venue": "Sports Illustrated Stadium",
+      "billing": "abrindo p/ Iron Maiden · com Megadeth",
+      "sourceUrl": "https://www.songkick.com/artists/447883-anthrax/calendar"
+    },
+    {
+      "id": "2026-09-06-harrison",
+      "date": "2026-09-06",
+      "dateLabel": "06 SET",
+      "city": "Harrison",
+      "region": "NJ",
+      "country": "EUA",
+      "flag": "🇺🇸",
+      "venue": "Sports Illustrated Stadium",
+      "billing": "abrindo p/ Iron Maiden · com Megadeth",
+      "sourceUrl": "https://www.songkick.com/artists/447883-anthrax/calendar"
+    },
+    {
+      "id": "2026-09-17-louisville",
+      "date": "2026-09-17",
+      "dateLabel": "17 SET",
+      "city": "Louisville",
+      "region": "KY",
+      "country": "EUA",
+      "flag": "🇺🇸",
+      "venue": "Kentucky Exposition Center",
+      "festival": "Louder Than Life 2026",
+      "billing": "Louder Stage · dia do Iron Maiden, Pantera e Megadeth",
+      "setTime": "15h15 (local)",
+      "sourceUrl": "https://louderthanlifefestival.com/lineup/"
+    },
+    {
+      "id": "2026-09-25-los-angeles",
+      "date": "2026-09-25",
+      "dateLabel": "25 SET",
+      "city": "Los Angeles",
+      "region": "CA",
+      "country": "EUA",
+      "flag": "🇺🇸",
+      "venue": "BMO Stadium",
+      "billing": "abrindo p/ Iron Maiden · com Megadeth",
+      "sourceUrl": "https://www.songkick.com/artists/447883-anthrax/calendar"
+    },
+    {
+      "id": "2026-09-27-los-angeles",
+      "date": "2026-09-27",
+      "dateLabel": "27 SET",
+      "city": "Los Angeles",
+      "region": "CA",
+      "country": "EUA",
+      "flag": "🇺🇸",
+      "venue": "BMO Stadium",
+      "billing": "abrindo p/ Iron Maiden",
+      "sourceUrl": "https://www.songkick.com/artists/447883-anthrax/calendar"
+    },
+    {
+      "id": "2026-09-29-san-antonio",
+      "date": "2026-09-29",
+      "dateLabel": "29 SET",
+      "city": "San Antonio",
+      "region": "TX",
+      "country": "EUA",
+      "flag": "🇺🇸",
+      "venue": "Alamodome",
+      "billing": "abrindo p/ Iron Maiden · com Megadeth",
+      "sourceUrl": "https://www.songkick.com/artists/447883-anthrax/calendar"
+    },
+    {
+      "id": "2026-10-02-cidade-do-mexico",
+      "date": "2026-10-02",
+      "dateLabel": "02 OUT",
+      "city": "Cidade do México",
+      "country": "México",
+      "flag": "🇲🇽",
+      "venue": "Estadio GNP Seguros",
+      "billing": "abrindo p/ Iron Maiden — a data mais perto da América do Sul",
+      "sourceUrl": "https://www.ironmaiden.com/anthrax-join-maiden-for-show-in-mexico/"
+    }
+  ]
+}
