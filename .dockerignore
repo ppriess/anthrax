@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+.vercel
+.claude
+data
+*.log
+.env*
+!.env.example
+*:Zone.Identifier
+tsconfig.tsbuildinfo
+CHANGELOG.md
+README.md
+AI_PROJECT_CONTEXT.htm
+*.dc.html
+*.ai

@@ -1,13 +1,16 @@
 /**
- * CMS mínimo: todo conteúdo editável vive em blobs JSON no Vercel Blob (store
- * "anthrax-content", pathnames "content/*.json"). A home é dinâmica
- * (force-dynamic), então editar via /admin atualiza o site na hora — sem
- * rebuild. Serverless não tem filesystem gravável persistente, por isso o
- * storage é o Blob e não `fs` local. `scripts/seed-content.mjs` faz a carga
- * inicial a partir dos JSONs versionados nesta pasta `content/`.
+ * CMS mínimo: todo conteúdo editável vive em arquivos JSON no disco. A home é
+ * dinâmica (force-dynamic), então editar via /admin atualiza o site na hora —
+ * sem rebuild.
+ *
+ * Duas pastas entram no jogo:
+ *  - CONTENT_DIR  → onde o /admin grava. Em produção é um volume Docker, que
+ *                   sobrevive a rebuild da imagem.
+ *  - CONTENT_SEED_DIR → a cópia versionada em `content/` no repo, usada como
+ *                   carga inicial e como fallback de leitura.
+ * Em desenvolvimento as duas apontam para `content/` e tudo funciona sem env.
  */
-import { get, put } from "@vercel/blob";
-import { readFile } from "node:fs/promises";
+import { readFile, writeFile, rename, mkdir } from "node:fs/promises";
 import path from "node:path";
 
 export type Site = {
@@ -347,71 +350,51 @@ export type Content = {
   footer: Footer;
 };
 
-function blobPathname(file: string): string {
-  return `content/${file}`;
+const SEED_DIR = process.env.CONTENT_SEED_DIR ?? path.join(process.cwd(), "content");
+const CONTENT_DIR = process.env.CONTENT_DIR ?? SEED_DIR;
+
+function parseJson<T>(raw: string, file: string): T {
+  try {
+    return JSON.parse(raw) as T;
+  } catch (e) {
+    throw new Error(`JSON inválido em ${file}: ${(e as Error).message}`);
+  }
 }
 
 /**
- * Fallback de desenvolvimento: lê o content/*.json versionado no repo quando o
- * Blob não responde. Nunca é usado em produção — ver readContentFile.
+ * Lê um content/*.json isolado — usado pela home e pelas telas do /admin.
+ * Tenta primeiro o CONTENT_DIR (onde o /admin grava); se o arquivo ainda não
+ * existe lá, cai para a cópia versionada do repo. Assim um JSON novo que entrou
+ * junto com o código funciona no primeiro deploy, sem passo manual de seed.
  */
-async function readLocalContentFile<T>(file: string, reason: string): Promise<T> {
-  const local = path.join(process.cwd(), "content", file);
-  let raw: string;
-  try {
-    raw = await readFile(local, "utf-8");
-  } catch {
-    throw new Error(
-      `Blob indisponível (${reason}) e não há cópia local em content/${file}.`,
-    );
-  }
-  console.warn(
-    `[content] Blob indisponível (${reason}) — usando content/${file} do disco. Só vale em desenvolvimento.`,
-  );
-  try {
-    return JSON.parse(raw) as T;
-  } catch (e) {
-    throw new Error(`JSON inválido em content/${file}: ${(e as Error).message}`);
-  }
-}
-
-/** Lê um content/*.json isolado do Blob — usado pela home e pelas telas do /admin. */
 export async function readContentFile<T>(file: string): Promise<T> {
-  const pathname = blobPathname(file);
-  // useCache: false — conteúdo é editado pelo /admin e precisa refletir na
-  // hora; sem isso, o CDN do Blob pode servir a versão anterior por um tempo.
-  let result: Awaited<ReturnType<typeof get>>;
   try {
-    result = await get(pathname, { access: "private", useCache: false });
+    return parseJson<T>(await readFile(path.join(CONTENT_DIR, file), "utf-8"), file);
   } catch (e) {
-    // Em desenvolvimento, um Blob indisponível (token expirado/ausente) não
-    // deve derrubar o site inteiro: cai para a cópia versionada em content/.
-    // Em produção o erro sobe, para não mascarar falha real de storage.
-    if (process.env.NODE_ENV === "production") throw e;
-    return readLocalContentFile<T>(file, (e as Error).message);
+    if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
   }
-  if (!result || result.stream === null) {
-    throw new Error(
-      `Conteúdo "${file}" não encontrado no Blob store. Rode "node scripts/seed-content.mjs" para carregar o conteúdo inicial.`,
-    );
+  if (CONTENT_DIR !== SEED_DIR) {
+    try {
+      return parseJson<T>(await readFile(path.join(SEED_DIR, file), "utf-8"), file);
+    } catch (e) {
+      if ((e as NodeJS.ErrnoException).code !== "ENOENT") throw e;
+    }
   }
-  const raw = await new Response(result.stream).text();
-  try {
-    return JSON.parse(raw) as T;
-  } catch (e) {
-    throw new Error(`JSON inválido em content/${file}: ${(e as Error).message}`);
-  }
+  throw new Error(`Conteúdo "${file}" não encontrado em ${CONTENT_DIR} nem em ${SEED_DIR}.`);
 }
 
-/** Grava um content/*.json isolado no Blob — usado pelas server actions do /admin. */
+/**
+ * Grava um content/*.json — usado pelas server actions do /admin.
+ * Escrita atômica: grava num .tmp ao lado e renomeia, para que uma falha no
+ * meio nunca deixe um JSON truncado servindo o site.
+ */
 export async function writeContentFile(file: string, data: unknown): Promise<void> {
   const json = JSON.stringify(data, null, 2) + "\n";
-  await put(blobPathname(file), json, {
-    access: "private",
-    addRandomSuffix: false,
-    allowOverwrite: true,
-    contentType: "application/json",
-  });
+  await mkdir(CONTENT_DIR, { recursive: true });
+  const target = path.join(CONTENT_DIR, file);
+  const tmp = `${target}.tmp`;
+  await writeFile(tmp, json, "utf-8");
+  await rename(tmp, target);
 }
 
 export async function getContent(): Promise<Content> {

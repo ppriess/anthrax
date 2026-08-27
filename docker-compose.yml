@@ -1,0 +1,21 @@
+services:
+  anthrax:
+    build: .
+    container_name: anthrax
+    restart: unless-stopped
+    ports:
+      - "3028:3000"
+    volumes:
+      # Conteúdo editado pelo /admin. NUNCA remover esta pasta.
+      - ./data/content:/app/data/content
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - ADMIN_SESSION_TOKEN=${ADMIN_SESSION_TOKEN}
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true
