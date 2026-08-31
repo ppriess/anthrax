@@ -1,12 +1,10 @@
-"use client";
-
-import { useState } from "react";
+import type { ReactNode } from "react";
 import type { Hero as HeroContent } from "@/lib/content";
 import { Countdown } from "./Countdown";
-import { HeroVideoCover } from "./HeroVideoCover";
 
 /** Renders the body text with the single name in bold, wherever it appears. */
 function Body({ text, single }: { text: string; single: string }) {
+  if (!single) return <>{text}</>;
   const parts = text.split(single);
   if (parts.length === 1) return <>{text}</>;
   return (
@@ -21,101 +19,108 @@ function Body({ text, single }: { text: string; single: string }) {
   );
 }
 
+/** Capa do álbum em miniatura, ao lado do título (mobile) — confirma
+ * visualmente "isto é um álbum" sem precisar nomear o clipe em destaque. */
+function CoverThumb({ hero, size }: { hero: HeroContent; size: number }) {
+  return (
+    <div
+      className="hatch-dark-45 flex-none -rotate-2 overflow-hidden border-2 border-hardline shadow-[4px_4px_0_var(--color-signal)]"
+      style={{ width: size, height: size }}
+    >
+      {hero.cover.src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={hero.cover.src}
+          alt={`Capa de ${hero.titleLines.join(" ")}`}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <span className="flex h-full items-center justify-center px-1 text-center font-mono text-[8px] leading-tight text-on-dark-3">
+          {hero.cover.placeholder}
+        </span>
+      )}
+    </div>
+  );
+}
+
+/** Capa do álbum em destaque, ao lado do bloco de título+texto (desktop) —
+ * coluna própria, estica pra acompanhar a altura do texto ao lado. */
+function CoverFeatured({ hero }: { hero: HeroContent }) {
+  return (
+    <div className="hatch-dark-45 relative w-[42%] flex-none -rotate-1 overflow-hidden border-4 border-hardline shadow-[6px_6px_0_var(--color-signal)]">
+      {hero.cover.src ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={hero.cover.src}
+          alt={`Capa de ${hero.titleLines.join(" ")}`}
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <span className="flex h-full items-center justify-center px-2 text-center font-mono text-xs text-on-dark-3">
+          {hero.cover.placeholder}
+        </span>
+      )}
+    </div>
+  );
+}
+
 export function HeroPanel({
   hero,
   releaseDate,
-  videoId,
   variant,
+  mediaSlot,
 }: {
   hero: HeroContent;
   releaseDate: string;
-  videoId: string | null;
   variant: "desktop" | "mobile";
+  mediaSlot?: ReactNode;
 }) {
-  const [focusMode, setFocusMode] = useState(false);
-  const [muted, setMuted] = useState(true);
-  const [expanded, setExpanded] = useState(false);
-
-  function handlePrimaryCta() {
-    if (videoId) setFocusMode(true);
-  }
-
-  function handleVoltar() {
-    setFocusMode(false);
-    setExpanded(false);
-  }
-
   const desktop = variant === "desktop";
 
   return (
     <div
       className={
         desktop
-          ? `relative overflow-hidden border-4 border-hardline px-[34px] py-[30px] shadow-[8px_8px_0_var(--color-signal)] ${videoId ? "text-paper" : "bg-paper text-ink"}`
-          : `relative overflow-hidden border-[3px] border-hardline p-5 shadow-[6px_6px_0_var(--color-signal)] ${videoId ? "text-paper" : "bg-paper text-ink"}`
+          ? "relative border-4 border-hardline bg-paper px-[34px] py-[30px] text-ink shadow-[8px_8px_0_var(--color-signal)]"
+          : "relative overflow-hidden border-[3px] border-hardline bg-paper p-5 text-ink shadow-[6px_6px_0_var(--color-signal)]"
       }
     >
-      {videoId && (
+      {!desktop && hero.annotation && (
+        <div className="mb-1 -rotate-1 font-marker text-[15px] text-hot">
+          {hero.annotation}
+        </div>
+      )}
+
+      {desktop ? (
         <>
-          <HeroVideoCover
-            videoId={videoId}
-            muted={muted}
-            onToggleMute={() => setMuted((m) => !m)}
-            expanded={expanded}
-            onToggleExpand={() => setExpanded((e) => !e)}
-            showControls={focusMode}
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/55 to-black/25" />
-        </>
-      )}
-
-      {!focusMode && desktop && (
-        <div className="absolute left-[26px] top-[-14px] z-10 bg-ink px-3 py-[5px] font-mono text-xs tracking-[0.2em] text-paper">
-          {hero.panelLabel}
-        </div>
-      )}
-
-      {focusMode ? (
-        <div className="relative z-10 flex h-full min-h-[200px] items-end justify-end p-2">
-          <button
-            type="button"
-            onClick={handleVoltar}
-            aria-label="Voltar ao destaque"
-            className="flex h-8 w-8 items-center justify-center bg-ink/80 text-base text-paper hover:bg-signal hover:text-ink"
-          >
-            ↺
-          </button>
-        </div>
-      ) : desktop ? (
-        <div className="relative z-10">
-          <div className="mb-[6px] -rotate-1 font-marker text-[19px] text-hot">
-            {hero.annotation}
+          <div className="absolute left-[26px] top-[-14px] z-10 bg-ink px-3 py-[5px] font-mono text-xs tracking-[0.2em] text-paper">
+            {hero.panelLabel}
           </div>
-          <h2 className="m-0 mb-[14px] font-display text-[72px] uppercase leading-[0.9]">
-            {hero.titleLines.map((line, i) => (
-              <span key={line}>
-                {i > 0 && <br />}
-                {line}
-              </span>
-            ))}
-          </h2>
-          <p
-            className={`m-0 mb-[18px] max-w-[520px] text-[21px] leading-[1.4] [text-wrap:pretty] ${videoId ? "text-paper" : "text-paper-hi"}`}
-          >
-            <Body text={hero.body} single={hero.singleName} />
-          </p>
-          <div className="flex gap-3">
-            <button
-              onClick={handlePrimaryCta}
-              className="inline-block -rotate-1 bg-ink px-[22px] py-[13px] text-[17px] font-bold tracking-[0.1em] text-signal"
-            >
-              {hero.primaryCta}
-            </button>
-            <button className="inline-block rotate-[0.6deg] border-[3px] border-ink bg-paper px-[22px] py-[11px] text-[17px] font-bold tracking-[0.1em] text-ink">
+          {hero.annotation && (
+            <div className="mb-[6px] -rotate-1 font-marker text-[19px] text-hot">
+              {hero.annotation}
+            </div>
+          )}
+          <div className="mb-[18px] flex gap-5">
+            <CoverFeatured hero={hero} />
+            <div className="min-w-0 flex-1">
+              <h2 className="m-0 whitespace-nowrap font-display text-[clamp(24px,4vw,56px)] uppercase leading-[0.92]">
+                {hero.titleLines.map((line, i) => (
+                  <span key={line}>
+                    {i > 0 && <br />}
+                    {line}
+                  </span>
+                ))}
+              </h2>
+              <p className="m-0 mt-[14px] text-[19px] leading-[1.4] text-paper-hi [text-wrap:pretty]">
+                <Body text={hero.body} single={hero.singleName} />
+              </p>
+            </div>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-[10px] font-mono text-[13px]">
+            <button className="border border-ink px-2 py-[3px] font-bold tracking-[0.05em]">
               {hero.secondaryCta}
             </button>
-          </div>
-          <div className="mt-5 flex gap-[10px] font-mono text-[13px]">
             <Countdown
               target={releaseDate}
               className="border border-border-soft px-2 py-[3px]"
@@ -124,43 +129,20 @@ export function HeroPanel({
               {hero.label}
             </span>
           </div>
-        </div>
+        </>
       ) : (
-        <div className="relative z-10">
-          <div className="mb-1 -rotate-1 font-marker text-[15px] text-hot">
-            {hero.annotation}
+        <>
+          <div className="mb-[10px] flex items-center gap-3">
+            <CoverThumb hero={hero} size={64} />
+            <h2 className="m-0 font-display text-[40px] uppercase leading-[0.92]">
+              {hero.titleLines.join(" ")}
+            </h2>
           </div>
-          <h2 className="m-0 mb-[10px] font-display text-[40px] uppercase leading-[0.92]">
-            {hero.titleLines.join(" ")}
-          </h2>
-          <p
-            className={`m-0 mb-[14px] text-base leading-[1.35] ${videoId ? "text-paper" : "text-paper-hi"}`}
-          >
+          <p className="m-0 mb-[14px] text-base leading-[1.35] text-paper-hi">
             <Body text={hero.bodyMobile} single={hero.singleName} />
           </p>
-          {!videoId && (
-            <div className="hatch-paper-45 mb-[14px] flex h-[200px] items-center justify-center overflow-hidden border-[3px] border-hardline">
-              {hero.cover.src ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={hero.cover.src}
-                  alt={`Capa de ${hero.titleLines.join(" ")}`}
-                  className="h-full w-full object-cover"
-                />
-              ) : (
-                <span className="font-mono text-[10px] text-paper-meta">
-                  {hero.cover.placeholderMobile}
-                </span>
-              )}
-            </div>
-          )}
-          <button
-            onClick={handlePrimaryCta}
-            className="block w-full -rotate-[0.6deg] bg-ink py-[13px] text-center text-base font-bold tracking-[0.1em] text-signal"
-          >
-            {hero.primaryCta}
-          </button>
-        </div>
+          {mediaSlot}
+        </>
       )}
     </div>
   );

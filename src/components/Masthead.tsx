@@ -2,7 +2,6 @@ import type { NavItem, Site } from "@/lib/content";
 import { SearchBar } from "./SearchBar";
 import { NavDropdown } from "./NavDropdown";
 import { MobileMenu } from "./MobileMenu";
-import { SkinToggle } from "./SkinToggle";
 
 function Wordmark({ size }: { size: "lg" | "sm" }) {
   const big = size === "lg";
@@ -64,7 +63,6 @@ export function Masthead({ site, nav }: { site: Site; nav: NavItem[] }) {
             </nav>
             <div className="flex items-center gap-2">
               <SearchBar placeholder={site.searchPlaceholder} />
-              <SkinToggle />
             </div>
           </div>
         </div>
