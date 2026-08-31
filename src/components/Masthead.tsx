@@ -37,7 +37,7 @@ export function Masthead({ site, nav }: { site: Site; nav: NavItem[] }) {
             </h1>
           </div>
           <div className="ml-auto flex flex-col items-end gap-2">
-            <nav className="flex items-center gap-5 text-base font-bold tracking-[0.12em]">
+            <nav className="flex items-center gap-5 whitespace-nowrap text-base font-bold tracking-[0.12em]">
               {nav.map((item) =>
                 item.children ? (
                   <NavDropdown
