@@ -1,0 +1,117 @@
+{
+  "title": "Indians… Not!",
+  "subtitle": "Tributo Brasileiro ao Anthrax",
+  "kicker": "2004 → 2007 · COLLISION RECORDS × ANTHRAX.COM.BR",
+  "cover": "/capa-tributo.jpg",
+  "intro": "O **Indians… Not! – Brazilian Tribute to Anthrax** nasceu de uma conversa em **8 de junho de 2004** entre Élcio Cruz, da Collision Records, e Paulo Priess, idealizador do Anthrax.com.br. A proposta era direta: reunir bandas brasileiras num material feito só para homenagear o Anthrax, sem interesse financeiro nem de status.\n\nO tributo foi disponibilizado para **download gratuito em 30 de março de 2007**, nos portais collisionmusic.com.br e anthrax.com.br, o site oficial brasileiro da banda. Em maio de 2007 a Collision confirmou o material no ar, com acesso direto ao álbum duplo e aos arquivos gráficos.\n\nSair apenas em meio virtual foi decisão de circunstância — prensar um tributo em CD estava fora do alcance de um selo independente. Em troca, o projeto abriu espaço para os artistas nacionais que acreditaram nele e entregou um pacote com padrão de coletânea real: encarte, wallpapers e fotos inclusos.",
+  "endorsementLabel": "O AVAL",
+  "endorsementTitle": "Scott Ian aprovou o projeto por e-mail",
+  "endorsementBody": "O guitarrista do Anthrax respondeu ao contato e apoiou a coletânea. Foi esse aval que permitiu tocar a produção com critério de lançamento de verdade, e não de fanzine sonoro.",
+  "listenTitle": "Ouvir",
+  "listenNote": "As playlists oficiais do álbum duplo estão no SoundCloud, sob curadoria do Anthrax Brasil.",
+  "soundcloudVol1Url": "https://soundcloud.com/anthrax-brasil/sets/indians-not-vol1",
+  "soundcloudVol1Label": "OUVIR VOL. I",
+  "soundcloudVol2Url": "https://soundcloud.com/anthraxbr2/sets/indians-not-vol2",
+  "soundcloudVol2Label": "OUVIR VOL. II",
+  "discogsUrl": "https://www.discogs.com/release/13694579-Various-Indians--Not-Brazilian-Tribute-To-Anthrax-Vol-1-2",
+  "discogsLabel": "Ficha no Discogs →",
+  "fichaTitle": "Ficha técnica",
+  "ficha": [
+    {
+      "label": "Formato",
+      "value": "Álbum duplo — Vol. 1 e Vol. 2"
+    },
+    {
+      "label": "Áudio",
+      "value": "MP3, 320 kbps e 192 kbps"
+    },
+    {
+      "label": "Duração",
+      "value": "64 min (Vol. 1) · 66 min (Vol. 2)"
+    },
+    {
+      "label": "Encarte",
+      "value": "Box colorido, CMYK 300 dpi"
+    },
+    {
+      "label": "Extras",
+      "value": "Wallpapers do tributo e da banda, fotos do Anthrax no Brasil (2005)"
+    },
+    {
+      "label": "Lançamento",
+      "value": "30 de março de 2007"
+    },
+    {
+      "label": "Download",
+      "value": "Gratuito"
+    },
+    {
+      "label": "Realização",
+      "value": "Collision Records (SP) × Anthrax.com.br"
+    }
+  ],
+  "bandasTitle": "Quem gravou",
+  "bandasNote": "Mais de 20 bandas da cena nacional regravaram clássicos do Anthrax. Estas são as confirmadas nos registros do projeto.",
+  "bandas": [
+    {
+      "id": "abhorrent",
+      "name": "Abhorrent"
+    },
+    {
+      "id": "rhestus",
+      "name": "Rhestus"
+    },
+    {
+      "id": "hicsos",
+      "name": "Hicsos"
+    },
+    {
+      "id": "macakongs",
+      "name": "Macakongs"
+    },
+    {
+      "id": "seeds-of-rock",
+      "name": "Seeds Of Rock"
+    },
+    {
+      "id": "cellmys",
+      "name": "Cellmys"
+    },
+    {
+      "id": "arena-age",
+      "name": "Arena Age"
+    },
+    {
+      "id": "blakk-market",
+      "name": "Blakk Market"
+    },
+    {
+      "id": "br-nock",
+      "name": "Br Nock"
+    },
+    {
+      "id": "sharpen",
+      "name": "Sharpen"
+    },
+    {
+      "id": "envoken",
+      "name": "Envoken"
+    },
+    {
+      "id": "helltrucker",
+      "name": "Helltrucker"
+    },
+    {
+      "id": "anger-inc",
+      "name": "Anger Inc."
+    },
+    {
+      "id": "nfb",
+      "name": "NFB"
+    },
+    {
+      "id": "still-life",
+      "name": "Still Life"
+    }
+  ]
+}

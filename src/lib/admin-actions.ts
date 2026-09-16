@@ -26,6 +26,9 @@ import {
   type SubstitutoItem,
   type Substitutos,
   type TimelineItem,
+  type Tributo,
+  type TributoBanda,
+  type TributoFichaItem,
   type Tv,
   type Video,
 } from "@/lib/content";
@@ -607,4 +610,103 @@ export async function saveSubstitutosIntro(formData: FormData) {
   substitutos.curiosity = optStr(formData, "curiosity");
   await writeContentFile("substitutos.json", substitutos);
   revalidateAll("/admin/substitutos");
+}
+
+// ---------- brasil: tributo "Indians… Not!" ----------
+
+/**
+ * A ficha técnica é editada como texto: uma linha por item, no formato
+ * `Rótulo | valor`. Oito linhas curtas não justificam oito formulários.
+ */
+function parseFicha(raw: string): TributoFichaItem[] {
+  return raw
+    .split("\n")
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const i = line.indexOf("|");
+      if (i === -1) return { label: "", value: line };
+      return {
+        label: line.slice(0, i).trim(),
+        value: line.slice(i + 1).trim(),
+      };
+    });
+}
+
+export async function saveTributoIntro(formData: FormData) {
+  const tributo = await readContentFile<Tributo>("tributo.json");
+  tributo.title = str(formData, "title");
+  tributo.subtitle = str(formData, "subtitle");
+  tributo.kicker = str(formData, "kicker");
+  tributo.cover = optStr(formData, "cover");
+  tributo.coverCaption = optStr(formData, "coverCaption");
+  tributo.intro = str(formData, "intro");
+  tributo.endorsementLabel = optStr(formData, "endorsementLabel");
+  tributo.endorsementTitle = optStr(formData, "endorsementTitle");
+  tributo.endorsementBody = optStr(formData, "endorsementBody");
+  tributo.fichaTitle = str(formData, "fichaTitle");
+  tributo.ficha = parseFicha(str(formData, "ficha"));
+  tributo.bandasTitle = str(formData, "bandasTitle");
+  tributo.bandasNote = optStr(formData, "bandasNote");
+  await writeContentFile("tributo.json", tributo);
+  revalidateAll("/admin/tributo");
+}
+
+export async function saveTributoLinks(formData: FormData) {
+  const tributo = await readContentFile<Tributo>("tributo.json");
+  tributo.listenTitle = str(formData, "listenTitle");
+  tributo.listenNote = optStr(formData, "listenNote");
+  tributo.soundcloudVol1Url = optStr(formData, "soundcloudVol1Url");
+  tributo.soundcloudVol1Label = optStr(formData, "soundcloudVol1Label");
+  tributo.soundcloudVol2Url = optStr(formData, "soundcloudVol2Url");
+  tributo.soundcloudVol2Label = optStr(formData, "soundcloudVol2Label");
+  tributo.discogsUrl = optStr(formData, "discogsUrl");
+  tributo.discogsLabel = optStr(formData, "discogsLabel");
+  await writeContentFile("tributo.json", tributo);
+  revalidateAll("/admin/tributo");
+}
+
+export async function saveTributoBanda(id: string | null, formData: FormData) {
+  const tributo = await readContentFile<Tributo>("tributo.json");
+  const idx = id ? tributo.bandas.findIndex((b) => b.id === id) : -1;
+  if (id && idx === -1) throw new Error("Banda não encontrada");
+  const prev = idx !== -1 ? tributo.bandas[idx] : undefined;
+  const name = str(formData, "name");
+  const banda: TributoBanda = {
+    ...prev,
+    id: id ?? uniqueSlug(slugify(name), tributo.bandas.map((b) => b.id)),
+    name,
+    track: optStr(formData, "track"),
+    origin: optStr(formData, "origin"),
+    url: optStr(formData, "url"),
+  };
+
+  if (idx !== -1) {
+    tributo.bandas[idx] = banda;
+  } else {
+    tributo.bandas.push(banda);
+  }
+  await writeContentFile("tributo.json", tributo);
+  revalidateAll("/admin/tributo");
+  redirect("/admin/tributo");
+}
+
+export async function deleteTributoBanda(id: string) {
+  const tributo = await readContentFile<Tributo>("tributo.json");
+  tributo.bandas = tributo.bandas.filter((b) => b.id !== id);
+  await writeContentFile("tributo.json", tributo);
+  revalidateAll("/admin/tributo");
+}
+
+export async function moveTributoBanda(id: string, dir: -1 | 1) {
+  const tributo = await readContentFile<Tributo>("tributo.json");
+  const index = tributo.bandas.findIndex((b) => b.id === id);
+  const target = index + dir;
+  if (index === -1 || target < 0 || target >= tributo.bandas.length) return;
+  [tributo.bandas[index], tributo.bandas[target]] = [
+    tributo.bandas[target],
+    tributo.bandas[index],
+  ];
+  await writeContentFile("tributo.json", tributo);
+  revalidateAll("/admin/tributo");
 }

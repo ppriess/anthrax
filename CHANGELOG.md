@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-09-16
+
+- **Página do tributo brasileiro em `/brasil/tributo`** — o "Indians… Not! –
+  Brazilian Tribute to Anthrax" (2004 → 2007, Collision Records ×
+  Anthrax.com.br). Até aqui o tributo só existia como card estático na seção
+  Brasil da home, prometendo um "faixa a faixa" que não existia em lugar
+  nenhum. Conteúdo em `content/tributo.json` (tipos `Tributo`,
+  `TributoBanda`, `TributoFichaItem`), editável em `/admin/tributo`.
+  Hierarquia: o aval do Scott Ian por e-mail em callout de destaque, coluna
+  direita fixa com capa + botões de ouvir + ficha técnica, grid das 15 bandas
+  confirmadas embaixo, prosa no meio. Playlists oficiais do SoundCloud
+  (Vol. I e Vol. II) e ficha no Discogs. Campo de URL vazio esconde o botão —
+  a página nunca serve link morto.
+- `BrasilCard` ganhou `href?`: card da seção Brasil com rota interna vira link
+  inteiro, com afordância "VER A PÁGINA →" e a sombra dura verde-amarela no
+  hover. O card do tributo aponta pra `/brasil/tributo`; o texto dele foi
+  reescrito pra prometer o que a página entrega (não existe track list
+  faixa-a-faixa) e o selo virou `2004–2007`, já que o lançamento é de 2007.
+- Novo `src/app/brasil/layout.tsx` (masthead + footer), espelho do `/banda`.
+
 ## 2026-07-15
 
 - **Terceira UI "A Transmissão" em `/v3`** (aditiva — o site em `/` e a skin

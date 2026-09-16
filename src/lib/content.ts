@@ -123,6 +123,9 @@ export type BrasilCard = {
   sourceUrl?: string;
   ticketLabel?: string;
   cta?: string;
+  /** Rota interna do site (ex.: "/brasil/tributo"). Com isso o card
+   *  inteiro vira link. Sem isso continua sendo um bloco estático. */
+  href?: string;
 };
 
 export type Brasil = {
@@ -260,6 +263,51 @@ export type ArquivoBrasil = {
   callout?: string; // markdown — "você estava lá? manda tua história"
   sourceNote?: string;
   shows: ArquivoBrasilShow[];
+};
+
+// ---------- Indians… Not! (/brasil/tributo) — o tributo brasileiro de 2007;
+// lido só pela própria página e pelo /admin. ----------
+
+export type TributoFichaItem = {
+  label: string;
+  value: string;
+};
+
+export type TributoBanda = {
+  id: string;
+  name: string;
+  /** Faixa que a banda regravou, quando conhecida. */
+  track?: string;
+  /** Cidade/estado de origem, quando conhecida. */
+  origin?: string;
+  /** Link externo da banda (site, Bandcamp, Instagram...). */
+  url?: string;
+};
+
+export type Tributo = {
+  title: string;
+  subtitle: string;
+  kicker: string;
+  cover?: string;
+  coverCaption?: string;
+  intro: string; // markdown
+  endorsementLabel?: string;
+  endorsementTitle?: string;
+  endorsementBody?: string;
+  listenTitle: string;
+  listenNote?: string;
+  /** Vazio → o botão some. Nada de link morto numa página de arquivo. */
+  soundcloudVol1Url?: string;
+  soundcloudVol1Label?: string;
+  soundcloudVol2Url?: string;
+  soundcloudVol2Label?: string;
+  discogsUrl?: string;
+  discogsLabel?: string;
+  fichaTitle: string;
+  ficha: TributoFichaItem[];
+  bandasTitle: string;
+  bandasNote?: string;
+  bandas: TributoBanda[];
 };
 
 export type AlbumTrack = {

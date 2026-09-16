@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type {
   Agenda,
   Brasil,
@@ -8,12 +9,18 @@ import { extractYouTubeId } from "@/lib/youtube";
 import { AlertaBrasil } from "./AlertaBrasil";
 import { Quiz } from "./Quiz";
 
+/** Realce de card clicável: a sombra dura verde-amarela da seção, só no hover. */
+const LINK_CHROME =
+  "text-ink no-underline transition-shadow hover:shadow-[5px_5px_0_var(--color-brasil-paper)]";
+
 function PaperCard({ card, mobile }: { card: BrasilCard; mobile?: boolean }) {
   const ytId = card.sourceUrl ? extractYouTubeId(card.sourceUrl) : null;
 
   if (card.wide) {
-    return (
-      <div className="flex items-center gap-4 border-2 border-ink bg-card-paper p-[15px] [grid-column:1/-1]">
+    const wideClass =
+      "flex items-center gap-4 border-2 border-ink bg-card-paper p-[15px] [grid-column:1/-1]";
+    const wideInner = (
+      <>
         <div className="hatch-paper-sm flex h-16 w-24 flex-none items-center justify-center border-2 border-ink">
           <span className="font-mono text-[9px] text-paper-meta">
             {card.ticketLabel}
@@ -31,49 +38,64 @@ function PaperCard({ card, mobile }: { card: BrasilCard; mobile?: boolean }) {
         <span className="whitespace-nowrap bg-brasil-paper px-4 py-[10px] text-sm font-bold tracking-[0.1em] text-paper">
           {card.cta}
         </span>
-      </div>
+      </>
+    );
+
+    return card.href ? (
+      <Link href={card.href} className={`${wideClass} ${LINK_CHROME}`}>
+        {wideInner}
+      </Link>
+    ) : (
+      <div className={wideClass}>{wideInner}</div>
     );
   }
-  return (
-    <div className={`border-2 border-ink bg-card-paper p-3 md:p-[15px] ${mobile ? "mb-2" : ""}`}>
-      {ytId ? (
-        <div className="mb-2 aspect-video overflow-hidden border-2 border-ink bg-ink">
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
-            title={card.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            className="h-full w-full border-0"
-          />
-        </div>
-      ) : card.image ? (
-        <div className="hatch-paper-sm mb-2 aspect-[3/2] overflow-hidden border-2 border-ink">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={card.image}
-            alt={card.title}
-            loading="lazy"
-            className={`h-full w-full ${card.imageContain ? "object-contain" : "object-cover"}`}
-          />
-        </div>
-      ) : card.sourceUrl ? (
-        <a
-          href={card.sourceUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hatch-paper-sm mb-2 flex aspect-[3/2] items-center justify-center border-2 border-ink no-underline"
-        >
-          <span className="font-mono text-[9px] text-paper-meta">
-            {card.photoLabel ?? "[ VIDEO ]"}
-          </span>
-        </a>
-      ) : card.photoLabel ? (
-        <div className="hatch-paper-sm mb-2 flex aspect-[3/2] items-center justify-center border-2 border-ink">
-          <span className="font-mono text-[9px] text-paper-meta">
-            {card.photoLabel}
-          </span>
-        </div>
-      ) : null}
+
+  const cardClass = `border-2 border-ink bg-card-paper p-3 md:p-[15px] ${mobile ? "mb-2" : ""}`;
+  // Card inteiro já é link → o <a> interno do sourceUrl viraria âncora aninhada.
+  const linked = Boolean(card.href);
+
+  const media = ytId ? (
+    <div className="mb-2 aspect-video overflow-hidden border-2 border-ink bg-ink">
+      <iframe
+        src={`https://www.youtube-nocookie.com/embed/${ytId}?rel=0`}
+        title={card.title}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowFullScreen
+        className="h-full w-full border-0"
+      />
+    </div>
+  ) : card.image ? (
+    <div className="hatch-paper-sm mb-2 aspect-[3/2] overflow-hidden border-2 border-ink">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={card.image}
+        alt={card.title}
+        loading="lazy"
+        className={`h-full w-full ${card.imageContain ? "object-contain" : "object-cover"}`}
+      />
+    </div>
+  ) : card.sourceUrl && !linked ? (
+    <a
+      href={card.sourceUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hatch-paper-sm mb-2 flex aspect-[3/2] items-center justify-center border-2 border-ink no-underline"
+    >
+      <span className="font-mono text-[9px] text-paper-meta">
+        {card.photoLabel ?? "[ VIDEO ]"}
+      </span>
+    </a>
+  ) : card.photoLabel ? (
+    <div className="hatch-paper-sm mb-2 flex aspect-[3/2] items-center justify-center border-2 border-ink">
+      <span className="font-mono text-[9px] text-paper-meta">
+        {card.photoLabel}
+      </span>
+    </div>
+  ) : null;
+
+  const inner = (
+    <>
+      {media}
       <div className="mb-1 font-mono text-[10px] font-bold text-brasil-paper md:mb-[6px] md:text-[11px]">
         {mobile ? (card.labelShort ?? card.label) : card.label}
       </div>
@@ -83,7 +105,20 @@ function PaperCard({ card, mobile }: { card: BrasilCard; mobile?: boolean }) {
       {!mobile && card.body && (
         <p className="m-0 text-[15px] leading-[1.35] text-paper-hi">{card.body}</p>
       )}
-    </div>
+      {linked && (
+        <div className="mt-2 font-mono text-[10px] font-bold tracking-[0.1em] text-brasil-paper md:text-[11px]">
+          VER A PÁGINA →
+        </div>
+      )}
+    </>
+  );
+
+  return card.href ? (
+    <Link href={card.href} className={`block ${cardClass} ${LINK_CHROME}`}>
+      {inner}
+    </Link>
+  ) : (
+    <div className={cardClass}>{inner}</div>
   );
 }
 

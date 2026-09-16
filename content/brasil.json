@@ -14,13 +14,14 @@
     },
     {
       "id": "tributo",
-      "label": "2004 · TRIBUTO NACIONAL",
-      "labelShort": "2004",
+      "label": "2004–2007 · TRIBUTO NACIONAL",
+      "labelShort": "2007",
       "photoLabel": "[ CAPA: Tributo Brasileiro 2004 ]",
       "title": "O tributo brasileiro ao Anthrax",
-      "body": "Bandas da cena nacional gravaram um disco inteiro de covers em 2004. Faixa a faixa, contamos quem tocou o quê.",
+      "body": "Álbum duplo, mais de 20 bandas brasileiras e o aval do Scott Ian. Nasceu numa conversa em 2004 e saiu de graça em 2007.",
       "image": "/capa-tributo.jpg",
-      "imageContain": true
+      "imageContain": true,
+      "href": "/brasil/tributo"
     },
     {
       "id": "kisser-summer-breeze-2024",

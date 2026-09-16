@@ -6,6 +6,7 @@ const links = [
   { href: "/admin/noticias", label: "Notícias" },
   { href: "/admin/videos", label: "Anthrax TV" },
   { href: "/admin/brasil", label: "Anthrax + Brasil" },
+  { href: "/admin/tributo", label: "Brasil: Tributo" },
   { href: "/admin/agenda", label: "Agenda" },
   { href: "/admin/membros", label: "Banda: Membros" },
   { href: "/admin/albuns", label: "Banda: Álbuns" },
