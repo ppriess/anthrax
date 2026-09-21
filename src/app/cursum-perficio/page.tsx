@@ -1,8 +1,8 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { readContentFile, type Albuns } from "@/lib/content";
 import { AlbumListenExperience } from "@/components/AlbumListenExperience";
+import { GateHeader } from "@/components/GateHeader";
 
 export const dynamic = "force-dynamic";
 
@@ -29,23 +29,7 @@ export default async function CursumPerficioPage() {
 
   return (
     <main className="min-h-screen bg-ink text-paper">
-      <div className="flex items-center justify-between px-4 py-4 md:px-10 md:py-6">
-        <Link
-          href="/"
-          className="font-display text-lg uppercase leading-none text-paper no-underline md:text-xl"
-        >
-          Anthrax{" "}
-          <span className="inline-block -rotate-[1.5deg] bg-signal px-[6px] text-ink">
-            Brasil
-          </span>
-        </Link>
-        <Link
-          href="/"
-          className="font-mono text-[11px] tracking-[0.1em] text-on-dark-2 no-underline hover:text-signal"
-        >
-          ENTRAR NO SITE →
-        </Link>
-      </div>
+      <GateHeader />
 
       <AlbumListenExperience
         title={album.title}

@@ -1,41 +1,36 @@
-import { getContent, readContentFile, type Albuns } from "@/lib/content";
-import { Masthead } from "@/components/Masthead";
-import { Hero } from "@/components/Hero";
-import { NewsSection } from "@/components/NewsSection";
-import { AnthraxTV } from "@/components/AnthraxTV";
-import { DiscografiaSection } from "@/components/DiscografiaSection";
-import { TurneSection } from "@/components/TurneSection";
-import { BrasilSection } from "@/components/BrasilSection";
-import { Footer } from "@/components/Footer";
-import { MobileTabBar } from "@/components/MobileTabBar";
+import { cookies } from "next/headers";
+import { readContentFile, type Albuns } from "@/lib/content";
+import { HomeContent } from "@/components/HomeContent";
+import { AlbumListenExperience } from "@/components/AlbumListenExperience";
+import { GateHeader } from "@/components/GateHeader";
+import { GATE_BYPASS_COOKIE, isGateActive } from "@/lib/gate";
 
-// Conteúdo vem de /content/*.json a cada request — editar o JSON atualiza o
-// site sem rebuild.
 export const dynamic = "force-dynamic";
 
-export default async function Home() {
-  const [content, albuns] = await Promise.all([
-    getContent(),
-    readContentFile<Albuns>("albuns.json"),
-  ]);
+export default async function RootPage() {
+  const cookieStore = await cookies();
+  const bypass = cookieStore.get(GATE_BYPASS_COOKIE)?.value;
+
+  if (!isGateActive(bypass)) {
+    return <HomeContent />;
+  }
+
+  const albuns = await readContentFile<Albuns>("albuns.json");
+  const album = albuns.items.find((a) => a.id === "cursum-perficio");
+  if (!album?.youtubeId) {
+    return <HomeContent />;
+  }
 
   return (
-    <>
-      <main className="min-h-screen bg-ink pb-[76px] md:pb-0">
-        <Masthead site={content.site} nav={content.nav} />
-        <Hero hero={content.hero} releaseDate={content.site.releaseDate} />
-        <NewsSection news={content.news} />
-        <AnthraxTV tv={content.tv} />
-        <DiscografiaSection albuns={albuns} />
-        <TurneSection turne={content.turne} />
-        <BrasilSection
-          brasil={content.brasil}
-          agenda={content.agenda}
-          quiz={content.quiz}
-        />
-        <Footer footer={content.footer} />
-      </main>
-      <MobileTabBar />
-    </>
+    <main className="min-h-screen bg-ink text-paper">
+      <GateHeader />
+      <AlbumListenExperience
+        title={album.title}
+        subtitle={album.label}
+        cover={album.cover}
+        youtubeId={album.youtubeId}
+        tracks={album.tracks ?? []}
+      />
+    </main>
   );
 }
