@@ -314,6 +314,7 @@ export type AlbumTrack = {
   n: number;
   title: string;
   duration?: string;
+  startSeconds?: number; // ponto de início da faixa no player embutido (ex.: /cursum-perficio)
 };
 
 // ---------- links de streaming (catálogo gerado, não editável pelo /admin —
@@ -357,6 +358,9 @@ export type AlbumItem = {
   releaseDate?: string; // ISO, ex.: "2026-09-18"
   tracks?: AlbumTrack[];
   upcoming?: boolean; // lançamento futuro — ganha destaque na discografia
+  isNew?: boolean; // já lançado, ainda em destaque — badge "JÁ DISPONÍVEL" em vez de "EM BREVE"
+  youtubeId?: string; // vídeo do YouTube usado como player de áudio em listenPath
+  listenPath?: string; // rota interna de audição dedicada, ex.: "/cursum-perficio"
 };
 
 export type Albuns = {

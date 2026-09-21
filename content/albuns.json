@@ -14,50 +14,73 @@
       "tracks": [
         {
           "n": 1,
-          "title": "Persistence of Memory"
+          "title": "Persistence of Memory",
+          "duration": "1:08",
+          "startSeconds": 0
         },
         {
           "n": 2,
-          "title": "The Long Goodbye"
+          "title": "The Long Goodbye",
+          "duration": "5:33",
+          "startSeconds": 68
         },
         {
           "n": 3,
-          "title": "It's for the Kids"
+          "title": "It's For the Kids",
+          "duration": "4:21",
+          "startSeconds": 401
         },
         {
           "n": 4,
-          "title": "Everybody's Got a Plan"
+          "title": "Everybody's Got a Plan",
+          "duration": "4:37",
+          "startSeconds": 662
         },
         {
           "n": 5,
-          "title": "The Edge of Perfection"
+          "title": "The Edge of Perfection",
+          "duration": "6:44",
+          "startSeconds": 939
         },
         {
           "n": 6,
-          "title": "Infectious"
+          "title": "Infectious",
+          "duration": "5:17",
+          "startSeconds": 1343
         },
         {
           "n": 7,
-          "title": "NYC93"
+          "title": "NYC 93",
+          "duration": "4:50",
+          "startSeconds": 1660
         },
         {
           "n": 8,
-          "title": "Cursum Perficio"
+          "title": "Cursum Perficio",
+          "duration": "6:08",
+          "startSeconds": 1950
         },
         {
           "n": 9,
-          "title": "T.O.M.B"
+          "title": "T.O.M.B.",
+          "duration": "4:30",
+          "startSeconds": 2318
         },
         {
           "n": 10,
-          "title": "Watch It Go"
+          "title": "Watch It Go",
+          "duration": "5:44",
+          "startSeconds": 2588
         },
         {
           "n": 11,
-          "title": "My Victory"
+          "title": "My Victory",
+          "startSeconds": 2932
         }
       ],
-      "upcoming": true
+      "isNew": true,
+      "youtubeId": "_fAg7Qk79wA",
+      "listenPath": "/cursum-perficio"
     },
     {
       "id": "for-all-kings",

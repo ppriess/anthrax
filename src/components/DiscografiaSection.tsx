@@ -2,8 +2,10 @@ import Link from "next/link";
 import type { Albuns } from "@/lib/content";
 
 export function DiscografiaSection({ albuns }: { albuns: Albuns }) {
-  const destaque = albuns.items.find((a) => a.upcoming);
-  const resto = albuns.items.filter((a) => !a.upcoming).slice(0, 5);
+  const destaque = albuns.items.find((a) => a.upcoming || a.isNew);
+  const resto = albuns.items
+    .filter((a) => !a.upcoming && !a.isNew)
+    .slice(0, 5);
   const grade = destaque ? [destaque, ...resto] : albuns.items.slice(0, 6);
 
   return (
@@ -37,7 +39,7 @@ export function DiscografiaSection({ albuns }: { albuns: Albuns }) {
           {grade.map((a) => (
             <Link
               key={a.id}
-              href="/banda/albuns"
+              href={a.listenPath ?? "/banda/albuns"}
               className="block border-2 border-hardline bg-card-paper no-underline"
             >
               {a.cover ? (
@@ -63,6 +65,9 @@ export function DiscografiaSection({ albuns }: { albuns: Albuns }) {
                   {a.year}
                   {a.upcoming && (
                     <span className="ml-1 text-signal">· EM BREVE</span>
+                  )}
+                  {a.isNew && (
+                    <span className="ml-1 text-signal">· JÁ DISPONÍVEL</span>
                   )}
                 </div>
               </div>

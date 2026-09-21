@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type {
   Albuns,
   AlbumItem,
@@ -64,7 +65,7 @@ function AlbumCard({
   return (
     <article
       className={`border-2 bg-card-paper shadow-[5px_5px_0_var(--color-hardline)] ${
-        a.upcoming ? "border-signal" : "border-hardline"
+        a.upcoming || a.isNew ? "border-signal" : "border-hardline"
       }`}
     >
       {a.cover ? (
@@ -79,6 +80,11 @@ function AlbumCard({
           {a.upcoming && a.releaseDate && (
             <span className="absolute left-2 top-2 bg-signal px-[7px] py-[2px] font-mono text-[11px] font-bold text-ink">
               LANÇAMENTO {formatReleaseDate(a.releaseDate)}
+            </span>
+          )}
+          {a.isNew && (
+            <span className="absolute left-2 top-2 bg-signal px-[7px] py-[2px] font-mono text-[11px] font-bold text-ink">
+              JÁ DISPONÍVEL
             </span>
           )}
         </div>
@@ -105,6 +111,14 @@ function AlbumCard({
           <p className="m-0 text-sm leading-[1.4] text-paper-hi">
             {a.description}
           </p>
+        )}
+        {a.listenPath && (
+          <Link
+            href={a.listenPath}
+            className="mt-3 inline-block bg-signal px-4 py-[9px] text-sm font-bold tracking-[0.1em] text-ink no-underline"
+          >
+            OUÇA AGORA →
+          </Link>
         )}
         {a.tracks && a.tracks.length > 0 && (
           <details className="mt-3 border-t border-dashed border-hardline pt-2">
